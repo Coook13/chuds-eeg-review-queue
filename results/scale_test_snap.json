@@ -1,0 +1,30 @@
+{
+  "machine": "s390x",
+  "cpus": 3,
+  "results": [
+    {
+      "beds": 50,
+      "feature_set": "v1",
+      "steps": 60,
+      "batched_ms_per_step_all_beds": 15.35,
+      "batched_ms_per_window": 0.307,
+      "batched_p95_ms_per_step": 20.08,
+      "sequential_ms_per_step_all_beds": 29.63,
+      "sequential_ms_per_window": 0.593,
+      "real_time_ok": true,
+      "max_beds_real_time_batched_est": 3257
+    },
+    {
+      "beds": 100,
+      "feature_set": "v1",
+      "steps": 60,
+      "batched_ms_per_step_all_beds": 30.83,
+      "batched_ms_per_window": 0.308,
+      "batched_p95_ms_per_step": 41.58,
+      "sequential_ms_per_step_all_beds": 62.51,
+      "sequential_ms_per_window": 0.625,
+      "real_time_ok": true,
+      "max_beds_real_time_batched_est": 3243
+    }
+  ]
+}

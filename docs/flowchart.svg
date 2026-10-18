@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="IBM Plex Sans, Segoe UI, Helvetica, Arial, sans-serif">
+  <title>EEG Review Queue: data flow and the confirm-to-personalise loop</title>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5b6475"/>
+    </marker>
+    <marker id="at" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0b7a75"/>
+    </marker>
+    <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6929c4"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#ffffff"/>
+
+  <!-- title -->
+  <text x="24" y="34" font-size="20" font-weight="700" fill="#1d2433">EEG Review Queue: data flow and the confirm-to-personalise loop</text>
+  <text x="24" y="56" font-size="13" fill="#5b6475">Everything inside the blue line runs on one IBM LinuxONE VM. The clinician's browser connects from outside through an SSH tunnel.</text>
+
+  <!-- LinuxONE boundary -->
+  <rect x="16" y="80" width="884" height="604" rx="12" fill="#f5f8ff" stroke="#0f62fe" stroke-width="2" stroke-dasharray="8 5"/>
+  <rect x="32" y="68" width="430" height="24" rx="4" fill="#0f62fe"/>
+  <text x="44" y="85" font-size="13" fill="#ffffff"><tspan font-weight="700">IBM LinuxONE (s390x)</tspan><tspan dx="12">Ubuntu 24.04, 3 CPUs, 7.8 GB RAM</tspan></text>
+
+  <!-- 1 EEG streams -->
+  <rect x="36" y="112" width="190" height="168" rx="8" fill="#ffffff" stroke="#8a94a6" stroke-width="1.5"/>
+  <text x="50" y="136" font-size="14" font-weight="700" fill="#1d2433">1  EEG streams</text>
+  <text font-size="12" fill="#1d2433">
+    <tspan x="50" y="160">CHB-MIT recordings on the</tspan>
+    <tspan x="50" y="176">VM, replayed live, one</tspan>
+    <tspan x="50" y="192">recording per bed</tspan>
+    <tspan x="50" y="216" font-weight="700">186 recordings from</tspan>
+    <tspan x="50" y="232" font-weight="700">23 patients</tspan>
+  </text>
+  <text x="50" y="262" font-size="11" fill="#5b6475">PhysioNet open data, 11.5 GB</text>
+
+  <!-- 2 Features -->
+  <rect x="252" y="112" width="190" height="168" rx="8" fill="#ffffff" stroke="#8a94a6" stroke-width="1.5"/>
+  <text x="266" y="136" font-size="14" font-weight="700" fill="#1d2433">2  Features every 1 s</text>
+  <text font-size="12" fill="#1d2433">
+    <tspan x="266" y="160">2 s window of EEG</tspan>
+    <tspan x="266" y="176">18 channels</tspan>
+    <tspan x="266" y="200" font-weight="700">234 features per window</tspan>
+    <tspan x="266" y="216">band power, line length,</tspan>
+    <tspan x="266" y="232">Hjorth parameters</tspan>
+  </text>
+
+  <!-- 3 Seizure model -->
+  <rect x="468" y="112" width="190" height="168" rx="8" fill="#ffffff" stroke="#8a94a6" stroke-width="1.5"/>
+  <text x="482" y="136" font-size="14" font-weight="700" fill="#1d2433">3  Seizure model</text>
+  <rect x="480" y="146" width="166" height="58" rx="6" fill="#ffffff" stroke="#8a94a6" stroke-width="1.2"/>
+  <text font-size="12" fill="#1d2433">
+    <tspan x="492" y="164" font-weight="700">General model</tspan>
+    <tspan x="492" y="180">other patients only</tspan>
+    <tspan x="492" y="196">every bed starts here</tspan>
+  </text>
+  <rect x="480" y="212" width="166" height="58" rx="6" fill="#e7f5f3" stroke="#0b7a75" stroke-width="1.5"/>
+  <text font-size="12" fill="#0b4f4b">
+    <tspan x="492" y="230" font-weight="700" fill="#0b6b66">Personal model</tspan>
+    <tspan x="492" y="246">this patient only</tspan>
+    <tspan x="492" y="262">after a confirmed seizure</tspan>
+  </text>
+
+  <!-- 4 Events + rules -->
+  <rect x="684" y="112" width="190" height="168" rx="8" fill="#ffffff" stroke="#8a94a6" stroke-width="1.5"/>
+  <text x="698" y="136" font-size="14" font-weight="700" fill="#1d2433">4  Events + rules</text>
+  <text font-size="12" fill="#1d2433">
+    <tspan x="698" y="160">score 0 to 1, smoothed</tspan>
+    <tspan x="698" y="176">alert after 5 in a row</tspan>
+    <tspan x="698" y="200" font-weight="700">Escalation rules</tspan>
+    <tspan x="698" y="215" font-size="11" fill="#5b6475">a clinician can edit these</tspan>
+    <tspan x="698" y="233">suspected seizure: review</tspan>
+    <tspan x="698" y="249">5+ min or 2+ per hour:</tspan>
+    <tspan x="698" y="265">urgent, never hidden</tspan>
+  </text>
+
+  <!-- row 1 arrows -->
+  <line x1="226" y1="196" x2="250" y2="196" stroke="#5b6475" stroke-width="1.8" marker-end="url(#ag)"/>
+  <line x1="442" y1="196" x2="466" y2="196" stroke="#5b6475" stroke-width="1.8" marker-end="url(#ag)"/>
+  <line x1="658" y1="196" x2="682" y2="196" stroke="#5b6475" stroke-width="1.8" marker-end="url(#ag)"/>
+  <!-- rules to web app -->
+  <line x1="779" y1="280" x2="779" y2="314" stroke="#5b6475" stroke-width="1.8" marker-end="url(#ag)"/>
+
+  <!-- 5 Web app -->
+  <rect x="620" y="316" width="254" height="160" rx="8" fill="#ffffff" stroke="#8a94a6" stroke-width="1.5"/>
+  <text x="634" y="340" font-size="14" font-weight="700" fill="#1d2433">5  Web app on the VM (Flask)</text>
+  <text font-size="12" fill="#1d2433">
+    <tspan x="634" y="364">Review queue, urgent first</tspan>
+    <tspan x="634" y="382">Evidence viewer, flagged span shaded</tspan>
+    <tspan x="634" y="400">Acknowledge log, name and time</tspan>
+    <tspan x="634" y="418" font-weight="700" fill="#0b6b66">Confirm seizure button</tspan>
+    <tspan x="634" y="436">Before/after table per bed</tspan>
+    <tspan x="634" y="454">Handover note</tspan>
+  </text>
+
+  <!-- 6 Retrain -->
+  <rect x="290" y="316" width="270" height="146" rx="8" fill="#e7f5f3" stroke="#0b7a75" stroke-width="1.8"/>
+  <text x="304" y="340" font-size="14" font-weight="700" fill="#0b6b66">6  Retrain personal model</text>
+  <text font-size="12" fill="#0b4f4b">
+    <tspan x="304" y="362">on LinuxONE, from</tspan>
+    <tspan x="314" y="378">the confirmed seizure</tspan>
+    <tspan x="314" y="394">this recording so far</tspan>
+    <tspan x="314" y="410">the patient's earlier recordings</tspan>
+    <tspan x="304" y="432" font-weight="700">takes [RETRAIN SECONDS ON LINUXONE] s</tspan>
+    <tspan x="304" y="450">other beds keep streaming</tspan>
+  </text>
+
+  <!-- web app to retrain (confirm) -->
+  <line x1="620" y1="392" x2="562" y2="392" stroke="#0b7a75" stroke-width="2" marker-end="url(#at)"/>
+  <text x="590" y="384" font-size="10.5" font-weight="700" fill="#0b6b66" text-anchor="middle">confirmed</text>
+  <text x="590" y="408" font-size="10.5" font-weight="700" fill="#0b6b66" text-anchor="middle">seizure</text>
+
+  <!-- retrain to personal model (switch) -->
+  <line x1="520" y1="316" x2="520" y2="273" stroke="#0b7a75" stroke-width="2" marker-end="url(#at)"/>
+  <text x="510" y="301" font-size="11" font-weight="700" fill="#0b6b66" text-anchor="end">bed switches to its personal model</text>
+
+  <!-- data to retrain (training input) -->
+  <path d="M131,280 L131,392 L288,392" fill="none" stroke="#5b6475" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ag)"/>
+  <text font-size="11" fill="#5b6475">
+    <tspan x="140" y="410">earlier recordings and</tspan>
+    <tspan x="140" y="424">this recording so far</tspan>
+  </text>
+
+  <!-- 7 Granite -->
+  <rect x="620" y="530" width="254" height="134" rx="8" fill="#f4effc" stroke="#6929c4" stroke-width="1.8"/>
+  <text x="634" y="554" font-size="14" font-weight="700" fill="#5a22a8">7  IBM Granite 3.3 2B</text>
+  <text font-size="12" fill="#3b1f66">
+    <tspan x="634" y="576">llama.cpp built from source</tspan>
+    <tspan x="634" y="592">for s390x, big-endian model</tspan>
+    <tspan x="634" y="614">writes the handover note</tspan>
+    <tspan x="634" y="630">from the bed's numbers</tspan>
+    <tspan x="634" y="652" font-weight="700">never suggests treatment</tspan>
+  </text>
+
+  <!-- web app <-> Granite -->
+  <line x1="700" y1="476" x2="700" y2="528" stroke="#6929c4" stroke-width="1.8" marker-end="url(#ap)"/>
+  <text x="708" y="507" font-size="11" fill="#5a22a8">bed numbers</text>
+  <line x1="800" y1="530" x2="800" y2="478" stroke="#6929c4" stroke-width="1.8" marker-end="url(#ap)"/>
+  <text x="808" y="507" font-size="11" fill="#5a22a8">note</text>
+
+  <!-- legend: IBM labs -->
+  <rect x="36" y="530" width="524" height="134" rx="8" fill="#ffffff" stroke="#c9d1de" stroke-width="1.2"/>
+  <text x="50" y="554" font-size="13" font-weight="700" fill="#1d2433">How it maps to the IBM labs</text>
+  <text font-size="12" fill="#1d2433">
+    <tspan x="50" y="578" font-weight="700">Hybrid multi-model</tspan><tspan dx="8">general model + personal model + escalation rules</tspan>
+    <tspan x="50" y="600" font-weight="700">Predictive + generative</tspan><tspan dx="8">detector flags events, Granite writes the note</tspan>
+    <tspan x="50" y="622" font-weight="700">Clinician in the loop</tspan><tspan dx="8">the system flags and explains, a clinician confirms</tspan>
+  </text>
+  <text x="50" y="648" font-size="11" fill="#5b6475">Replay runs 10x faster for the demo. Every flag is a suspected event for clinician review.</text>
+
+  <!-- clinician browser (outside) -->
+  <rect x="1000" y="316" width="184" height="160" rx="8" fill="#f6f7f9" stroke="#5b6475" stroke-width="1.5"/>
+  <text x="1014" y="340" font-size="14" font-weight="700" fill="#1d2433">Clinician's browser</text>
+  <text font-size="12" fill="#1d2433">
+    <tspan x="1014" y="362" fill="#5b6475">laptop, outside LinuxONE</tspan>
+    <tspan x="1014" y="384">sees the queue, evidence,</tspan>
+    <tspan x="1014" y="400">before/after table, note</tspan>
+    <tspan x="1014" y="422">presses Acknowledge</tspan>
+    <tspan x="1014" y="438" font-weight="700" fill="#0b6b66">or Confirm seizure</tspan>
+  </text>
+
+  <!-- web app <-> browser over SSH tunnel -->
+  <line x1="874" y1="360" x2="998" y2="360" stroke="#5b6475" stroke-width="1.8" marker-end="url(#ag)"/>
+  <rect x="905" y="341" width="64" height="14" fill="#ffffff"/>
+  <text x="937" y="352" font-size="11" fill="#5b6475" text-anchor="middle">live queue</text>
+  <rect x="903" y="394" width="68" height="16" fill="#ffffff"/>
+  <text x="937" y="406" font-size="11" font-style="italic" fill="#5b6475" text-anchor="middle">SSH tunnel</text>
+  <line x1="1000" y1="440" x2="876" y2="440" stroke="#0b7a75" stroke-width="2" marker-end="url(#at)"/>
+  <rect x="893" y="446" width="88" height="30" fill="#ffffff"/>
+  <text font-size="11" text-anchor="middle">
+    <tspan x="937" y="458" fill="#5b6475">Acknowledge or</tspan>
+    <tspan x="937" y="472" font-weight="700" fill="#0b6b66">Confirm seizure</tspan>
+  </text>
+</svg>

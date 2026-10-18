@@ -1,0 +1,18 @@
+{
+  "tag": "v1_snap_gv2s",
+  "threshold": 0.8,
+  "first_confirm_threshold": null,
+  "on_count": 5,
+  "general": {
+    "caught": "103/191",
+    "event_sensitivity": 0.5393,
+    "false_alarms_per_day": 17.21,
+    "median_delay_s": 13.0,
+    "hours": 477.0,
+    "window_sensitivity": 0.489,
+    "window_specificity": 0.9837,
+    "auc": 0.8978,
+    "seizure_windows": 11545,
+    "other_windows": 1705711
+  }
+}

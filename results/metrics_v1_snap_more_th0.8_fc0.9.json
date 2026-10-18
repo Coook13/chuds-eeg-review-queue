@@ -1,0 +1,56 @@
+{
+  "tag": "v1_snap_more",
+  "threshold": 0.8,
+  "first_confirm_threshold": 0.9,
+  "on_count": 5,
+  "general": {
+    "caught": "82/191",
+    "event_sensitivity": 0.4293,
+    "false_alarms_per_day": 148.07,
+    "median_delay_s": 8.5,
+    "hours": 477.0,
+    "window_sensitivity": 0.3652,
+    "window_specificity": 0.9012,
+    "auc": 0.7377,
+    "seizure_windows": 11545,
+    "other_windows": 1705711
+  },
+  "past": {
+    "caught": "135/164",
+    "event_sensitivity": 0.8232,
+    "false_alarms_per_day": 2.93,
+    "median_delay_s": 7.0,
+    "hours": 286.4,
+    "window_sensitivity": 0.6842,
+    "window_specificity": 0.997,
+    "auc": 0.9594,
+    "seizure_windows": 10006,
+    "other_windows": 1021037
+  },
+  "confirm_same_time": {
+    "general": {
+      "caught": "67/168",
+      "event_sensitivity": 0.3988,
+      "false_alarms_per_day": 180.01,
+      "median_delay_s": 8.0,
+      "hours": 303.3,
+      "window_sensitivity": 0.3536,
+      "window_specificity": 0.9008,
+      "auc": 0.7242,
+      "seizure_windows": 10097,
+      "other_windows": 1081849
+    },
+    "personalised": {
+      "caught": "140/168",
+      "event_sensitivity": 0.8333,
+      "false_alarms_per_day": 11.31,
+      "median_delay_s": 6.5,
+      "hours": 303.3,
+      "window_sensitivity": 0.7207,
+      "window_specificity": 0.9904,
+      "auc": 0.9531,
+      "seizure_windows": 10097,
+      "other_windows": 1081849
+    }
+  }
+}

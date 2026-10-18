@@ -1,0 +1,129 @@
+ACCELERATOR TEST: seizure model on IBM Z Telum (Snap ML + zDNN)
+======================================================================
+
+ENVIRONMENT
+  python: 3.12.3
+  numpy: 1.26.4
+  sklearn: 1.4.1.post1
+  snapml: 1.17.2
+  pandas: 2.1.4+dfsg
+  scipy: 1.11.4
+  libzdnn_deb: libzdnn0 1.0.1-0ubuntu1.1
+  kernel: 6.8.0-147-generic
+  machine_type: machine = 9175
+  cpu_flags_nnpa: True
+  hypervisor: z/VM 7.3.0
+  cpus: 3
+  loadavg_start: [3.53, 3.56, 3.07]
+  nnpa probe: {'zdnn_is_nnpa_installed': True, 'perf_pai_ext_NNPA_ALL': '<not supported>,,pai_ext/NNPA_ALL/,0,100.00,,', 'pai_ext_counters_usable': False}
+
+DATA
+  holdout: chb12
+  train_windows: 40294
+  train_seizure_windows: 10294
+  train_normal_windows: 30000
+  n_features: 234
+  test_files: 13
+  test_windows: 45647
+  test_seizure_windows: 1251
+  test_seizures: 33
+  test_hours: 12.7
+
+TRAINING (same training matrix for all models)
+  sklearn_hgb    fit    17.61 s  threads=2  max_iter=200, lr=0.1, class_weight=balanced (src/detector.fit)  iterations_used=200
+  snapml_bm      fit    10.64 s  threads=2  num_round=200, lr=0.1, class_weight=balanced, depth range 1-5 (default)
+  snapml_rf      fit    27.41 s  threads=2  n_estimators=200, max_depth=10, histograms, balanced sample_weight
+
+ONE-TIME optimize_trees() COST
+  snapml_bm_cpu      compress_trees  -> compress_trees  0.001 s
+  snapml_bm_accel    zdnn_tensors    -> zdnn_tensors    0.007 s
+  snapml_rf_cpu      compress_trees  -> compress_trees  0.039 s
+  snapml_rf_accel    zdnn_tensors    -> zdnn_tensors    0.018 s
+
+QUALITY on held-out patient chb12 (model never saw this patient)
+  sklearn_hgb_cpu    window AUC 0.6078
+      th=0.5: caught 11/33, 56 false alerts (105.97/24h over 12.7 h), median delay 18.0 s
+      th=0.6: caught 6/33, 20 false alerts (37.84/24h over 12.7 h), median delay 19.0 s
+      th=0.7: caught 2/33, 9 false alerts (17.03/24h over 12.7 h), median delay 24.5 s
+      th=0.8: caught 0/33, 5 false alerts (9.46/24h over 12.7 h), median delay None s
+      th=0.9: caught 0/33, 3 false alerts (5.68/24h over 12.7 h), median delay None s
+  snapml_bm_cpu      window AUC 0.5656
+      th=0.5: caught 6/33, 109 false alerts (206.25/24h over 12.7 h), median delay 20.5 s
+      th=0.6: caught 0/33, 48 false alerts (90.83/24h over 12.7 h), median delay None s
+      th=0.7: caught 0/33, 13 false alerts (24.6/24h over 12.7 h), median delay None s
+      th=0.8: caught 0/33, 6 false alerts (11.35/24h over 12.7 h), median delay None s
+      th=0.9: caught 0/33, 5 false alerts (9.46/24h over 12.7 h), median delay None s
+  snapml_bm_accel    window AUC 0.5656
+      th=0.5: caught 6/33, 109 false alerts (206.25/24h over 12.7 h), median delay 20.5 s
+      th=0.6: caught 0/33, 48 false alerts (90.83/24h over 12.7 h), median delay None s
+      th=0.7: caught 0/33, 13 false alerts (24.6/24h over 12.7 h), median delay None s
+      th=0.8: caught 0/33, 6 false alerts (11.35/24h over 12.7 h), median delay None s
+      th=0.9: caught 0/33, 5 false alerts (9.46/24h over 12.7 h), median delay None s
+  snapml_rf_cpu      window AUC 0.6681
+      th=0.5: caught 0/33, 43 false alerts (81.37/24h over 12.7 h), median delay None s
+      th=0.6: caught 0/33, 9 false alerts (17.03/24h over 12.7 h), median delay None s
+      th=0.7: caught 0/33, 7 false alerts (13.25/24h over 12.7 h), median delay None s
+      th=0.8: caught 0/33, 4 false alerts (7.57/24h over 12.7 h), median delay None s
+      th=0.9: caught 0/33, 0 false alerts (0.0/24h over 12.7 h), median delay None s
+  snapml_rf_accel    window AUC 0.6681
+      th=0.5: caught 0/33, 43 false alerts (81.37/24h over 12.7 h), median delay None s
+      th=0.6: caught 0/33, 9 false alerts (17.03/24h over 12.7 h), median delay None s
+      th=0.7: caught 0/33, 7 false alerts (13.25/24h over 12.7 h), median delay None s
+      th=0.8: caught 0/33, 4 false alerts (7.57/24h over 12.7 h), median delay None s
+      th=0.9: caught 0/33, 0 false alerts (0.0/24h over 12.7 h), median delay None s
+
+ACCEL vs CPU score agreement (same trained model, two inference engines)
+  snapml_bm: max |p_accel - p_cpu| = 0 (mean 0) over 45647 windows
+  snapml_rf: max |p_accel - p_cpu| = 0 (mean 0) over 45647 windows
+
+SPEED (median; ms per call; windows/s)  [threads=1 unless noted]
+  backend              1 window ms   b100 ms  b100 win/s   b10k ms  b10k win/s  b10k@2thr ms     win/s
+  sklearn_hgb_cpu            1.302      2.72       36798     164.3       60850          88.7    112761
+  snapml_bm_cpu              0.011      0.13      754717      19.1      524400           9.1   1101746
+  snapml_bm_accel            0.021      0.77      130090      95.0      105224          48.3    206856
+  snapml_bm_default          0.065      0.37      271150      35.1      285181          17.4    573941
+  snapml_rf_cpu              0.021      0.51      195810      55.9      178879          28.5    351490
+  snapml_rf_accel            0.029      1.81       55206     225.2       44409         127.9     78174
+  config: {'reps': {'single': 300, 'b100': 50, 'b10k': 7}, 'note': 'median of repeated calls; backends interleaved each rep; VM CPUs are shared with other jobs'}; loadavg at end [3.82, 3.67, 3.15]
+
+ACCELERATOR PROOF (LD_PRELOAD shim around libzdnn.zdnn_matmul_op; one child process per case)
+  A. accelerator ON: tree_format=zdnn_tensors, 10k-window batches
+      optimized_tree_format_=zdnn_tensors  zdnn snapml lib loaded=True  predict median=96.6805 ms (batch 10000, 6 calls)  exit=0
+      zdnn_matmul_op calls=420  non-OK status=0  first/last status=0/0  ms inside matmul=145.028  = 24% of predict wall time  zdnn_is_nnpa_installed -> True
+  A2. accelerator ON, 100-window batches
+      optimized_tree_format_=zdnn_tensors  zdnn snapml lib loaded=True  predict median=0.7944 ms (batch 100, 6 calls)  exit=0
+      zdnn_matmul_op calls=12  non-OK status=0  first/last status=0/0  ms inside matmul=1.768  = 26% of predict wall time  zdnn_is_nnpa_installed -> True
+  A3. accelerator ON, single-window calls
+      optimized_tree_format_=zdnn_tensors  zdnn snapml lib loaded=True  predict median=0.0171 ms (batch 1, 201 calls)  exit=0
+      zdnn_matmul_op calls=201  non-OK status=0  first/last status=0/0  ms inside matmul=0.516  = 14% of predict wall time  zdnn_is_nnpa_installed -> True
+  B. CPU control: tree_format=compress_trees, 10k batches
+      optimized_tree_format_=compress_trees  zdnn snapml lib loaded=True  predict median=13.7605 ms (batch 10000, 6 calls)  exit=0
+      zdnn_matmul_op calls=0  non-OK status=0  first/last status=-1/-1  ms inside matmul=0.0  zdnn_is_nnpa_installed -> not called
+  C. no optimize_trees() call (fit() default), 10k batches
+      optimized_tree_format_=None  zdnn snapml lib loaded=True  predict median=30.8197 ms (batch 10000, 6 calls)  exit=0
+      zdnn_matmul_op calls=0  non-OK status=0  first/last status=-1/-1  ms inside matmul=0.0  zdnn_is_nnpa_installed -> not called
+  D. tree_format=auto, 10k batches
+      optimized_tree_format_=zdnn_tensors  zdnn snapml lib loaded=True  predict median=92.7217 ms (batch 10000, 6 calls)  exit=0
+      zdnn_matmul_op calls=420  non-OK status=0  first/last status=0/0  ms inside matmul=141.405  = 24% of predict wall time  zdnn_is_nnpa_installed -> True
+  E. toggle OFF: SNAPML_ZDNN_LIB=/nonexistent, tree_format=auto, 10k batches
+      optimized_tree_format_=compress_trees  zdnn snapml lib loaded=False  predict median=32.6494 ms (batch 10000, 6 calls)  exit=0
+      zdnn_matmul_op calls=0  non-OK status=0  first/last status=-1/-1  ms inside matmul=0.0  zdnn_is_nnpa_installed -> not called
+      warnings: ['RuntimeWarning: Falling back to CPU-only mode. IBM Snap ML will not leverage NNPA. (x15)']
+  F. toggle OFF + force zdnn_tensors
+      optimized_tree_format_=None  zdnn snapml lib loaded=None  predict median=None ms (batch 10000, None calls)  exit=0
+      zdnn_matmul_op calls=0  non-OK status=0  first/last status=-1/-1  ms inside matmul=0.0  zdnn_is_nnpa_installed -> not called
+      warnings: ['RuntimeWarning: Falling back to CPU-only mode. IBM Snap ML will not leverage NNPA. (x15)']
+      error: Error: zDNN library supported only in Z systems
+
+SWEEP: does the accelerator ever beat Snap ML CPU? (BoostingMachine, threads=1, median ms per call)
+  rounds x depth     fit s     AUC  b100 cpu  b100 accel  accel/cpu  b10k cpu  b10k accel  accel/cpu
+  200 x 8             36.2  0.5971     0.358       1.436       4.01      41.8       412.7       9.88
+  200 x 12           211.0  0.6145     0.633       2.050       3.24      75.4       214.9       2.85
+  500 x 10           213.6  0.6396     1.291       4.484       3.47     131.0       439.8       3.36
+
+NOTES
+  - Snap ML only runs its accelerator path for tree ensembles (BoostingMachine, RandomForest, DecisionTree, imported xgboost/lightgbm/onnx/pmml); sklearn HistGradientBoosting cannot be moved onto it directly.
+  - A model can be optimised once; tree_format is chosen with optimize_trees() / import_model(). A freshly fitted model that is never optimised does not use the accelerator.
+  - Hardware PAI counters (perf pai_ext NNPA_*) are exposed by the kernel but report <not supported> in this z/VM guest, so accelerator use is shown with the zdnn_matmul_op call-count shim instead.
+  - Probabilities are on each model's own scale (class_weight=balanced); event metrics at a fixed threshold are therefore not directly comparable across model families.
+  - total wall time 557 s; quick=False

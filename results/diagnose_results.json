@@ -1,0 +1,595 @@
+{
+  "started": "2026-10-17 14:47:41",
+  "host": "ibmzdatathonuom",
+  "machine": "s390x",
+  "benchmark_paper_auc": {
+    "GB": 0.85,
+    "NG": 0.78,
+    "cross": "0.62-0.64"
+  },
+  "timings_s": {
+    "features_all_people": 86.9,
+    "total": 326.9
+  },
+  "data": {
+    "GB": {
+      "people": 97,
+      "epilepsy": 51,
+      "control": 46,
+      "median_seconds": 303.0,
+      "median_clean_frac": 0.8859060402684564,
+      "people_with_wrapped_channels": 0,
+      "cleaning_skipped_(too_few_clean_windows)": 0
+    },
+    "NG": {
+      "people": 217,
+      "epilepsy": 125,
+      "control": 92,
+      "median_seconds": 268.0,
+      "median_clean_frac": 0.9465648854961832,
+      "people_with_wrapped_channels": 217,
+      "cleaning_skipped_(too_few_clean_windows)": 0
+    }
+  },
+  "finished_or_last_update": "2026-10-17 14:53:08",
+  "within_country": {
+    "GB_lr": {
+      "auc_pooled_mean": 0.8857630008525149,
+      "auc_pooled_sd": 0.014357348502215955,
+      "auc_fold_mean": 0.8996666666666665,
+      "auc_fold_sd": 0.10401519599429897,
+      "sens_youden_mean": 0.8274509803921568,
+      "spec_youden_mean": 0.8521739130434783,
+      "youden_thr_median": 0.5256487775491517,
+      "n": 97,
+      "n_epilepsy": 51,
+      "repeats": [
+        {
+          "auc": 0.9062233589087809,
+          "sens": 0.9019607843137255,
+          "spec": 0.8260869565217391,
+          "thr": 0.4496135469955016
+        },
+        {
+          "auc": 0.8665814151747655,
+          "sens": 0.8627450980392157,
+          "spec": 0.8043478260869565,
+          "thr": 0.4996523578855587
+        },
+        {
+          "auc": 0.8891730605285593,
+          "sens": 0.803921568627451,
+          "spec": 0.8695652173913043,
+          "thr": 0.5334445627993876
+        },
+        {
+          "auc": 0.8861892583120203,
+          "sens": 0.7843137254901961,
+          "spec": 0.8913043478260869,
+          "thr": 0.5256487775491517
+        },
+        {
+          "auc": 0.8806479113384484,
+          "sens": 0.7843137254901961,
+          "spec": 0.8695652173913043,
+          "thr": 0.5429486263397177
+        }
+      ],
+      "tree_format_used": [],
+      "seconds": 12.8
+    },
+    "GB_snap": {
+      "auc_pooled_mean": 0.8977834612105712,
+      "auc_pooled_sd": 0.007798298383054106,
+      "auc_fold_mean": 0.9018,
+      "auc_fold_sd": 0.09833064679830618,
+      "sens_youden_mean": 0.803921568627451,
+      "spec_youden_mean": 0.8869565217391304,
+      "youden_thr_median": 0.7010714999718577,
+      "n": 97,
+      "n_epilepsy": 51,
+      "repeats": [
+        {
+          "auc": 0.9113384484228474,
+          "sens": 0.8431372549019608,
+          "spec": 0.8695652173913043,
+          "thr": 0.6238241825909757
+        },
+        {
+          "auc": 0.8925831202046035,
+          "sens": 0.7647058823529411,
+          "spec": 0.9347826086956522,
+          "thr": 0.8175555692829107
+        },
+        {
+          "auc": 0.8930093776641091,
+          "sens": 0.7843137254901961,
+          "spec": 0.8913043478260869,
+          "thr": 0.7531024480792035
+        },
+        {
+          "auc": 0.8972719522591646,
+          "sens": 0.803921568627451,
+          "spec": 0.8913043478260869,
+          "thr": 0.7010714999718577
+        },
+        {
+          "auc": 0.8947144075021314,
+          "sens": 0.8235294117647058,
+          "spec": 0.8478260869565217,
+          "thr": 0.5846993270217453
+        }
+      ],
+      "tree_format_used": [
+        "zdnn_tensors"
+      ],
+      "seconds": 22.4
+    },
+    "NG_lr": {
+      "auc_pooled_mean": 0.9060521739130435,
+      "auc_pooled_sd": 0.012682035580498416,
+      "auc_fold_mean": 0.9203461538461538,
+      "auc_fold_sd": 0.06392076087119009,
+      "sens_youden_mean": 0.8752000000000001,
+      "spec_youden_mean": 0.8456521739130434,
+      "youden_thr_median": 0.5123156989580943,
+      "n": 217,
+      "n_epilepsy": 125,
+      "repeats": [
+        {
+          "auc": 0.9065217391304349,
+          "sens": 0.896,
+          "spec": 0.7934782608695652,
+          "thr": 0.4550513970676015
+        },
+        {
+          "auc": 0.8885217391304348,
+          "sens": 0.88,
+          "spec": 0.8152173913043479,
+          "thr": 0.4253497686341144
+        },
+        {
+          "auc": 0.9050434782608695,
+          "sens": 0.848,
+          "spec": 0.8695652173913043,
+          "thr": 0.5130897888522884
+        },
+        {
+          "auc": 0.9058260869565217,
+          "sens": 0.872,
+          "spec": 0.8586956521739131,
+          "thr": 0.5312353377805045
+        },
+        {
+          "auc": 0.9243478260869564,
+          "sens": 0.88,
+          "spec": 0.8913043478260869,
+          "thr": 0.5123156989580943
+        }
+      ],
+      "tree_format_used": [],
+      "seconds": 23.4
+    },
+    "NG_snap": {
+      "auc_pooled_mean": 0.9348869565217391,
+      "auc_pooled_sd": 0.009936737511021797,
+      "auc_fold_mean": 0.9348603988603987,
+      "auc_fold_sd": 0.05370359798219797,
+      "sens_youden_mean": 0.8640000000000001,
+      "spec_youden_mean": 0.8869565217391304,
+      "youden_thr_median": 0.592235911219046,
+      "n": 217,
+      "n_epilepsy": 125,
+      "repeats": [
+        {
+          "auc": 0.9321739130434783,
+          "sens": 0.8,
+          "spec": 0.9347826086956522,
+          "thr": 0.6739070011240158
+        },
+        {
+          "auc": 0.9279130434782609,
+          "sens": 0.896,
+          "spec": 0.8369565217391304,
+          "thr": 0.5106461743357378
+        },
+        {
+          "auc": 0.930695652173913,
+          "sens": 0.856,
+          "spec": 0.8804347826086957,
+          "thr": 0.592235911219046
+        },
+        {
+          "auc": 0.9312173913043479,
+          "sens": 0.848,
+          "spec": 0.9130434782608696,
+          "thr": 0.6943101366056654
+        },
+        {
+          "auc": 0.9524347826086955,
+          "sens": 0.92,
+          "spec": 0.8695652173913043,
+          "thr": 0.4452084437585638
+        }
+      ],
+      "tree_format_used": [
+        "zdnn_tensors"
+      ],
+      "seconds": 21.1
+    }
+  },
+  "quality_only": {
+    "GB": {
+      "auc_pooled_mean": 0.644075021312873,
+      "auc_pooled_sd": 0.018217208564670143,
+      "auc_fold_mean": 0.6850333333333333,
+      "auc_fold_sd": 0.1847224706321962,
+      "sens_youden_mean": 0.49411764705882355,
+      "spec_youden_mean": 0.7913043478260869,
+      "youden_thr_median": 0.528099017916524,
+      "n": 97,
+      "n_epilepsy": 51,
+      "repeats": [
+        {
+          "auc": 0.6534526854219949,
+          "sens": 0.5882352941176471,
+          "spec": 0.7173913043478262,
+          "thr": 0.5004725452907317
+        },
+        {
+          "auc": 0.618073316283035,
+          "sens": 0.47058823529411764,
+          "spec": 0.8043478260869565,
+          "thr": 0.528099017916524
+        },
+        {
+          "auc": 0.6632566069906223,
+          "sens": 0.5294117647058824,
+          "spec": 0.782608695652174,
+          "thr": 0.5136812325715927
+        },
+        {
+          "auc": 0.632992327365729,
+          "sens": 0.45098039215686275,
+          "spec": 0.8043478260869565,
+          "thr": 0.5433349767906115
+        },
+        {
+          "auc": 0.6526001705029839,
+          "sens": 0.43137254901960786,
+          "spec": 0.8478260869565217,
+          "thr": 0.5289584804584763
+        }
+      ],
+      "tree_format_used": []
+    },
+    "NG": {
+      "auc_pooled_mean": 0.6888347826086958,
+      "auc_pooled_sd": 0.010378853738006585,
+      "auc_fold_mean": 0.7024131054131055,
+      "auc_fold_sd": 0.10775565300559369,
+      "sens_youden_mean": 0.5344,
+      "spec_youden_mean": 0.8239130434782608,
+      "youden_thr_median": 0.5768819444635582,
+      "n": 217,
+      "n_epilepsy": 125,
+      "repeats": [
+        {
+          "auc": 0.683608695652174,
+          "sens": 0.496,
+          "spec": 0.8369565217391304,
+          "thr": 0.5894411062732161
+        },
+        {
+          "auc": 0.6846521739130434,
+          "sens": 0.536,
+          "spec": 0.8369565217391304,
+          "thr": 0.5768819444635582
+        },
+        {
+          "auc": 0.6868260869565217,
+          "sens": 0.496,
+          "spec": 0.8478260869565217,
+          "thr": 0.5868032992671858
+        },
+        {
+          "auc": 0.7071304347826087,
+          "sens": 0.512,
+          "spec": 0.8586956521739131,
+          "thr": 0.573247386594691
+        },
+        {
+          "auc": 0.6819565217391307,
+          "sens": 0.632,
+          "spec": 0.7391304347826086,
+          "thr": 0.5483870165152671
+        }
+      ],
+      "tree_format_used": []
+    }
+  },
+  "cross_country": {
+    "GB->NG_lr_plain": {
+      "auc_mean": 0.7632173913043478,
+      "auc_sd": 0.0,
+      "sens_youden": 0.592,
+      "spec_youden": 0.8369565217391304,
+      "runs": 1,
+      "seconds": 0.2
+    },
+    "GB->NG_snap_plain": {
+      "auc_mean": 0.7345217391304348,
+      "auc_sd": 0.007179470837902141,
+      "sens_youden": 0.7167999999999999,
+      "spec_youden": 0.6760869565217391,
+      "runs": 5,
+      "seconds": 1.6
+    },
+    "NG->GB_lr_plain": {
+      "auc_mean": 0.6696504688832055,
+      "auc_sd": 0.0,
+      "sens_youden": 0.5882352941176471,
+      "spec_youden": 0.7173913043478262,
+      "runs": 1,
+      "seconds": 0.5
+    },
+    "NG->GB_snap_plain": {
+      "auc_mean": 0.6884057971014492,
+      "auc_sd": 0.004061766155011612,
+      "sens_youden": 0.5529411764705883,
+      "spec_youden": 0.8130434782608698,
+      "runs": 5,
+      "seconds": 2.1
+    },
+    "GB->NG_lr_site_normalised": {
+      "auc_mean": 0.7485217391304347,
+      "auc_sd": 0.0,
+      "sens_youden": 0.792,
+      "spec_youden": 0.6195652173913043,
+      "runs": 1,
+      "seconds": 0.2
+    },
+    "GB->NG_snap_site_normalised": {
+      "auc_mean": 0.7171130434782609,
+      "auc_sd": 0.010319127174004124,
+      "sens_youden": 0.6192,
+      "spec_youden": 0.7565217391304349,
+      "runs": 5,
+      "seconds": 1.6
+    },
+    "NG->GB_lr_site_normalised": {
+      "auc_mean": 0.6930946291560102,
+      "auc_sd": 0.0,
+      "sens_youden": 0.45098039215686275,
+      "spec_youden": 0.8695652173913043,
+      "runs": 1,
+      "seconds": 0.5
+    },
+    "NG->GB_snap_site_normalised": {
+      "auc_mean": 0.6847399829497016,
+      "auc_sd": 0.013763826305537021,
+      "sens_youden": 0.5803921568627451,
+      "spec_youden": 0.7782608695652175,
+      "runs": 5,
+      "seconds": 2.2
+    }
+  },
+  "pooled": {
+    "lr_no_country_flag": {
+      "auc_pooled_mean": 0.8747200263504611,
+      "auc_pooled_sd": 0.007472650279039761,
+      "auc_fold_mean": 0.8829940046193916,
+      "auc_fold_sd": 0.05623311219063972,
+      "sens_youden_mean": 0.8636363636363636,
+      "spec_youden_mean": 0.7724637681159422,
+      "youden_thr_median": 0.4278210386713774,
+      "n": 314,
+      "n_epilepsy": 176,
+      "repeats": [
+        {
+          "auc": 0.8801465744400527,
+          "sens": 0.8352272727272727,
+          "spec": 0.8188405797101449,
+          "thr": 0.48002415378031127
+        },
+        {
+          "auc": 0.8841403162055335,
+          "sens": 0.8295454545454546,
+          "spec": 0.7971014492753623,
+          "thr": 0.47307292057425687
+        },
+        {
+          "auc": 0.8694828722002635,
+          "sens": 0.875,
+          "spec": 0.7536231884057971,
+          "thr": 0.4278210386713774
+        },
+        {
+          "auc": 0.8738883399209486,
+          "sens": 0.9034090909090909,
+          "spec": 0.7463768115942029,
+          "thr": 0.3846074517778181
+        },
+        {
+          "auc": 0.8659420289855073,
+          "sens": 0.875,
+          "spec": 0.7463768115942029,
+          "thr": 0.4072296428769018
+        }
+      ],
+      "tree_format_used": [],
+      "seconds": 40.1
+    },
+    "snap_no_country_flag": {
+      "auc_pooled_mean": 0.8953722002635045,
+      "auc_pooled_sd": 0.005759926920499846,
+      "auc_fold_mean": 0.8990671248256388,
+      "auc_fold_sd": 0.05341396112771617,
+      "sens_youden_mean": 0.8829545454545455,
+      "spec_youden_mean": 0.7637681159420289,
+      "youden_thr_median": 0.42264428673154286,
+      "n": 314,
+      "n_epilepsy": 176,
+      "repeats": [
+        {
+          "auc": 0.8990447957839262,
+          "sens": 0.9034090909090909,
+          "spec": 0.7391304347826086,
+          "thr": 0.34350968807213433
+        },
+        {
+          "auc": 0.8923336627140974,
+          "sens": 0.8579545454545454,
+          "spec": 0.7753623188405797,
+          "thr": 0.48760309834276205
+        },
+        {
+          "auc": 0.8877223320158103,
+          "sens": 0.875,
+          "spec": 0.7536231884057971,
+          "thr": 0.42829249053328866
+        },
+        {
+          "auc": 0.895215744400527,
+          "sens": 0.8636363636363636,
+          "spec": 0.7971014492753623,
+          "thr": 0.42264428673154286
+        },
+        {
+          "auc": 0.902544466403162,
+          "sens": 0.9147727272727273,
+          "spec": 0.7536231884057971,
+          "thr": 0.3934864158513782
+        }
+      ],
+      "tree_format_used": [
+        "zdnn_tensors"
+      ],
+      "seconds": 32.6
+    },
+    "lr_with_country_flag": {
+      "auc_pooled_mean": 0.8741518445322793,
+      "auc_pooled_sd": 0.009114342420482004,
+      "auc_fold_mean": 0.8810210291944037,
+      "auc_fold_sd": 0.05608354434326846,
+      "sens_youden_mean": 0.8488636363636364,
+      "spec_youden_mean": 0.7855072463768116,
+      "youden_thr_median": 0.41312552871888464,
+      "n": 314,
+      "n_epilepsy": 176,
+      "repeats": [
+        {
+          "auc": 0.8811347167325427,
+          "sens": 0.8465909090909091,
+          "spec": 0.8115942028985508,
+          "thr": 0.46815715100429595
+        },
+        {
+          "auc": 0.8847167325428196,
+          "sens": 0.8863636363636364,
+          "spec": 0.7391304347826086,
+          "thr": 0.4104669146194001
+        },
+        {
+          "auc": 0.8670536890645586,
+          "sens": 0.75,
+          "spec": 0.8768115942028986,
+          "thr": 0.5749710455122512
+        },
+        {
+          "auc": 0.874711791831357,
+          "sens": 0.8863636363636364,
+          "spec": 0.7681159420289855,
+          "thr": 0.41312552871888464
+        },
+        {
+          "auc": 0.8631422924901186,
+          "sens": 0.875,
+          "spec": 0.7318840579710144,
+          "thr": 0.4070155602145203
+        }
+      ],
+      "tree_format_used": [],
+      "seconds": 42.3
+    },
+    "snap_with_country_flag": {
+      "auc_pooled_mean": 0.896977931488801,
+      "auc_pooled_sd": 0.006331844568172215,
+      "auc_fold_mean": 0.8983235615433758,
+      "auc_fold_sd": 0.05487533899410187,
+      "sens_youden_mean": 0.859090909090909,
+      "spec_youden_mean": 0.7942028985507246,
+      "youden_thr_median": 0.4457427631591291,
+      "n": 314,
+      "n_epilepsy": 176,
+      "repeats": [
+        {
+          "auc": 0.9074028326745718,
+          "sens": 0.8238636363636364,
+          "spec": 0.8478260869565217,
+          "thr": 0.551195661902369
+        },
+        {
+          "auc": 0.8924571805006588,
+          "sens": 0.8863636363636364,
+          "spec": 0.7608695652173914,
+          "thr": 0.40554476994647076
+        },
+        {
+          "auc": 0.8954627799736495,
+          "sens": 0.8636363636363636,
+          "spec": 0.7898550724637681,
+          "thr": 0.4457427631591291
+        },
+        {
+          "auc": 0.8916749011857708,
+          "sens": 0.8295454545454546,
+          "spec": 0.8043478260869565,
+          "thr": 0.48929831218780506
+        },
+        {
+          "auc": 0.8978919631093544,
+          "sens": 0.8920454545454546,
+          "spec": 0.7681159420289855,
+          "thr": 0.42447264618301456
+        }
+      ],
+      "tree_format_used": [
+        "zdnn_tensors"
+      ],
+      "seconds": 30.5
+    }
+  },
+  "final": {
+    "kind": "snap",
+    "label": "Snap ML BoostingMachine, scored on IBM Integrated Accelerator for AI (zdnn_tensors)",
+    "country_flag_used": false,
+    "country_flag_auc_gain_in_pooled_cv": {
+      "lr": -0.0005681818181817455,
+      "snap": 0.0016057312252965028
+    },
+    "threshold_youden_from_cv": 0.42264428673154286,
+    "n_train": 314,
+    "train_seconds": 0.91,
+    "tree_format_used": "zdnn_tensors",
+    "predict_person_seconds_first_call_incl_load": 0.23,
+    "demo_file": "data/africa/nigeria/EEGs_Nigeria/signal-6-1.csv.gz",
+    "demo_true_label": 0,
+    "demo_output": {
+      "epilepsy_probability": 0.006,
+      "flag": "no epilepsy pattern found",
+      "threshold": 0.423,
+      "top_reasons": [
+        "Share of theta waves (4-8 Hz) at the right forehead (AF4) is lower than typical (-1.3 SD vs the 314 training people)",
+        "How much the share of theta waves (4-8 Hz) at the right front-side (F8) varies over the recording is lower than typical (-0.4 SD vs the 314 training people)",
+        "Share of theta waves (4-8 Hz) at the right back of head (O2) is lower than typical (-1.1 SD vs the 314 training people)"
+      ],
+      "recording": {
+        "seconds": 270,
+        "windows_used": 128,
+        "clean_frac": 0.96
+      },
+      "model": "Snap ML BoostingMachine, scored on IBM Integrated Accelerator for AI (zdnn_tensors)"
+    }
+  }
+}

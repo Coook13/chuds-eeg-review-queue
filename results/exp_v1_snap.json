@@ -1,0 +1,2203 @@
+{
+  "_seconds": 1280,
+  "_models_trained": 586,
+  "_n_features": 234,
+  "_patients": 23,
+  "_recordings": 186,
+  "_seizures": 191,
+  "general": {
+    "0.5": {
+      "caught": "122/191",
+      "sensitivity": 0.639,
+      "false_alerts_per_24h": 234.64,
+      "median_delay_s": 6.0,
+      "hours": 262.5
+    },
+    "0.6": {
+      "caught": "105/191",
+      "sensitivity": 0.55,
+      "false_alerts_per_24h": 191.11,
+      "median_delay_s": 7.0,
+      "hours": 262.5
+    },
+    "0.7": {
+      "caught": "93/191",
+      "sensitivity": 0.487,
+      "false_alerts_per_24h": 152.8,
+      "median_delay_s": 7.0,
+      "hours": 262.5
+    },
+    "0.8": {
+      "caught": "78/191",
+      "sensitivity": 0.408,
+      "false_alerts_per_24h": 122.44,
+      "median_delay_s": 11.0,
+      "hours": 262.5
+    },
+    "0.9": {
+      "caught": "60/191",
+      "sensitivity": 0.314,
+      "false_alerts_per_24h": 94.92,
+      "median_delay_s": 13.0,
+      "hours": 262.5
+    }
+  },
+  "personal": {
+    "0.5": {
+      "caught": "183/191",
+      "sensitivity": 0.958,
+      "false_alerts_per_24h": 11.34,
+      "median_delay_s": 4.0,
+      "hours": 262.5
+    },
+    "0.6": {
+      "caught": "181/191",
+      "sensitivity": 0.948,
+      "false_alerts_per_24h": 8.05,
+      "median_delay_s": 4.0,
+      "hours": 262.5
+    },
+    "0.7": {
+      "caught": "171/191",
+      "sensitivity": 0.895,
+      "false_alerts_per_24h": 7.13,
+      "median_delay_s": 5.0,
+      "hours": 262.5
+    },
+    "0.8": {
+      "caught": "169/191",
+      "sensitivity": 0.885,
+      "false_alerts_per_24h": 5.12,
+      "median_delay_s": 6.0,
+      "hours": 262.5
+    },
+    "0.9": {
+      "caught": "164/191",
+      "sensitivity": 0.859,
+      "false_alerts_per_24h": 3.29,
+      "median_delay_s": 7.0,
+      "hours": 262.5
+    }
+  },
+  "past": {
+    "0.5": {
+      "caught": "150/164",
+      "sensitivity": 0.915,
+      "false_alerts_per_24h": 12.99,
+      "median_delay_s": 4.0,
+      "hours": 175.5
+    },
+    "0.6": {
+      "caught": "146/164",
+      "sensitivity": 0.89,
+      "false_alerts_per_24h": 8.75,
+      "median_delay_s": 5.0,
+      "hours": 175.5
+    },
+    "0.7": {
+      "caught": "142/164",
+      "sensitivity": 0.866,
+      "false_alerts_per_24h": 7.11,
+      "median_delay_s": 6.0,
+      "hours": 175.5
+    },
+    "0.8": {
+      "caught": "136/164",
+      "sensitivity": 0.829,
+      "false_alerts_per_24h": 5.06,
+      "median_delay_s": 6.0,
+      "hours": 175.5
+    },
+    "0.9": {
+      "caught": "132/164",
+      "sensitivity": 0.805,
+      "false_alerts_per_24h": 3.42,
+      "median_delay_s": 7.0,
+      "hours": 175.5
+    }
+  },
+  "confirm": {
+    "0.5": {
+      "general_same_time": {
+        "caught": "103/168",
+        "sensitivity": 0.613,
+        "false_alerts_per_24h": 247.41,
+        "median_delay_s": 6.0,
+        "hours": 192.4
+      },
+      "personalised": {
+        "caught": "156/168",
+        "sensitivity": 0.929,
+        "false_alerts_per_24h": 28.95,
+        "median_delay_s": 4.0,
+        "hours": 192.4
+      },
+      "by_confirmed_seizures": {
+        "1": {
+          "caught": "20/23",
+          "sensitivity": 0.87,
+          "false_alerts_per_24h": 74.1,
+          "median_delay_s": null,
+          "hours": 30.4
+        },
+        "2-3": {
+          "caught": "34/40",
+          "sensitivity": 0.85,
+          "false_alerts_per_24h": 34.14,
+          "median_delay_s": null,
+          "hours": 55.5
+        },
+        "4+": {
+          "caught": "102/105",
+          "sensitivity": 0.971,
+          "false_alerts_per_24h": 13.31,
+          "median_delay_s": null,
+          "hours": 106.4
+        }
+      },
+      "by_patient": {
+        "chb01": {
+          "general": {
+            "caught": "8/10",
+            "sensitivity": 0.8,
+            "false_alerts_per_24h": 26.87,
+            "median_delay_s": 8.5,
+            "hours": 11.6
+          },
+          "personalised": {
+            "caught": "9/10",
+            "sensitivity": 0.9,
+            "false_alerts_per_24h": 2.07,
+            "median_delay_s": 3.0,
+            "hours": 11.6
+          }
+        },
+        "chb02": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 102.78,
+            "median_delay_s": 0.5,
+            "hours": 1.4
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 5.0,
+            "hours": 1.4
+          }
+        },
+        "chb03": {
+          "general": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 24.36,
+            "median_delay_s": 8.5,
+            "hours": 8.9
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 32.48,
+            "median_delay_s": 2.5,
+            "hours": 8.9
+          }
+        },
+        "chb04": {
+          "general": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 14.19,
+            "median_delay_s": 20.0,
+            "hours": 8.5
+          },
+          "personalised": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 6.0,
+            "hours": 8.5
+          }
+        },
+        "chb05": {
+          "general": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 486.51,
+            "median_delay_s": 0.0,
+            "hours": 4.8
+          },
+          "personalised": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 4.96,
+            "median_delay_s": 4.5,
+            "hours": 4.8
+          }
+        },
+        "chb06": {
+          "general": {
+            "caught": "9/9",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 661.24,
+            "median_delay_s": 0.0,
+            "hours": 33.4
+          },
+          "personalised": {
+            "caught": "8/9",
+            "sensitivity": 0.889,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 4.0,
+            "hours": 33.4
+          }
+        },
+        "chb07": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 204.45,
+            "median_delay_s": 0.0,
+            "hours": 7.6
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 3.15,
+            "median_delay_s": 7.0,
+            "hours": 7.6
+          }
+        },
+        "chb08": {
+          "general": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 205.41,
+            "median_delay_s": 8.0,
+            "hours": 6.2
+          },
+          "personalised": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 360.44,
+            "median_delay_s": 8.0,
+            "hours": 6.2
+          }
+        },
+        "chb09": {
+          "general": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 448.74,
+            "median_delay_s": 0.0,
+            "hours": 6.2
+          },
+          "personalised": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 19.51,
+            "median_delay_s": 3.0,
+            "hours": 6.2
+          }
+        },
+        "chb10": {
+          "general": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 358.94,
+            "median_delay_s": 1.5,
+            "hours": 12.2
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 2.5,
+            "hours": 12.2
+          }
+        },
+        "chb11": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 401.78,
+            "median_delay_s": 0.0,
+            "hours": 2.7
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 3.5,
+            "hours": 2.7
+          }
+        },
+        "chb12": {
+          "general": {
+            "caught": "10/32",
+            "sensitivity": 0.312,
+            "false_alerts_per_24h": 151.68,
+            "median_delay_s": 20.5,
+            "hours": 12.2
+          },
+          "personalised": {
+            "caught": "32/32",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 5.91,
+            "median_delay_s": 4.0,
+            "hours": 12.2
+          }
+        },
+        "chb13": {
+          "general": {
+            "caught": "4/11",
+            "sensitivity": 0.364,
+            "false_alerts_per_24h": 457.78,
+            "median_delay_s": 10.0,
+            "hours": 7.4
+          },
+          "personalised": {
+            "caught": "9/11",
+            "sensitivity": 0.818,
+            "false_alerts_per_24h": 42.21,
+            "median_delay_s": 8.0,
+            "hours": 7.4
+          }
+        },
+        "chb14": {
+          "general": {
+            "caught": "1/7",
+            "sensitivity": 0.143,
+            "false_alerts_per_24h": 354.8,
+            "median_delay_s": 0.0,
+            "hours": 6.4
+          },
+          "personalised": {
+            "caught": "6/7",
+            "sensitivity": 0.857,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 4.5,
+            "hours": 6.4
+          }
+        },
+        "chb15": {
+          "general": {
+            "caught": "1/19",
+            "sensitivity": 0.053,
+            "false_alerts_per_24h": 31.13,
+            "median_delay_s": 74.0,
+            "hours": 13.9
+          },
+          "personalised": {
+            "caught": "18/19",
+            "sensitivity": 0.947,
+            "false_alerts_per_24h": 6.92,
+            "median_delay_s": 2.5,
+            "hours": 13.9
+          }
+        },
+        "chb16": {
+          "general": {
+            "caught": "0/9",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 139.24,
+            "median_delay_s": null,
+            "hours": 5.3
+          },
+          "personalised": {
+            "caught": "5/9",
+            "sensitivity": 0.556,
+            "false_alerts_per_24h": 31.44,
+            "median_delay_s": 3.0,
+            "hours": 5.3
+          }
+        },
+        "chb17": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 33.26,
+            "median_delay_s": 40.0,
+            "hours": 4.3
+          },
+          "personalised": {
+            "caught": "1/2",
+            "sensitivity": 0.5,
+            "false_alerts_per_24h": 332.56,
+            "median_delay_s": 0.0,
+            "hours": 4.3
+          }
+        },
+        "chb18": {
+          "general": {
+            "caught": "4/5",
+            "sensitivity": 0.8,
+            "false_alerts_per_24h": 119.12,
+            "median_delay_s": 14.0,
+            "hours": 4.6
+          },
+          "personalised": {
+            "caught": "4/5",
+            "sensitivity": 0.8,
+            "false_alerts_per_24h": 10.36,
+            "median_delay_s": 8.5,
+            "hours": 4.6
+          }
+        },
+        "chb19": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 196.62,
+            "median_delay_s": 25.5,
+            "hours": 2.8
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 8.55,
+            "median_delay_s": 2.0,
+            "hours": 2.8
+          }
+        },
+        "chb20": {
+          "general": {
+            "caught": "7/7",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 74.0,
+            "median_delay_s": 17.0,
+            "hours": 5.5
+          },
+          "personalised": {
+            "caught": "7/7",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 5.0,
+            "hours": 5.5
+          }
+        },
+        "chb22": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 129.96,
+            "median_delay_s": 1.0,
+            "hours": 2.0
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 12.0,
+            "hours": 2.0
+          }
+        },
+        "chb23": {
+          "general": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 19.17,
+            "median_delay_s": 0.0,
+            "hours": 12.5
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 9.58,
+            "median_delay_s": 2.5,
+            "hours": 12.5
+          }
+        },
+        "chb24": {
+          "general": {
+            "caught": "15/15",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 38.51,
+            "median_delay_s": 6.0,
+            "hours": 11.8
+          },
+          "personalised": {
+            "caught": "15/15",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 48.65,
+            "median_delay_s": 5.0,
+            "hours": 11.8
+          }
+        }
+      }
+    },
+    "0.6": {
+      "general_same_time": {
+        "caught": "87/168",
+        "sensitivity": 0.518,
+        "false_alerts_per_24h": 203.87,
+        "median_delay_s": 6.0,
+        "hours": 192.4
+      },
+      "personalised": {
+        "caught": "150/168",
+        "sensitivity": 0.893,
+        "false_alerts_per_24h": 22.08,
+        "median_delay_s": 5.0,
+        "hours": 192.4
+      },
+      "by_confirmed_seizures": {
+        "1": {
+          "caught": "20/23",
+          "sensitivity": 0.87,
+          "false_alerts_per_24h": 68.58,
+          "median_delay_s": null,
+          "hours": 30.4
+        },
+        "2-3": {
+          "caught": "34/40",
+          "sensitivity": 0.85,
+          "false_alerts_per_24h": 23.77,
+          "median_delay_s": null,
+          "hours": 55.5
+        },
+        "4+": {
+          "caught": "96/105",
+          "sensitivity": 0.914,
+          "false_alerts_per_24h": 7.9,
+          "median_delay_s": null,
+          "hours": 106.4
+        }
+      },
+      "by_patient": {
+        "chb01": {
+          "general": {
+            "caught": "6/10",
+            "sensitivity": 0.6,
+            "false_alerts_per_24h": 2.07,
+            "median_delay_s": 5.5,
+            "hours": 11.6
+          },
+          "personalised": {
+            "caught": "9/10",
+            "sensitivity": 0.9,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 4.0,
+            "hours": 11.6
+          }
+        },
+        "chb02": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 34.26,
+            "median_delay_s": 2.5,
+            "hours": 1.4
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 5.5,
+            "hours": 1.4
+          }
+        },
+        "chb03": {
+          "general": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 2.71,
+            "median_delay_s": 12.0,
+            "hours": 8.9
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 18.95,
+            "median_delay_s": 3.0,
+            "hours": 8.9
+          }
+        },
+        "chb04": {
+          "general": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 2.84,
+            "median_delay_s": 21.0,
+            "hours": 8.5
+          },
+          "personalised": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 7.0,
+            "hours": 8.5
+          }
+        },
+        "chb05": {
+          "general": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 496.44,
+            "median_delay_s": 0.0,
+            "hours": 4.8
+          },
+          "personalised": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 5.0,
+            "hours": 4.8
+          }
+        },
+        "chb06": {
+          "general": {
+            "caught": "9/9",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 615.96,
+            "median_delay_s": 0.0,
+            "hours": 33.4
+          },
+          "personalised": {
+            "caught": "7/9",
+            "sensitivity": 0.778,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 4.0,
+            "hours": 33.4
+          }
+        },
+        "chb07": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 106.94,
+            "median_delay_s": 0.0,
+            "hours": 7.6
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 7.5,
+            "hours": 7.6
+          }
+        },
+        "chb08": {
+          "general": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 54.26,
+            "median_delay_s": 9.0,
+            "hours": 6.2
+          },
+          "personalised": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 321.68,
+            "median_delay_s": 8.0,
+            "hours": 6.2
+          }
+        },
+        "chb09": {
+          "general": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 690.67,
+            "median_delay_s": 0.0,
+            "hours": 6.2
+          },
+          "personalised": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 23.41,
+            "median_delay_s": 3.0,
+            "hours": 6.2
+          }
+        },
+        "chb10": {
+          "general": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 372.67,
+            "median_delay_s": 4.0,
+            "hours": 12.2
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 4.0,
+            "hours": 12.2
+          }
+        },
+        "chb11": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 258.92,
+            "median_delay_s": 2.5,
+            "hours": 2.7
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 3.5,
+            "hours": 2.7
+          }
+        },
+        "chb12": {
+          "general": {
+            "caught": "3/32",
+            "sensitivity": 0.094,
+            "false_alerts_per_24h": 45.31,
+            "median_delay_s": 21.0,
+            "hours": 12.2
+          },
+          "personalised": {
+            "caught": "32/32",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 1.97,
+            "median_delay_s": 4.0,
+            "hours": 12.2
+          }
+        },
+        "chb13": {
+          "general": {
+            "caught": "2/11",
+            "sensitivity": 0.182,
+            "false_alerts_per_24h": 353.89,
+            "median_delay_s": 3.0,
+            "hours": 7.4
+          },
+          "personalised": {
+            "caught": "8/11",
+            "sensitivity": 0.727,
+            "false_alerts_per_24h": 25.97,
+            "median_delay_s": 9.5,
+            "hours": 7.4
+          }
+        },
+        "chb14": {
+          "general": {
+            "caught": "0/7",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 153.13,
+            "median_delay_s": null,
+            "hours": 6.4
+          },
+          "personalised": {
+            "caught": "6/7",
+            "sensitivity": 0.857,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 5.5,
+            "hours": 6.4
+          }
+        },
+        "chb15": {
+          "general": {
+            "caught": "0/19",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 6.92,
+            "median_delay_s": null,
+            "hours": 13.9
+          },
+          "personalised": {
+            "caught": "18/19",
+            "sensitivity": 0.947,
+            "false_alerts_per_24h": 1.73,
+            "median_delay_s": 4.0,
+            "hours": 13.9
+          }
+        },
+        "chb16": {
+          "general": {
+            "caught": "0/9",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 67.37,
+            "median_delay_s": null,
+            "hours": 5.3
+          },
+          "personalised": {
+            "caught": "1/9",
+            "sensitivity": 0.111,
+            "false_alerts_per_24h": 26.95,
+            "median_delay_s": 3.0,
+            "hours": 5.3
+          }
+        },
+        "chb17": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 5.54,
+            "median_delay_s": 48.5,
+            "hours": 4.3
+          },
+          "personalised": {
+            "caught": "1/2",
+            "sensitivity": 0.5,
+            "false_alerts_per_24h": 227.25,
+            "median_delay_s": 0.0,
+            "hours": 4.3
+          }
+        },
+        "chb18": {
+          "general": {
+            "caught": "4/5",
+            "sensitivity": 0.8,
+            "false_alerts_per_24h": 41.43,
+            "median_delay_s": 16.5,
+            "hours": 4.6
+          },
+          "personalised": {
+            "caught": "4/5",
+            "sensitivity": 0.8,
+            "false_alerts_per_24h": 10.36,
+            "median_delay_s": 9.5,
+            "hours": 4.6
+          }
+        },
+        "chb19": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 111.13,
+            "median_delay_s": 26.5,
+            "hours": 2.8
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 3.0,
+            "hours": 2.8
+          }
+        },
+        "chb20": {
+          "general": {
+            "caught": "5/7",
+            "sensitivity": 0.714,
+            "false_alerts_per_24h": 8.71,
+            "median_delay_s": 24.0,
+            "hours": 5.5
+          },
+          "personalised": {
+            "caught": "7/7",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 6.0,
+            "hours": 5.5
+          }
+        },
+        "chb22": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 35.44,
+            "median_delay_s": 10.0,
+            "hours": 2.0
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 12.5,
+            "hours": 2.0
+          }
+        },
+        "chb23": {
+          "general": {
+            "caught": "5/6",
+            "sensitivity": 0.833,
+            "false_alerts_per_24h": 5.75,
+            "median_delay_s": 13.0,
+            "hours": 12.5
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 9.58,
+            "median_delay_s": 3.0,
+            "hours": 12.5
+          }
+        },
+        "chb24": {
+          "general": {
+            "caught": "15/15",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 12.16,
+            "median_delay_s": 6.0,
+            "hours": 11.8
+          },
+          "personalised": {
+            "caught": "15/15",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 34.46,
+            "median_delay_s": 6.0,
+            "hours": 11.8
+          }
+        }
+      }
+    },
+    "0.7": {
+      "general_same_time": {
+        "caught": "76/168",
+        "sensitivity": 0.452,
+        "false_alerts_per_24h": 165.19,
+        "median_delay_s": 7.0,
+        "hours": 192.4
+      },
+      "personalised": {
+        "caught": "148/168",
+        "sensitivity": 0.881,
+        "false_alerts_per_24h": 19.46,
+        "median_delay_s": 6.0,
+        "hours": 192.4
+      },
+      "by_confirmed_seizures": {
+        "1": {
+          "caught": "19/23",
+          "sensitivity": 0.826,
+          "false_alerts_per_24h": 62.28,
+          "median_delay_s": null,
+          "hours": 30.4
+        },
+        "2-3": {
+          "caught": "34/40",
+          "sensitivity": 0.85,
+          "false_alerts_per_24h": 21.17,
+          "median_delay_s": null,
+          "hours": 55.5
+        },
+        "4+": {
+          "caught": "95/105",
+          "sensitivity": 0.905,
+          "false_alerts_per_24h": 6.32,
+          "median_delay_s": null,
+          "hours": 106.4
+        }
+      },
+      "by_patient": {
+        "chb01": {
+          "general": {
+            "caught": "5/10",
+            "sensitivity": 0.5,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 9.0,
+            "hours": 11.6
+          },
+          "personalised": {
+            "caught": "9/10",
+            "sensitivity": 0.9,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 5.0,
+            "hours": 11.6
+          }
+        },
+        "chb02": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 17.13,
+            "median_delay_s": 4.5,
+            "hours": 1.4
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 6.0,
+            "hours": 1.4
+          }
+        },
+        "chb03": {
+          "general": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 21.5,
+            "hours": 8.9
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 16.24,
+            "median_delay_s": 3.5,
+            "hours": 8.9
+          }
+        },
+        "chb04": {
+          "general": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 33.0,
+            "hours": 8.5
+          },
+          "personalised": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 9.0,
+            "hours": 8.5
+          }
+        },
+        "chb05": {
+          "general": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 461.69,
+            "median_delay_s": 0.0,
+            "hours": 4.8
+          },
+          "personalised": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 5.5,
+            "hours": 4.8
+          }
+        },
+        "chb06": {
+          "general": {
+            "caught": "8/9",
+            "sensitivity": 0.889,
+            "false_alerts_per_24h": 575.71,
+            "median_delay_s": 0.0,
+            "hours": 33.4
+          },
+          "personalised": {
+            "caught": "6/9",
+            "sensitivity": 0.667,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 4.0,
+            "hours": 33.4
+          }
+        },
+        "chb07": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 37.74,
+            "median_delay_s": 3.0,
+            "hours": 7.6
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 11.0,
+            "hours": 7.6
+          }
+        },
+        "chb08": {
+          "general": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 7.75,
+            "median_delay_s": 9.0,
+            "hours": 6.2
+          },
+          "personalised": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 310.05,
+            "median_delay_s": 9.0,
+            "hours": 6.2
+          }
+        },
+        "chb09": {
+          "general": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 725.79,
+            "median_delay_s": 0.0,
+            "hours": 6.2
+          },
+          "personalised": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 15.61,
+            "median_delay_s": 4.0,
+            "hours": 6.2
+          }
+        },
+        "chb10": {
+          "general": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 254.98,
+            "median_delay_s": 7.0,
+            "hours": 12.2
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 4.5,
+            "hours": 12.2
+          }
+        },
+        "chb11": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 116.07,
+            "median_delay_s": 6.5,
+            "hours": 2.7
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 7.5,
+            "hours": 2.7
+          }
+        },
+        "chb12": {
+          "general": {
+            "caught": "1/32",
+            "sensitivity": 0.031,
+            "false_alerts_per_24h": 13.79,
+            "median_delay_s": 26.0,
+            "hours": 12.2
+          },
+          "personalised": {
+            "caught": "32/32",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 1.97,
+            "median_delay_s": 5.0,
+            "hours": 12.2
+          }
+        },
+        "chb13": {
+          "general": {
+            "caught": "2/11",
+            "sensitivity": 0.182,
+            "false_alerts_per_24h": 165.58,
+            "median_delay_s": 3.5,
+            "hours": 7.4
+          },
+          "personalised": {
+            "caught": "8/11",
+            "sensitivity": 0.727,
+            "false_alerts_per_24h": 12.99,
+            "median_delay_s": 10.5,
+            "hours": 7.4
+          }
+        },
+        "chb14": {
+          "general": {
+            "caught": "0/7",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 52.29,
+            "median_delay_s": null,
+            "hours": 6.4
+          },
+          "personalised": {
+            "caught": "6/7",
+            "sensitivity": 0.857,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 5.5,
+            "hours": 6.4
+          }
+        },
+        "chb15": {
+          "general": {
+            "caught": "0/19",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": null,
+            "hours": 13.9
+          },
+          "personalised": {
+            "caught": "18/19",
+            "sensitivity": 0.947,
+            "false_alerts_per_24h": 1.73,
+            "median_delay_s": 5.5,
+            "hours": 13.9
+          }
+        },
+        "chb16": {
+          "general": {
+            "caught": "0/9",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 22.46,
+            "median_delay_s": null,
+            "hours": 5.3
+          },
+          "personalised": {
+            "caught": "0/9",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 26.95,
+            "median_delay_s": null,
+            "hours": 5.3
+          }
+        },
+        "chb17": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 63.0,
+            "hours": 4.3
+          },
+          "personalised": {
+            "caught": "1/2",
+            "sensitivity": 0.5,
+            "false_alerts_per_24h": 182.91,
+            "median_delay_s": 0.0,
+            "hours": 4.3
+          }
+        },
+        "chb18": {
+          "general": {
+            "caught": "2/5",
+            "sensitivity": 0.4,
+            "false_alerts_per_24h": 10.36,
+            "median_delay_s": 17.0,
+            "hours": 4.6
+          },
+          "personalised": {
+            "caught": "4/5",
+            "sensitivity": 0.8,
+            "false_alerts_per_24h": 10.36,
+            "median_delay_s": 11.5,
+            "hours": 4.6
+          }
+        },
+        "chb19": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 25.65,
+            "median_delay_s": 28.0,
+            "hours": 2.8
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 3.0,
+            "hours": 2.8
+          }
+        },
+        "chb20": {
+          "general": {
+            "caught": "2/7",
+            "sensitivity": 0.286,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 24.0,
+            "hours": 5.5
+          },
+          "personalised": {
+            "caught": "7/7",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 7.0,
+            "hours": 5.5
+          }
+        },
+        "chb22": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 11.81,
+            "median_delay_s": 12.0,
+            "hours": 2.0
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 14.0,
+            "hours": 2.0
+          }
+        },
+        "chb23": {
+          "general": {
+            "caught": "4/6",
+            "sensitivity": 0.667,
+            "false_alerts_per_24h": 3.83,
+            "median_delay_s": 25.5,
+            "hours": 12.5
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 7.67,
+            "median_delay_s": 4.5,
+            "hours": 12.5
+          }
+        },
+        "chb24": {
+          "general": {
+            "caught": "14/15",
+            "sensitivity": 0.933,
+            "false_alerts_per_24h": 2.03,
+            "median_delay_s": 7.0,
+            "hours": 11.8
+          },
+          "personalised": {
+            "caught": "15/15",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 30.41,
+            "median_delay_s": 6.0,
+            "hours": 11.8
+          }
+        }
+      }
+    },
+    "0.8": {
+      "general_same_time": {
+        "caught": "64/168",
+        "sensitivity": 0.381,
+        "false_alerts_per_24h": 127.63,
+        "median_delay_s": 10.5,
+        "hours": 192.4
+      },
+      "personalised": {
+        "caught": "142/168",
+        "sensitivity": 0.845,
+        "false_alerts_per_24h": 13.97,
+        "median_delay_s": 6.0,
+        "hours": 192.4
+      },
+      "by_confirmed_seizures": {
+        "1": {
+          "caught": "18/23",
+          "sensitivity": 0.783,
+          "false_alerts_per_24h": 44.15,
+          "median_delay_s": null,
+          "hours": 30.4
+        },
+        "2-3": {
+          "caught": "33/40",
+          "sensitivity": 0.825,
+          "false_alerts_per_24h": 16.42,
+          "median_delay_s": null,
+          "hours": 55.5
+        },
+        "4+": {
+          "caught": "91/105",
+          "sensitivity": 0.867,
+          "false_alerts_per_24h": 4.06,
+          "median_delay_s": null,
+          "hours": 106.4
+        }
+      },
+      "by_patient": {
+        "chb01": {
+          "general": {
+            "caught": "5/10",
+            "sensitivity": 0.5,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 15.0,
+            "hours": 11.6
+          },
+          "personalised": {
+            "caught": "9/10",
+            "sensitivity": 0.9,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 5.0,
+            "hours": 11.6
+          }
+        },
+        "chb02": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 6.0,
+            "hours": 1.4
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 6.5,
+            "hours": 1.4
+          }
+        },
+        "chb03": {
+          "general": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 27.5,
+            "hours": 8.9
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 21.66,
+            "median_delay_s": 4.0,
+            "hours": 8.9
+          }
+        },
+        "chb04": {
+          "general": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 34.0,
+            "hours": 8.5
+          },
+          "personalised": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 9.0,
+            "hours": 8.5
+          }
+        },
+        "chb05": {
+          "general": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 342.54,
+            "median_delay_s": 14.0,
+            "hours": 4.8
+          },
+          "personalised": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 6.0,
+            "hours": 4.8
+          }
+        },
+        "chb06": {
+          "general": {
+            "caught": "8/9",
+            "sensitivity": 0.889,
+            "false_alerts_per_24h": 536.9,
+            "median_delay_s": 0.0,
+            "hours": 33.4
+          },
+          "personalised": {
+            "caught": "6/9",
+            "sensitivity": 0.667,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 4.5,
+            "hours": 33.4
+          }
+        },
+        "chb07": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 15.73,
+            "median_delay_s": 3.5,
+            "hours": 7.6
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 11.0,
+            "hours": 7.6
+          }
+        },
+        "chb08": {
+          "general": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 3.88,
+            "median_delay_s": 10.0,
+            "hours": 6.2
+          },
+          "personalised": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 224.79,
+            "median_delay_s": 9.5,
+            "hours": 6.2
+          }
+        },
+        "chb09": {
+          "general": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 468.25,
+            "median_delay_s": 0.0,
+            "hours": 6.2
+          },
+          "personalised": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 7.8,
+            "median_delay_s": 4.0,
+            "hours": 6.2
+          }
+        },
+        "chb10": {
+          "general": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 72.57,
+            "median_delay_s": 10.5,
+            "hours": 12.2
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 5.0,
+            "hours": 12.2
+          }
+        },
+        "chb11": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 17.86,
+            "median_delay_s": 12.5,
+            "hours": 2.7
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 9.0,
+            "hours": 2.7
+          }
+        },
+        "chb12": {
+          "general": {
+            "caught": "0/32",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 9.85,
+            "median_delay_s": null,
+            "hours": 12.2
+          },
+          "personalised": {
+            "caught": "31/32",
+            "sensitivity": 0.969,
+            "false_alerts_per_24h": 1.97,
+            "median_delay_s": 5.0,
+            "hours": 12.2
+          }
+        },
+        "chb13": {
+          "general": {
+            "caught": "1/11",
+            "sensitivity": 0.091,
+            "false_alerts_per_24h": 84.41,
+            "median_delay_s": 6.0,
+            "hours": 7.4
+          },
+          "personalised": {
+            "caught": "5/11",
+            "sensitivity": 0.455,
+            "false_alerts_per_24h": 3.25,
+            "median_delay_s": 11.0,
+            "hours": 7.4
+          }
+        },
+        "chb14": {
+          "general": {
+            "caught": "0/7",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 14.94,
+            "median_delay_s": null,
+            "hours": 6.4
+          },
+          "personalised": {
+            "caught": "6/7",
+            "sensitivity": 0.857,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 6.5,
+            "hours": 6.4
+          }
+        },
+        "chb15": {
+          "general": {
+            "caught": "0/19",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": null,
+            "hours": 13.9
+          },
+          "personalised": {
+            "caught": "18/19",
+            "sensitivity": 0.947,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 7.0,
+            "hours": 13.9
+          }
+        },
+        "chb16": {
+          "general": {
+            "caught": "0/9",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 13.47,
+            "median_delay_s": null,
+            "hours": 5.3
+          },
+          "personalised": {
+            "caught": "0/9",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 17.97,
+            "median_delay_s": null,
+            "hours": 5.3
+          }
+        },
+        "chb17": {
+          "general": {
+            "caught": "1/2",
+            "sensitivity": 0.5,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 60.0,
+            "hours": 4.3
+          },
+          "personalised": {
+            "caught": "1/2",
+            "sensitivity": 0.5,
+            "false_alerts_per_24h": 138.57,
+            "median_delay_s": 6.0,
+            "hours": 4.3
+          }
+        },
+        "chb18": {
+          "general": {
+            "caught": "2/5",
+            "sensitivity": 0.4,
+            "false_alerts_per_24h": 10.36,
+            "median_delay_s": 22.5,
+            "hours": 4.6
+          },
+          "personalised": {
+            "caught": "4/5",
+            "sensitivity": 0.8,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 14.0,
+            "hours": 4.6
+          }
+        },
+        "chb19": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 8.55,
+            "median_delay_s": 29.5,
+            "hours": 2.8
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 4.0,
+            "hours": 2.8
+          }
+        },
+        "chb20": {
+          "general": {
+            "caught": "0/7",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": null,
+            "hours": 5.5
+          },
+          "personalised": {
+            "caught": "6/7",
+            "sensitivity": 0.857,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 12.5,
+            "hours": 5.5
+          }
+        },
+        "chb22": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 15.5,
+            "hours": 2.0
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 14.5,
+            "hours": 2.0
+          }
+        },
+        "chb23": {
+          "general": {
+            "caught": "2/6",
+            "sensitivity": 0.333,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 31.0,
+            "hours": 12.5
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 5.75,
+            "median_delay_s": 5.0,
+            "hours": 12.5
+          }
+        },
+        "chb24": {
+          "general": {
+            "caught": "9/15",
+            "sensitivity": 0.6,
+            "false_alerts_per_24h": 2.03,
+            "median_delay_s": 7.0,
+            "hours": 11.8
+          },
+          "personalised": {
+            "caught": "14/15",
+            "sensitivity": 0.933,
+            "false_alerts_per_24h": 20.27,
+            "median_delay_s": 7.0,
+            "hours": 11.8
+          }
+        }
+      }
+    },
+    "0.9": {
+      "general_same_time": {
+        "caught": "50/168",
+        "sensitivity": 0.298,
+        "false_alerts_per_24h": 102.18,
+        "median_delay_s": 13.5,
+        "hours": 192.4
+      },
+      "personalised": {
+        "caught": "140/168",
+        "sensitivity": 0.833,
+        "false_alerts_per_24h": 9.86,
+        "median_delay_s": 7.0,
+        "hours": 192.4
+      },
+      "by_confirmed_seizures": {
+        "1": {
+          "caught": "17/23",
+          "sensitivity": 0.739,
+          "false_alerts_per_24h": 34.69,
+          "median_delay_s": null,
+          "hours": 30.4
+        },
+        "2-3": {
+          "caught": "32/40",
+          "sensitivity": 0.8,
+          "false_alerts_per_24h": 10.8,
+          "median_delay_s": null,
+          "hours": 55.5
+        },
+        "4+": {
+          "caught": "91/105",
+          "sensitivity": 0.867,
+          "false_alerts_per_24h": 2.26,
+          "median_delay_s": null,
+          "hours": 106.4
+        }
+      },
+      "by_patient": {
+        "chb01": {
+          "general": {
+            "caught": "2/10",
+            "sensitivity": 0.2,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 31.0,
+            "hours": 11.6
+          },
+          "personalised": {
+            "caught": "9/10",
+            "sensitivity": 0.9,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 6.0,
+            "hours": 11.6
+          }
+        },
+        "chb02": {
+          "general": {
+            "caught": "1/2",
+            "sensitivity": 0.5,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 13.0,
+            "hours": 1.4
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 7.0,
+            "hours": 1.4
+          }
+        },
+        "chb03": {
+          "general": {
+            "caught": "3/6",
+            "sensitivity": 0.5,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 47.0,
+            "hours": 8.9
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 13.53,
+            "median_delay_s": 9.5,
+            "hours": 8.9
+          }
+        },
+        "chb04": {
+          "general": {
+            "caught": "2/3",
+            "sensitivity": 0.667,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 63.0,
+            "hours": 8.5
+          },
+          "personalised": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 13.0,
+            "hours": 8.5
+          }
+        },
+        "chb05": {
+          "general": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 178.72,
+            "median_delay_s": 22.0,
+            "hours": 4.8
+          },
+          "personalised": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 11.0,
+            "hours": 4.8
+          }
+        },
+        "chb06": {
+          "general": {
+            "caught": "6/9",
+            "sensitivity": 0.667,
+            "false_alerts_per_24h": 528.28,
+            "median_delay_s": 0.0,
+            "hours": 33.4
+          },
+          "personalised": {
+            "caught": "5/9",
+            "sensitivity": 0.556,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 4.0,
+            "hours": 33.4
+          }
+        },
+        "chb07": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 3.15,
+            "median_delay_s": 18.5,
+            "hours": 7.6
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 16.5,
+            "hours": 7.6
+          }
+        },
+        "chb08": {
+          "general": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 11.0,
+            "hours": 6.2
+          },
+          "personalised": {
+            "caught": "4/4",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 178.28,
+            "median_delay_s": 10.0,
+            "hours": 6.2
+          }
+        },
+        "chb09": {
+          "general": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 97.55,
+            "median_delay_s": 4.0,
+            "hours": 6.2
+          },
+          "personalised": {
+            "caught": "3/3",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 10.0,
+            "hours": 6.2
+          }
+        },
+        "chb10": {
+          "general": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 1.96,
+            "median_delay_s": 14.0,
+            "hours": 12.2
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 5.5,
+            "hours": 12.2
+          }
+        },
+        "chb11": {
+          "general": {
+            "caught": "1/2",
+            "sensitivity": 0.5,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 21.0,
+            "hours": 2.7
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 9.0,
+            "hours": 2.7
+          }
+        },
+        "chb12": {
+          "general": {
+            "caught": "0/32",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 3.94,
+            "median_delay_s": null,
+            "hours": 12.2
+          },
+          "personalised": {
+            "caught": "31/32",
+            "sensitivity": 0.969,
+            "false_alerts_per_24h": 1.97,
+            "median_delay_s": 6.0,
+            "hours": 12.2
+          }
+        },
+        "chb13": {
+          "general": {
+            "caught": "1/11",
+            "sensitivity": 0.091,
+            "false_alerts_per_24h": 55.19,
+            "median_delay_s": 31.0,
+            "hours": 7.4
+          },
+          "personalised": {
+            "caught": "5/11",
+            "sensitivity": 0.455,
+            "false_alerts_per_24h": 3.25,
+            "median_delay_s": 11.0,
+            "hours": 7.4
+          }
+        },
+        "chb14": {
+          "general": {
+            "caught": "0/7",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": null,
+            "hours": 6.4
+          },
+          "personalised": {
+            "caught": "5/7",
+            "sensitivity": 0.714,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 6.0,
+            "hours": 6.4
+          }
+        },
+        "chb15": {
+          "general": {
+            "caught": "0/19",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": null,
+            "hours": 13.9
+          },
+          "personalised": {
+            "caught": "18/19",
+            "sensitivity": 0.947,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 8.0,
+            "hours": 13.9
+          }
+        },
+        "chb16": {
+          "general": {
+            "caught": "0/9",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": null,
+            "hours": 5.3
+          },
+          "personalised": {
+            "caught": "0/9",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 8.98,
+            "median_delay_s": null,
+            "hours": 5.3
+          }
+        },
+        "chb17": {
+          "general": {
+            "caught": "0/2",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": null,
+            "hours": 4.3
+          },
+          "personalised": {
+            "caught": "1/2",
+            "sensitivity": 0.5,
+            "false_alerts_per_24h": 88.68,
+            "median_delay_s": 7.0,
+            "hours": 4.3
+          }
+        },
+        "chb18": {
+          "general": {
+            "caught": "1/5",
+            "sensitivity": 0.2,
+            "false_alerts_per_24h": 5.18,
+            "median_delay_s": 27.0,
+            "hours": 4.6
+          },
+          "personalised": {
+            "caught": "4/5",
+            "sensitivity": 0.8,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 18.5,
+            "hours": 4.6
+          }
+        },
+        "chb19": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 30.5,
+            "hours": 2.8
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 10.0,
+            "hours": 2.8
+          }
+        },
+        "chb20": {
+          "general": {
+            "caught": "0/7",
+            "sensitivity": 0.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": null,
+            "hours": 5.5
+          },
+          "personalised": {
+            "caught": "6/7",
+            "sensitivity": 0.857,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 13.0,
+            "hours": 5.5
+          }
+        },
+        "chb22": {
+          "general": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 30.0,
+            "hours": 2.0
+          },
+          "personalised": {
+            "caught": "2/2",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 15.0,
+            "hours": 2.0
+          }
+        },
+        "chb23": {
+          "general": {
+            "caught": "1/6",
+            "sensitivity": 0.167,
+            "false_alerts_per_24h": 0.0,
+            "median_delay_s": 37.0,
+            "hours": 12.5
+          },
+          "personalised": {
+            "caught": "6/6",
+            "sensitivity": 1.0,
+            "false_alerts_per_24h": 5.75,
+            "median_delay_s": 5.5,
+            "hours": 12.5
+          }
+        },
+        "chb24": {
+          "general": {
+            "caught": "9/15",
+            "sensitivity": 0.6,
+            "false_alerts_per_24h": 2.03,
+            "median_delay_s": 8.0,
+            "hours": 11.8
+          },
+          "personalised": {
+            "caught": "14/15",
+            "sensitivity": 0.933,
+            "false_alerts_per_24h": 10.14,
+            "median_delay_s": 7.0,
+            "hours": 11.8
+          }
+        }
+      }
+    }
+  },
+  "hybrid": {
+    "0.5": {
+      "caught": "172/191",
+      "sensitivity": 0.901,
+      "false_alerts_per_24h": 72.42,
+      "median_delay_s": 5.0,
+      "hours": 262.5
+    },
+    "0.6": {
+      "caught": "167/191",
+      "sensitivity": 0.874,
+      "false_alerts_per_24h": 57.06,
+      "median_delay_s": 5.0,
+      "hours": 262.5
+    },
+    "0.7": {
+      "caught": "162/191",
+      "sensitivity": 0.848,
+      "false_alerts_per_24h": 45.63,
+      "median_delay_s": 6.0,
+      "hours": 262.5
+    },
+    "0.8": {
+      "caught": "153/191",
+      "sensitivity": 0.801,
+      "false_alerts_per_24h": 42.15,
+      "median_delay_s": 7.0,
+      "hours": 262.5
+    },
+    "0.9": {
+      "caught": "145/191",
+      "sensitivity": 0.759,
+      "false_alerts_per_24h": 37.95,
+      "median_delay_s": 8.0,
+      "hours": 262.5
+    }
+  }
+}

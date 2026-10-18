@@ -1,0 +1,16 @@
+data/
+runs/
+__pycache__/
+*.pyc
+.venv/
+runs_eval_local.txt
+
+# internal team files live in the private repo Coook13/chuds-internal
+docs/HANDOVER.md
+docs/PROMPTS.md
+docs/TEAM_PLAN.md
+docs/SCORECARD.md
+docs/SUBMISSION_ANSWERS.md
+docs/PITCH_QA.md
+docs/VIDEO_SCRIPT*.md
+video/

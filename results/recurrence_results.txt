@@ -1,0 +1,46 @@
+PREDICT: risk of another seizure within 60 min (CHB-MIT, leave-one-patient-out)
+tree model: snapml BoostingMachineClassifier, optimize_trees(tree_format='zdnn_tensors')
+recorded hours 973.6, seizures 198
+prediction points kept: {'checkpoint': 3304, 'post_seizure': 124}  (candidates {'post_seizure': 198, 'checkpoint': 3885})
+dropped: {"post_seizure": {"in_or_unseen_seizure": 0, "not_recorded": 4, "censored_next_60min": 70}, "checkpoint": {"in_or_unseen_seizure": 35, "not_recorded": 0, "censored_next_60min": 546}}
+n points 3428, positives 422, base rate 0.123, patients 23
+
+pooled AUC  logreg 0.754 [0.664, 0.823]   tree 0.579 [0.458, 0.701]   baseline(6h>0) 0.716 [0.649, 0.775]
+AUC minus baseline: logreg [-0.004, 0.066]  tree [-0.258, -0.01] (95% patient bootstrap)
+Brier logreg 0.0938  tree 0.1700  climatology 0.1097  (skill logreg 0.145, tree -0.550)
+better model: lr
+
+checkpoint    n= 3304 base=0.114 AUC lr=0.741 tree=0.564 baseline=0.708
+post_seizure  n=  124 base=0.379 AUC lr=0.711 tree=0.635 baseline=0.500
+without chb24  n=3407 base=0.118 AUC lr=0.744 tree=0.565 baseline=0.710
+within-patient AUC (mean over 21 patients): {'lr': 0.5514, 'tree': 0.5338, 'baseline': 0.6194}
+baseline flag: {'flagged': 1144, 'sensitivity': 0.7133, 'specificity': 0.7196, 'ppv': 0.2631, 'npv': 0.947}
+post-hoc ablation, logreg without hours_monitored: {'pooled_auc': 0.7226, 'brier': 0.0951, 'within_patient_mean_auc': 0.5911, 'note': 'added after seeing results; information only, final model unchanged'}
+lr at the same flag rate: {'threshold': 0.1204, 'flagged': 1144, 'sensitivity': 0.6896, 'specificity': 0.7162, 'ppv': 0.2544, 'npv': 0.9426}
+
+calibration deciles (lr): pred_mean -> observed (n)
+  0.030 -> 0.026 (343)
+  0.039 -> 0.070 (343)
+  0.049 -> 0.052 (343)
+  0.057 -> 0.050 (343)
+  0.066 -> 0.044 (343)
+  0.080 -> 0.061 (343)
+  0.113 -> 0.134 (343)
+  0.159 -> 0.140 (343)
+  0.231 -> 0.216 (342)
+  0.440 -> 0.439 (342)
+
+final logreg coefficients (standardised log1p features): {'n_1h': -0.104, 'n_6h': 0.5618, 'n_24h': 0.2974, 'min_since_last': -0.3081, 'last_dur_s': -0.1059, 'mean_isi_min': 0.1342, 'hours_monitored': -0.4141, 'intercept': -2.3552}
+final model: {'path': '/home/linux1/eeg-review-queue/runs/recurrence_model.joblib', 'kind': 'logreg'}
+
+Siena external (trained on all CHB-MIT): n=422 pos=94 base=0.223 patients=13 AUC lr=0.502 tree=0.509 baseline=0.490 Brier lr=0.1857 tree=0.2023
+  kept {'checkpoint': 407, 'post_seizure': 15} dropped {"post_seizure": {"in_or_unseen_seizure": 0, "not_recorded": 0, "censored_next_60min": 32}, "checkpoint": {"in_or_unseen_seizure": 8, "not_recorded": 0, "censored_next_60min": 142}}
+
+notes:
+  - chb24: no clock times in the summary; used start time + duration from the EDF headers (12 files). Missing file numbers become unrecorded gaps (censored).
+  - Siena: 14 patients, file times from the seizure lists' registration times; EDF-header start overrides for ['PN05-3.edf', 'PN14-3.edf'].
+
+example risk():
+  {'risk_60min': 0.4633, 'reason': '1 seizure in the last hour, 2 in the last 6 h, 2 in the last 24 h; the last one ended 1 min ago. Estimated 46% chance of another seizure in the next hour, well above the 12% average for a monitored hour in the training data.', 'features': {'n_1h': 1.0, 'n_6h': 2.0, 'n_24h': 2.0, 'min_since_last': 1.0, 'last_dur_s': 45.0, 'mean_isi_min': 70.0, 'hours_monitored': 1.5291666666666666}}
+  {'risk_60min': 0.076, 'reason': 'No seizures in the last 24 hours. Estimated 8% chance of another seizure in the next hour, below the 12% average for a monitored hour in the training data.', 'features': {'n_1h': 0.0, 'n_6h': 0.0, 'n_24h': 0.0, 'min_since_last': 1440.0, 'last_dur_s': 0.0, 'mean_isi_min': 1440.0, 'hours_monitored': 6.0}}
+runtime 3.6 s

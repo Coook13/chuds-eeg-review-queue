@@ -1,0 +1,1 @@
+{"zdnn_matmul_op_calls": 7, "nonzero_status_calls": 0, "first_status": 0, "last_status": 0, "ms_inside_matmul": 1.000, "is_nnpa_installed_calls": 0, "is_nnpa_installed_last": false}

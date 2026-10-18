@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EEG Review Queue</title>
+<style>
+  :root {
+    --bg: #f5f6f7; --surface: #ffffff; --line: #e1e4e8; --line-strong: #c9ced6;
+    --text: #1c2530; --muted: #5d6877; --faint: #8a94a2;
+    --accent: #2b5c8a; --accent-soft: #eef4fa; --accent-line: #a9c3dc;
+    --urgent: #b42318; --urgent-bg: #fdecea;
+    --review: #8a5b00; --review-bg: #fdf1d6;
+    --stable: #3f5f4c; --stable-bg: #e9f0eb;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Inter, Roboto, sans-serif;
+    color: var(--text); background: var(--bg);
+    display: grid; grid-template-rows: 52px minmax(0, 1fr) 46px; overflow: hidden;
+  }
+  .num { font-variant-numeric: tabular-nums; }
+
+  /* top bar */
+  .top { display: flex; align-items: center; gap: 14px; padding: 0 20px; background: var(--surface); border-bottom: 1px solid var(--line); }
+  .brand { font-size: 16px; font-weight: 650; }
+  .views { display: flex; gap: 4px; margin-left: 10px; }
+  .views a { font-size: 12.5px; color: var(--muted); text-decoration: none; padding: 4px 10px; border-radius: 6px; border: 1px solid transparent; }
+  .views a.on { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
+  .badge { font-size: 12px; color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-line); padding: 3px 10px; border-radius: 999px; }
+  .top .spacer { flex: 1; }
+  .conn { font-size: 12px; color: var(--muted); }
+  .top .note { font-size: 12px; color: var(--faint); }
+  #clock { font-size: 15px; color: var(--text); }
+
+  /* layout */
+  .main { display: grid; grid-template-columns: 424px minmax(0, 1fr); gap: 16px; padding: 16px 20px; min-height: 0; }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; min-height: 0; display: flex; flex-direction: column; }
+
+  /* queue */
+  .qhead { display: flex; align-items: baseline; justify-content: space-between; padding: 12px 14px 8px; }
+  .qhead h2 { margin: 0; font-size: 13px; font-weight: 650; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  .qhead span { font-size: 12px; color: var(--muted); }
+  .qhelp { margin: 0 14px 8px; font-size: 11.5px; line-height: 1.45; color: var(--muted); }
+  .slab { font-size: 10.5px; color: var(--muted); margin-right: 5px; }
+  .legend.truth i { background: #2f7d4f; border-top-color: #2f7d4f; }
+  .cards { flex: 1; min-height: 0; overflow-y: auto; padding: 4px 10px 12px; display: flex; flex-direction: column; gap: 6px; }
+  .card { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px 9px; background: var(--surface); cursor: pointer; outline: none; flex: none; }
+  .card:hover { background: #fafbfc; }
+  .card:focus-visible { box-shadow: 0 0 0 2px var(--accent-line); }
+  .card.sel { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 1px var(--accent); }
+  .card.stable { color: var(--muted); }
+  .r1 { display: flex; align-items: center; gap: 8px; }
+  .bednum { font-size: 15px; font-weight: 650; color: var(--text); }
+  .pid { font-size: 13px; color: var(--muted); }
+  .r1 .grow { flex: 1; }
+  .score { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+  .bar { width: 34px; height: 4px; border-radius: 2px; background: var(--line); overflow: hidden; display: inline-block; }
+  .bar b { display: block; height: 100%; background: var(--accent); }
+  .reason { margin: 3px 0 4px; font-size: 13px; line-height: 1.35; color: var(--text); }
+  .card.stable .reason { color: var(--muted); }
+  .r3 { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--muted); }
+  .need { color: var(--text); font-weight: 600; }
+
+  .mbadge { font-size: 11px; line-height: 1.5; padding: 0 8px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--muted); background: var(--surface); white-space: nowrap; }
+  .mbadge.personal { color: var(--accent); background: #dfeaf5; border-color: var(--accent-line); font-weight: 600; }
+  .pill { font-size: 11px; font-weight: 650; letter-spacing: .05em; text-transform: uppercase; padding: 2px 9px; border-radius: 999px; }
+  .pill.urgent { color: var(--urgent); background: var(--urgent-bg); }
+  .pill.review { color: var(--review); background: var(--review-bg); }
+  .pill.stable { color: var(--stable); background: var(--stable-bg); }
+
+  /* detail */
+  .detail { padding: 16px 20px 16px; gap: 10px; overflow: hidden; }
+  .dhead { display: flex; align-items: center; gap: 10px; }
+  .dhead h1 { margin: 0; font-size: 20px; font-weight: 650; }
+  .dhead .pid { font-size: 15px; }
+  .dreason { font-size: 15px; margin-top: -4px; }
+  .info { display: flex; gap: 28px; align-items: flex-start; }
+  .info[hidden] { display: none; }
+  .model { flex: 1; min-width: 0; font-size: 13px; }
+  .mname { font-size: 11px; font-weight: 650; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  .mname.personal { color: var(--accent); }
+  .mlabel { color: var(--muted); margin: 1px 0 4px; line-height: 1.35; }
+  .ba { border-collapse: collapse; width: 100%; font-size: 13px; }
+  .ba th, .ba td { padding: 3px 0 3px 10px; text-align: right; font-weight: 400; }
+  .ba thead th { font-size: 11px; color: var(--faint); vertical-align: bottom; line-height: 1.2; }
+  .ba tbody th { padding-left: 0; text-align: left; color: var(--muted); white-space: nowrap; }
+  .ba tbody tr + tr th, .ba tbody tr + tr td { border-top: 1px solid var(--line); }
+  .ba tbody tr:last-child td { font-weight: 650; color: var(--text); }
+  .events { flex: none; display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 2px 28px; font-size: 13px; color: var(--muted); }
+  .events:empty { display: none; }
+  .events .k { color: var(--faint); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+  .events .v { color: var(--text); }
+  .cap { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--muted); }
+  .cap .right { display: flex; align-items: center; gap: 14px; }
+  .zoom { display: inline-flex; border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; }
+  .zoom button { font: inherit; font-size: 12px; padding: 2px 9px; border: 0; border-right: 1px solid var(--line); background: var(--surface); color: var(--muted); cursor: pointer; }
+  .zoom button:last-child { border-right: 0; }
+  .zoom button.on { background: var(--accent-soft); color: var(--accent); font-weight: 650; }
+  #pan { width: 100%; margin: -2px 0 0; accent-color: var(--accent); height: 14px; }
+  .legend i { display: inline-block; width: 14px; height: 9px; margin-right: 6px; vertical-align: -1px; background: var(--accent); opacity: .22; border-top: 2px solid var(--accent); }
+  .viewer { flex: 1; min-height: 180px; position: relative; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+  .viewer canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .actions { display: flex; align-items: center; gap: 10px; }
+  .actions .status { margin-left: auto; font-size: 13px; color: var(--muted); }
+  .btn { font: inherit; font-size: 14px; font-weight: 600; height: 34px; padding: 0 16px; border-radius: 6px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--text); cursor: pointer; }
+  .btn:hover:not(:disabled) { background: #f3f5f7; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover:not(:disabled) { background: #244f78; }
+  .btn:disabled { opacity: .45; cursor: default; }
+  .btn.outline { color: var(--accent); border-color: var(--accent-line); }
+  .btn .spin { display: none; width: 11px; height: 11px; margin-right: 8px; vertical-align: -1px; border: 2px solid var(--accent-line); border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; }
+  .btn.busy .spin { display: inline-block; }
+  .btn.busy:disabled { opacity: 1; background: var(--accent-soft); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .btn:focus-visible { outline: 2px solid var(--accent-line); outline-offset: 2px; }
+  #hodlg { width: 560px; }
+  #hodlg pre { margin: 0 0 4px; padding: 12px 14px; max-height: 340px; overflow: auto; background: #fafbfc; border: 1px solid var(--line); border-radius: 8px; font: 13px/1.6 ui-monospace, "Cascadia Mono", Consolas, monospace; white-space: pre-wrap; color: var(--text); }
+  .empty { margin: auto; color: var(--muted); }
+
+  /* footer */
+  .foot { display: flex; align-items: center; gap: 28px; padding: 0 20px; background: var(--surface); border-top: 1px solid var(--line); font-size: 13px; }
+  .metrics { display: flex; gap: 28px; }
+  .m { display: flex; align-items: baseline; gap: 7px; }
+  .m span { color: var(--muted); font-size: 12px; }
+  .m b { font-weight: 650; }
+
+  .m, .badge, .pill { white-space: nowrap; }
+  @media (max-width: 1000px) {            /* fallback only; the target screen is 1280x720 */
+    body { display: block; overflow: auto; }
+    .main { grid-template-columns: 1fr; }
+    .cards { overflow: visible; }
+    .viewer { min-height: 320px; }
+    .detail { overflow: visible; }
+    .foot { flex-wrap: wrap; padding: 10px 20px; gap: 8px 24px; }
+    .metrics { flex-wrap: wrap; gap: 6px 24px; }
+    .top .note { display: none; }
+  }
+
+  /* acknowledge dialog */
+  dialog { border: 1px solid var(--line-strong); border-radius: 10px; padding: 20px 22px; width: 360px; color: var(--text); box-shadow: 0 8px 30px rgba(20, 30, 45, .15); }
+  dialog::backdrop { background: rgba(28, 37, 48, .25); }
+  dialog h3 { margin: 0 0 2px; font-size: 16px; }
+  dialog p { margin: 0 0 14px; font-size: 13px; color: var(--muted); }
+  dialog label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 4px; }
+  dialog input { width: 100%; height: 36px; padding: 0 10px; font: inherit; border: 1px solid var(--line-strong); border-radius: 6px; }
+  dialog input:focus { outline: 2px solid var(--accent-line); border-color: var(--accent); }
+  dialog .row { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+  dialog .err { color: var(--urgent); font-size: 12px; min-height: 16px; margin-top: 6px; }
+
+  /* next-hour risk chip (Predict) */
+  .r2 { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 4px; }
+  .bednum, .slab, .views a, .brand { white-space: nowrap; }
+  .risk { font-size: 11px; line-height: 1.5; padding: 0 8px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--muted); background: var(--surface); white-space: nowrap; cursor: help; }
+  .risk.high { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); font-weight: 600; }
+  .risk.pending { border-style: dashed; }
+  .dhead .risk { font-size: 12px; }
+
+  /* intake screen (Diagnose) */
+  body.intake { grid-template-rows: 52px minmax(0, 1fr); }
+  body.intake .foot, body.intake #ward { display: none; }
+  #intake { grid-template-columns: 360px minmax(0, 1fr); }
+  #intake[hidden] { display: none; }
+  .person .r1 .pid { flex: 1; }
+  .person .res { margin-top: 3px; font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 8px; }
+  .ix { padding: 18px 22px; gap: 12px; overflow-y: auto; }
+  .ix h1 { margin: 0; font-size: 20px; font-weight: 650; }
+  .ix .sub { font-size: 14px; color: var(--muted); }
+  .ix h3 { margin: 4px 0 0; font-size: 11px; font-weight: 650; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  .prob { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .prob .big { font-size: 26px; font-weight: 650; }
+  .pbar { position: relative; width: 260px; height: 8px; border-radius: 4px; background: var(--line); }
+  .pbar b { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px; background: var(--accent); }
+  .pbar i { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--text); }
+  .pnote { font-size: 12px; color: var(--muted); }
+  .facts { display: grid; grid-template-columns: max-content 1fr; gap: 4px 18px; font-size: 13.5px; margin: 0; }
+  .facts dt { color: var(--muted); }
+  .facts dd { margin: 0; }
+  .reasons { margin: 0; padding-left: 20px; font-size: 13.5px; line-height: 1.5; }
+  .reasons li + li { margin-top: 4px; }
+  .callout { font-size: 12.5px; line-height: 1.5; color: var(--text); background: #fafbfc; border: 1px solid var(--line); border-left: 3px solid var(--accent-line); border-radius: 6px; padding: 9px 12px; }
+  .callout b { font-weight: 650; }
+  .ix .spinrow { display: flex; align-items: center; gap: 10px; color: var(--muted); }
+  .ix .spinrow i { width: 14px; height: 14px; border: 2px solid var(--accent-line); border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; }
+  .ix .err { color: var(--urgent); }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">EEG Review Queue</div>
+  <span class="badge" id="hostbadge">Running on IBM LinuxONE</span>
+  <nav class="views" id="views"><a href="/intake">Intake</a><a href="/">Clinician view</a><a href="/system">IBM Z system view</a></nav>
+  <div class="spacer"></div>
+  <span class="note">Decision support on replayed recordings. A clinician confirms every alert.</span>
+  <span class="conn" id="conn"></span>
+  <time class="num" id="clock">--:--:--</time>
+</header>
+
+<main class="main" id="ward">
+  <section class="panel">
+    <div class="qhead"><h2>Review queue</h2><span id="qsum"></span></div>
+    <p class="qhelp"><b>Activity now</b> is the model's seizure score for the last 5 s of EEG, from 0 (none) to 1 (strong), updated every second of recording. An alert opens at 0.80 for 5 s. <b>Status</b> comes from recent alerts, so a bed can be urgent while its activity right now is low.</p>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section class="panel detail" id="detail">
+    <div class="empty" id="empty">Waiting for the first update.</div>
+    <div class="dhead" hidden id="dhead">
+      <h1 id="dbed"></h1><span class="pid" id="dpid"></span><span class="pill" id="dpill"></span><span class="mbadge" id="dmbadge"></span><span class="risk" id="drisk"></span>
+    </div>
+    <div class="dreason" id="dreason" hidden></div>
+    <div class="info" id="dinfo" hidden>
+      <div class="events num" id="devents"></div>
+      <div class="model" id="dmodel"></div>
+    </div>
+    <div class="cap" id="dcap" hidden>
+      <span id="dfile" title="Amplitude is scaled alike on all channels"></span>
+      <span class="right">
+        <span class="legend"><i></i>Model-flagged span</span>
+        <span class="legend truth" title="Seizure start and end as marked by the dataset's expert annotators"><i></i>Doctor-marked seizure</span>
+        <span class="zoom" id="zoom"><button data-w="15">15 s</button><button data-w="30">30 s</button><button data-w="60">60 s</button><button data-w="120">120 s</button></span>
+      </span>
+    </div>
+    <div class="viewer" id="viewer" hidden><canvas id="eeg"></canvas></div>
+    <input type="range" id="pan" min="0" max="0" step="0.5" value="0" hidden aria-label="Scroll through the evidence window">
+    <div class="actions" id="dactions" hidden>
+      <button class="btn primary" id="ackbtn">Acknowledge</button>
+      <button class="btn outline" id="cfbtn"><i class="spin"></i><span id="cftxt">Confirm seizure</span></button>
+      <button class="btn" id="rjbtn"><i class="spin"></i><span id="rjtxt">Not a seizure</span></button>
+      <button class="btn" id="hobtn">Handover note</button>
+      <span class="status" id="dack"></span>
+    </div>
+  </section>
+</main>
+
+<main class="main" id="intake" hidden>
+  <section class="panel">
+    <div class="qhead"><h2>Intake screening</h2><span id="ixsum"></span></div>
+    <p class="qhelp">About 5 minutes of resting EEG from a 14-channel headset, recorded in Guinea-Bissau and Nigeria (open dataset, Zenodo 1252141). Pick a person to run the epilepsy screen on IBM LinuxONE now. <span id="ixrule"></span></p>
+    <div class="cards" id="ixcards"></div>
+  </section>
+  <section class="panel ix" id="ixdetail">
+    <div class="empty" id="ixempty">Pick a person on the left to run the epilepsy screen.</div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="metrics num" id="metrics"></div>
+</footer>
+
+<dialog id="hodlg">
+  <h3 id="hotitle">Handover note</h3>
+  <p id="hosub"></p>
+  <pre id="hotext"></pre>
+  <div class="row"><button class="btn primary" id="hoclose">Close</button></div>
+</dialog>
+
+<dialog id="ackdlg">
+  <form id="ackform">
+    <h3 id="ackh">Acknowledge alert</h3>
+    <p id="ackfor"></p>
+    <label for="ackname">Your name</label>
+    <input id="ackname" maxlength="60" autocomplete="off">
+    <div class="err" id="ackerr"></div>
+    <div class="row">
+      <button type="button" class="btn" id="ackcancel">Cancel</button>
+      <button type="submit" class="btn primary" id="acksubmit">Acknowledge</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+const $ = s => document.querySelector(s);
+const RANK = { urgent: 0, review: 1, stable: 2 };
+const S = { beds: [], sel: null, ev: null, evFor: null, evSig: '', evAt: 0, manual: false, view: { len: 30, start: null },
+             busy: new Map(), mut: 0, msg: null };   // busy: bed -> 'confirm' | 'reject' while the server retrains; mut: bumps when we change a bed, so stale polls are dropped
+
+/* ---------- helpers ---------- */
+const cap = s => s ? s[0].toUpperCase() + s.slice(1) : s;
+const STATUS_TXT = { urgent: 'Urgent EEG review', review: 'EEG review', stable: 'No current alert' };
+const statusTxt = s => STATUS_TXT[s] || cap(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const secs = c => { const [h, m, s] = c.split(':').map(Number); return h * 3600 + m * 60 + s; };
+const since = (a, b) => (((secs(b) - secs(a)) % 86400) + 86400) % 86400;
+function dur(s) {
+  s = Math.round(s);
+  if (s < 60) return s + ' s';
+  if (s < 3600) return Math.floor(s / 60) + ' min ' + (s % 60) + ' s';
+  return Math.floor(s / 3600) + ' h ' + String(Math.floor(s % 3600 / 60)).padStart(2, '0') + ' min';
+}
+function fileTime(s) {
+  s = Math.round(s); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;
+  return (h ? h + ':' + String(m).padStart(2, '0') : m) + ':' + String(x).padStart(2, '0');
+}
+async function api(url, opts) {
+  const r = await fetch(url, opts);
+  if (!r.ok) {                                   // keep the server's own message (e.g. "no alert on this bed to reject")
+    let msg = url + ' ' + r.status;
+    try { const j = await r.json(); if (j && j.error) msg = j.error; } catch (e) {}
+    const err = new Error(msg); err.status = r.status; throw err;
+  }
+  return r.json();
+}
+let CAPS = { reject: false, intake: false, results: {} };     // from /api/capabilities
+const PATH = location.pathname.replace(/\/+$/, '') || '/';
+const IS_INTAKE = PATH === '/intake';
+const isPersonal = b => b.personalised !== undefined ? !!b.personalised : /^personal/i.test(b.model || '');
+function modelBadge(el, b) {
+  const busy = S.busy.get(b.bed);
+  el.className = 'mbadge ' + (busy || isPersonal(b) ? 'personal' : 'general');
+  el.textContent = busy === 'reject' ? 'Learning...' : busy ? 'Retraining...' : isPersonal(b) ? 'Personal model' : 'General model';
+  el.title = b.model || '';
+}
+/* next-hour seizure risk (src/recurrence.py), one chip per bed */
+function riskNote() {
+  const r = (CAPS.results || {}).predict;
+  return 'Modest predictor' + (r ? ` (pooled AUC ${r.auc.toFixed(2)} vs ${r.baseline_auc.toFixed(2)} for a simple "seizure in the last 6 h" rule)` : '') +
+    ': use it to decide who to watch closely, not to change drug doses.';
+}
+function riskChip(el, b, withReason) {
+  const r = b.risk;
+  el.hidden = !r;
+  if (!r) return;
+  const p = r.p;
+  el.className = 'risk' + (r.pending ? ' pending' : p !== null && p >= 0.25 ? ' high' : '');   // 0.25: about twice the 12% training base rate
+  el.textContent = 'Next-hour seizure risk: ' + (r.pending ? 'when this event ends' : p === null ? 'n/a' : Math.round(p * 100) + '%');
+  el.title = (withReason && r.reason ? r.reason + '\n' : '') + riskNote();
+}
+const post = (url, who) => api(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ who }) });
+function replaceBed(nb) { S.mut++; S.beds = S.beds.map(b => b.bed === nb.bed ? nb : b); }
+const bedOf = id => S.beds.find(b => b.bed === id);
+const sorted = beds => [...beds].sort((a, b) =>
+  RANK[a.status] - RANK[b.status] ||
+  (a.status !== 'stable' ? (!!a.acknowledged_by - !!b.acknowledged_by) : 0) ||
+  a.bed - b.bed);
+
+/* ---------- clock ---------- */
+setInterval(() => { $('#clock').textContent = new Date().toLocaleTimeString('en-GB'); }, 500);
+
+/* ---------- queue ---------- */
+const cardEls = new Map();
+function makeCard(id) {
+  const el = document.createElement('article');
+  el.className = 'card'; el.tabIndex = 0; el.setAttribute('role', 'button');
+  el.innerHTML = `<div class="r1"><span class="bednum"></span><span class="pid"></span><span class="mbadge"></span><span class="grow"></span><span class="pill"></span></div>
+    <div class="reason"></div>
+    <div class="r2"><span class="score num" title="Seizure activity now: the model's score for the last 5 seconds of EEG, 0 (none) to 1 (strong). An alert opens when it stays at 0.80 or above for 5 seconds."><span class="slab">Activity now</span><i class="bar"><b></b></i><span class="sv"></span></span><span class="risk"></span></div>
+    <div class="r3 num"><span class="since"></span><span class="ack"></span></div>`;
+  const pick = () => select(id, true);
+  el.addEventListener('click', pick);
+  el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+  cardEls.set(id, el);
+  return el;
+}
+function renderQueue() {
+  const list = sorted(S.beds), box = $('#cards');
+  list.forEach((b, i) => {
+    const el = cardEls.get(b.bed) || makeCard(b.bed);
+    el.className = 'card ' + b.status + (b.bed === S.sel ? ' sel' : '');
+    el.querySelector('.bednum').textContent = 'Bed ' + b.bed;
+    el.querySelector('.pid').textContent = b.patient_id;
+    modelBadge(el.querySelector('.mbadge'), b);
+    el.querySelector('.sv').textContent = b.score_now.toFixed(2);
+    el.querySelector('.bar b').style.width = Math.round(Math.min(1, Math.max(0, b.score_now)) * 100) + '%';
+    const pill = el.querySelector('.pill'); pill.className = 'pill ' + b.status; pill.textContent = statusTxt(b.status);
+    el.querySelector('.reason').textContent = cap(b.reason);
+    riskChip(el.querySelector('.risk'), b, false);
+    const sinceEl = el.querySelector('.since');
+    sinceEl.textContent = b.alert_raised_at ? 'Alert ' + dur(since(b.alert_raised_at, b.replay_clock)) + ' ago' : 'No alert';
+    sinceEl.title = b.alert_raised_at ? 'Raised at ' + b.alert_raised_at : '';
+    const ack = el.querySelector('.ack');
+    if (b.acknowledged_by) { ack.className = 'ack'; ack.textContent = 'Acknowledged by ' + b.acknowledged_by + ', ' + b.acknowledged_at; }
+    else if (b.status !== 'stable') { ack.className = 'ack need'; ack.textContent = 'Awaiting acknowledgement'; }
+    else { ack.className = 'ack'; ack.textContent = ''; }
+    if (box.children[i] !== el) box.insertBefore(el, box.children[i] || null);
+  });
+  const n = s => S.beds.filter(b => b.status === s).length;
+  $('#qsum').textContent = `${n('urgent')} urgent, ${n('review')} review, ${n('stable')} stable`;
+}
+
+/* ---------- detail ---------- */
+function select(id, manual) {
+  if (manual) S.manual = true;     // until the user picks a bed, the detail follows the top of the queue
+  if (S.sel === id) return;
+  S.sel = id; S.ev = null; S.evFor = null; S.evSig = ''; S.view.start = null;
+  renderQueue(); renderDetail(); drawEvidence();
+}
+function renderDetail() {
+  const b = bedOf(S.sel);
+  if (!b) return;
+  $('#empty').hidden = true;
+  for (const id of ['#dhead', '#dreason', '#dcap', '#viewer', '#dactions']) $(id).hidden = false;
+  $('#dbed').textContent = 'Bed ' + b.bed;
+  $('#dpid').textContent = b.patient_id;
+  const pill = $('#dpill'); pill.className = 'pill ' + b.status; pill.textContent = statusTxt(b.status);
+  $('#dreason').textContent = cap(b.reason);
+  modelBadge($('#dmbadge'), b);
+  riskChip($('#drisk'), b, true);
+  $('#dinfo').hidden = false;
+  renderModel(b);
+  const shown = b.events.slice(-2).reverse();
+  $('#devents').innerHTML = shown.length
+    ? ['Onset', 'Duration', 'Peak score', 'State'].map(k => `<span class="k">${k}</span>`).join('') +
+      shown.map(e => `<span class="v">${esc(e.onset_clock)}</span><span class="v">${dur(e.duration_s)}</span>
+        <span class="v">${e.peak_score.toFixed(2)}</span><span class="v">${e.ongoing ? 'Ongoing' : 'Ended'}</span>`).join('')
+    : '';
+  const ev = b.evidence;
+  $('#dfile').textContent = `EEG evidence, ${ev.file}, ${fileTime(ev.start_s)} to ${fileTime(ev.end_s)}`;
+  const ackBtn = $('#ackbtn');
+  ackBtn.disabled = !!b.acknowledged_by || b.status === 'stable';
+  ackBtn.textContent = b.acknowledged_by ? 'Acknowledged' : 'Acknowledge';
+  ackBtn.title = b.status === 'stable' ? 'No alert to acknowledge' : '';
+  const mode = S.busy.get(b.bed), busy = !!mode, cf = $('#cfbtn'), rj = $('#rjbtn');
+  cf.disabled = busy || !b.events.length;
+  cf.classList.toggle('busy', mode === 'confirm');
+  $('#cftxt').textContent = mode === 'confirm' ? 'Retraining on LinuxONE...' : 'Confirm seizure';
+  rj.disabled = busy || !b.events.length || !CAPS.reject;
+  rj.classList.toggle('busy', mode === 'reject');
+  $('#rjtxt').textContent = mode === 'reject' ? 'Learning from your answer on LinuxONE...' : 'Not a seizure';
+  rj.title = !CAPS.reject ? 'Coming soon' : b.events.length ? "This alert was not a seizure: the patient's model learns from your answer" : 'No alert to mark';
+  cf.title = b.events.length ? '' : 'No suspected seizure to confirm';
+  const msg = S.msg && S.msg.bed === b.bed && Date.now() < S.msg.until ? S.msg.text : '';
+  $('#dack').textContent = msg || (b.acknowledged_by ? `Acknowledged by ${b.acknowledged_by} at ${b.acknowledged_at}` : '');
+  maybeLoadEvidence(b);
+}
+const perHour = x => x.minutes >= 5 ? (x.false_alerts / (x.minutes / 60)).toFixed(1) : 'n/a';
+function renderModel(b) {
+  const pers = isPersonal(b), ba = b.before_after, busy = S.busy.get(b.bed);
+  let note = b.model && b.model !== 'general' ? b.model : 'Trained on other patients. Confirm a seizure to retrain a personal model on LinuxONE.';
+  if (busy === 'confirm') note = 'Retraining on LinuxONE from the confirmed event and the recording so far...';
+  if (busy === 'reject') note = 'Learning from your answer on LinuxONE: the alert is kept as a non-seizure example for this patient...';
+  let html = `<div class="mname ${pers ? 'personal' : ''}">${pers ? 'Personal model' : 'General model'}</div><div class="mlabel">${esc(cap(note))}</div>`;
+  if (pers && ba && ba.before && ba.after) {
+    const row = (name, x) => `<tr><th>${name}</th><td>${x.alerts}</td><td>${x.false_alerts}</td><td>${Number(x.minutes).toFixed(1)}</td>
+      <td title="${perHour(x) === 'n/a' ? 'Needs at least 5 minutes of monitoring' : ''}">${perHour(x)}</td></tr>`;
+    html += `<table class="ba num"><thead><tr><th></th><th>Alerts</th><th>False alerts</th><th>Minutes monitored</th><th>False alerts per hour</th></tr></thead>
+      <tbody>${row('Before (general)', ba.before)}${row('After (personal)', ba.after)}</tbody></table>`;
+  }
+  $('#dmodel').innerHTML = html;
+}
+
+/* ---------- evidence viewer ---------- */
+function maybeLoadEvidence(b) {
+  const ongoing = b.events.some(e => e.ongoing);
+  const sig = JSON.stringify([b.bed, b.evidence.file, b.evidence.start_s, b.events.map(e => [e.onset_clock, e.ongoing])]);
+  const stale = sig !== S.evSig || (ongoing && Date.now() - S.evAt > 4000);
+  if (!stale || S.evBusy) return;
+  S.evBusy = true; S.evAt = Date.now();
+  api('/api/evidence/' + b.bed).then(ev => {
+    if (S.sel !== b.bed) return;
+    const key = ev.t0_s + '|' + (ev.event_spans || []).length;      // a new window or a new span re-anchors the view
+    if (S.evKey !== b.bed + '|' + key) { S.evKey = b.bed + '|' + key; S.view.start = null; }
+    S.ev = ev; S.evFor = b.bed; S.evSig = sig; drawEvidence();
+  }).catch(() => {}).finally(() => { S.evBusy = false; });
+}
+function evScale(ev) {
+  if (ev._scale) return ev._scale;
+  const devs = [];
+  ev.data.forEach(ch => {
+    const mean = ch.reduce((a, v) => a + v, 0) / (ch.length || 1);
+    ch.forEach(v => devs.push(Math.abs(v - mean)));
+  });
+  devs.sort((a, b) => a - b);
+  ev._scale = devs[Math.floor(devs.length * 0.95)] || 1;      // 95th-percentile deviation maps to 0.45 of a lane, so few peaks clip
+  return ev._scale;
+}
+/* the data is sent at min(fs, 64) Hz (fs in the contract is the recording rate) */
+function evRate(ev) {
+  const n = ev.data[0].length;
+  let rate = Math.min(ev.fs || 64, 64);
+  if (n > 125 * rate) rate = ev.fs;
+  return rate;
+}
+function clampView(ev) {
+  const total = ev.data[0].length / evRate(ev), v = S.view;
+  v.len = Math.min(v.len, total);
+  if (v.start === null) {   // first look: begin shortly before the first flagged span, else show the latest data
+    const sp = (ev.event_spans || [])[0];
+    v.start = sp ? sp[0] - v.len / 3 : ev.t0_s + total - v.len;
+  }
+  v.start = Math.max(ev.t0_s, Math.min(ev.t0_s + total - v.len, v.start));
+  return total;
+}
+function syncControls(ev, total) {
+  document.querySelectorAll('#zoom button').forEach(b => b.classList.toggle('on', +b.dataset.w === S.view.len));
+  const pan = $('#pan');
+  pan.hidden = !ev || total <= S.view.len + 0.5;
+  if (!pan.hidden) { pan.min = ev.t0_s; pan.max = ev.t0_s + total - S.view.len; pan.value = S.view.start; }
+}
+function drawEvidence() {
+  const cv = $('#eeg'), box = $('#viewer');
+  if (box.hidden) return;
+  const dpr = window.devicePixelRatio || 1, W = box.clientWidth, H = box.clientHeight;
+  if (!W || !H) return;
+  cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+  const g = cv.getContext('2d');
+  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  g.clearRect(0, 0, W, H);
+  const css = getComputedStyle(document.documentElement);
+  const accent = css.getPropertyValue('--accent').trim(), line = css.getPropertyValue('--line').trim(), muted = css.getPropertyValue('--muted').trim();
+  const ev = S.evFor === S.sel ? S.ev : null;
+  g.font = '12px system-ui, "Segoe UI", sans-serif'; g.textBaseline = 'middle';
+  if (!ev || !ev.data.length || ev.data[0].length < 2) {
+    syncControls(null, 0); g.fillStyle = muted; g.textAlign = 'center';
+    g.fillText(ev ? 'No EEG recorded for this window yet.' : 'Loading EEG evidence...', W / 2, H / 2); return;
+  }
+
+  const total = clampView(ev); syncControls(ev, total);
+  const L = 72, R = 14, T = 22, B = 24, nch = ev.data.length, rate = evRate(ev);
+  const vs = S.view.start, len = S.view.len, ve = vs + len;
+  const pw = W - L - R, lane = (H - T - B) / nch;
+  const x = t => L + (t - vs) / len * pw;
+
+  // flagged spans first, behind the traces
+  (ev.event_spans || []).forEach(([a, z]) => {
+    const x0 = Math.max(L, x(a)), x1 = Math.min(L + pw, x(z));
+    if (x1 <= x0) return;
+    g.fillStyle = accent; g.globalAlpha = 0.12; g.fillRect(x0, T, x1 - x0, H - T - B);
+    g.globalAlpha = 1; g.fillRect(x0, T, x1 - x0, 2);
+  });
+  // doctor-marked seizures (dataset annotations), a green band along the bottom
+  (ev.truth_spans || []).forEach(([a, z]) => {
+    const x0 = Math.max(L, x(a)), x1 = Math.min(L + pw, x(z));
+    if (x1 <= x0) return;
+    g.fillStyle = '#2f7d4f'; g.globalAlpha = 0.10; g.fillRect(x0, T, x1 - x0, H - T - B);
+    g.globalAlpha = 1; g.fillRect(x0, H - B - 4, x1 - x0, 4);
+    if (x1 - x0 > 90) { g.textAlign = 'left'; g.fillText('Doctor-marked seizure', x0 + 2, H - B - 12); }
+  });
+  // time axis
+  const step = len <= 15 ? 1 : len <= 30 ? 5 : len <= 60 ? 10 : 20;
+  g.strokeStyle = line; g.fillStyle = muted; g.lineWidth = 1; g.textAlign = 'center';
+  for (let t = Math.ceil(vs / step) * step; t <= ve; t += step) {
+    const px = Math.round(x(t)) + 0.5;
+    g.beginPath(); g.moveTo(px, T); g.lineTo(px, H - B); g.stroke();
+    g.fillText(fileTime(t), px, H - B + 12);
+  }
+  // channels, drawn only for the visible slice
+  const amp = lane * 0.45 / evScale(ev), clampTo = lane * 0.7;
+  const i0 = Math.max(0, Math.floor((vs - ev.t0_s) * rate) - 1), i1 = Math.min(ev.data[0].length, Math.ceil((ve - ev.t0_s) * rate) + 1);
+  g.lineJoin = 'round'; g.strokeStyle = '#27313d'; g.lineWidth = 1;
+  ev.data.forEach((ch, i) => {
+    const mid = T + lane * (i + 0.5);
+    const mean = ch.reduce((a, v) => a + v, 0) / (ch.length || 1);
+    g.fillStyle = muted; g.textAlign = 'right'; g.fillText(ev.channels[i] || '', L - 8, mid);
+    g.save(); g.beginPath(); g.rect(L, T, pw, H - T - B); g.clip();
+    g.beginPath();
+    for (let k = i0; k < i1; k++) {
+      const dy = Math.max(-clampTo, Math.min(clampTo, (ch[k] - mean) * amp));
+      const px = x(ev.t0_s + k / rate);
+      k === i0 ? g.moveTo(px, mid - dy) : g.lineTo(px, mid - dy);
+    }
+    g.stroke(); g.restore();
+  });
+  // label on the first visible span
+  const first = (ev.event_spans || []).find(([a, z]) => x(z) > L && x(a) < L + pw);
+  if (first) {
+    const x0 = Math.max(L, x(first[0]));
+    if (Math.min(L + pw, x(first[1])) - x0 > 60) { g.fillStyle = accent; g.textAlign = 'left'; g.fillText('Model flagged', x0 + 2, T - 10); }
+  }
+}
+document.querySelectorAll('#zoom button').forEach(btn => btn.addEventListener('click', () => {
+  const v = S.view, mid = (v.start === null ? 0 : v.start + v.len / 2);
+  v.len = +btn.dataset.w;
+  if (v.start !== null) v.start = mid - v.len / 2;
+  drawEvidence();
+}));
+$('#pan').addEventListener('input', e => { S.view.start = +e.target.value; drawEvidence(); });
+new ResizeObserver(drawEvidence).observe($('#viewer'));
+
+/* ---------- acknowledge and confirm (both ask for a name) ---------- */
+const dlg = $('#ackdlg');
+let dlgMode = 'ack';
+const MODES = {
+  ack: { title: 'Acknowledge alert', btn: 'Acknowledge', note: b => `Bed ${b.bed}, ${b.patient_id}: ${b.reason}` },
+  confirm: { title: 'Confirm seizure', btn: 'Confirm seizure',
+             note: b => `Bed ${b.bed}, ${b.patient_id}: ${b.reason}. This retrains the patient's model on LinuxONE and switches the bed to it.` },
+  reject: { title: 'Not a seizure', btn: 'Not a seizure',
+            note: b => `Bed ${b.bed}, ${b.patient_id}: ${b.reason}. The latest alert is kept as a non-seizure example for this patient and the model retrains on LinuxONE. If the patient has no seizure example yet, the bed stays on the general model and the answer is stored for the next confirm.` },
+};
+function askName(mode) {
+  const b = bedOf(S.sel); if (!b) return;
+  S.manual = true;                  // the user is working on this bed; stop following the top of the queue
+  dlgMode = mode;
+  $('#ackh').textContent = MODES[mode].title; $('#acksubmit').textContent = MODES[mode].btn;
+  $('#ackfor').textContent = MODES[mode].note(b);
+  $('#ackerr').textContent = '';
+  try { $('#ackname').value = localStorage.getItem('eegrq.who') || ''; } catch (e) { $('#ackname').value = ''; }
+  dlg.showModal(); $('#ackname').focus(); $('#ackname').select();
+}
+$('#ackbtn').addEventListener('click', () => askName('ack'));
+$('#cfbtn').addEventListener('click', () => askName('confirm'));
+$('#rjbtn').addEventListener('click', () => askName('reject'));
+$('#ackcancel').addEventListener('click', () => dlg.close());
+$('#ackform').addEventListener('submit', async e => {
+  e.preventDefault();
+  const who = $('#ackname').value.trim(), id = S.sel;
+  if (!who) { $('#ackerr').textContent = 'Enter a name to continue.'; return; }
+  try { localStorage.setItem('eegrq.who', who); } catch (e2) {}
+  if (dlgMode === 'confirm' || dlgMode === 'reject') { dlg.close(); runConfirm(id, who, dlgMode); return; }
+  try {
+    replaceBed(await post('/api/ack/' + id, who));
+    dlg.close(); renderQueue(); renderDetail();
+  } catch (err) { $('#ackerr').textContent = 'Could not save. Try again.'; }
+});
+async function runConfirm(id, who, mode = 'confirm') {   // the server retrains before it answers, so wait here and show progress
+  S.busy.set(id, mode); renderQueue(); renderDetail();
+  try { replaceBed(await post('/api/' + mode + '/' + id, who)); }
+  catch (e) {
+    const text = e.status === 400 ? cap(e.message) + '.' : mode === 'reject' ? 'Could not save your answer. Try again.' : 'Retraining failed. Try again.';
+    S.msg = { bed: id, text, until: Date.now() + 6000 };
+  }
+  finally { S.busy.delete(id); renderQueue(); renderDetail(); }
+}
+
+/* ---------- handover ---------- */
+const hodlg = $('#hodlg');
+$('#hobtn').addEventListener('click', async () => {
+  const b = bedOf(S.sel); if (!b) return;
+  $('#hotitle').textContent = 'Handover note';
+  $('#hosub').textContent = `Bed ${b.bed}, ${b.patient_id}`;
+  $('#hotext').textContent = 'Loading...';
+  hodlg.showModal(); $('#hoclose').focus();
+  try { $('#hotext').textContent = (await api('/api/handover/' + b.bed)).note; }
+  catch (e) { $('#hotext').textContent = 'Could not load the note.'; }
+});
+$('#hoclose').addEventListener('click', () => hodlg.close());
+hodlg.addEventListener('click', e => { if (e.target === hodlg) hodlg.close(); });
+
+/* ---------- polling ---------- */
+let polling = false;
+async function pollBeds() {
+  if (polling) return;
+  polling = true;
+  try {
+    const seq = S.mut, beds = await api('/api/beds');
+    if (seq !== S.mut) return;           // we changed a bed while this request was in flight; use the next poll
+    S.beds = beds;
+    $('#conn').textContent = '';
+    if (S.beds.length && (S.sel === null || !S.manual)) select(sorted(S.beds)[0].bed, false);
+    renderQueue(); renderDetail();
+  } catch (e) { $('#conn').textContent = 'Connection lost, retrying'; }
+  finally { polling = false; }
+}
+const METRIC_LABELS = {
+  beds: ['Beds monitored', ''], alerts_raised: ['Alerts raised', ''],
+  median_detection_delay_s: ['Median detection delay (recording time)', ' s'], processing_ms_per_window: ['Processing per window', ' ms'],
+  false_alerts: ['False alerts', ''], replay_speed: ['Replay speed', 'x'],
+};
+async function pollMetrics() {
+  try {
+    const m = await api('/api/metrics');
+    if (m.host) { $('#hostbadge').textContent = 'Running on ' + m.host; delete m.host; }
+    // the clinician view keeps clinical counts only; compute and accelerator figures live on /system
+    const CLINICAL = ['beds', 'alerts_raised', 'false_alerts', 'personalised_beds', 'median_detection_delay_s'];
+    $('#metrics').innerHTML = Object.entries(m).filter(([k]) => CLINICAL.includes(k)).map(([k, v]) => {
+      const [label, unit] = METRIC_LABELS[k] || [cap(k.replace(/_/g, ' ')), ''];
+      return `<div class="m"><span>${esc(label)}</span><b>${v === null || v === undefined ? 'n/a' : esc(v) + unit}</b></div>`;
+    }).join('');
+  } catch (e) { /* keep the last values */ }
+}
+/* ---------- intake screen (Diagnose) ---------- */
+const IX = { people: [], sel: null, res: {}, busy: null };
+const pct = p => { const x = p * 100; return ((x > 0 && x < 1) || (x > 99 && x < 100) ? x.toFixed(1) : Math.round(x)) + '%'; };
+const labelTxt = l => l === 'epilepsy' ? 'Epilepsy' : 'No epilepsy (control)';
+async function loadIntake() {
+  try {
+    const d = await api('/api/intake');
+    IX.people = d.people;
+    $('#ixrule').textContent = 'Who is listed: ' + d.rule[0].toLowerCase() + d.rule.slice(1);
+    $('#ixsum').textContent = d.people.length + ' people';
+  } catch (e) { $('#ixcards').innerHTML = `<p class="qhelp">Intake screen not available: ${esc(e.message)}</p>`; }
+  renderIntakeList(); renderIntakeDetail();
+}
+function renderIntakeList() {
+  const box = $('#ixcards');
+  if (!IX.people.length) return;
+  box.replaceChildren(...IX.people.map(p => {
+    const r = IX.res[p.id], el = document.createElement('article');
+    el.className = 'card person' + (p.id === IX.sel ? ' sel' : ''); el.tabIndex = 0; el.setAttribute('role', 'button');
+    const res = IX.busy === p.id ? '<span>Running on LinuxONE...</span>'
+      : r && !r.error ? `<span>Epilepsy likely: ${pct(r.epilepsy_probability)}</span><span>Dataset label: ${labelTxt(r.dataset_label)}</span>`
+      : `<span>${p.recordings} recording${p.recordings > 1 ? 's' : ''}, not screened yet</span>`;
+    el.innerHTML = `<div class="r1"><span class="bednum">${esc(p.id)}</span><span class="pid">${esc(p.country)}, subject ${p.subject}</span></div><div class="res num">${res}</div>`;
+    const go = () => runDiagnose(p.id);
+    el.addEventListener('click', go);
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+    return el;
+  }));
+}
+function honestyNote() {
+  const d = (CAPS.results || {}).diagnose, n = IX.people.length;
+  return `<div class="callout"><b>How accurate is this?</b> ${n ? 'All ' + n : 'The'} people listed here were in the final model's training data, so their scores look more certain than they would for a new patient. ` +
+    `The honest figure comes from cross-validation, where each person is scored by a model that never saw them` +
+    (d ? `: AUC ${d.gb_auc.toFixed(3)} in Guinea-Bissau and ${d.ng_auc.toFixed(3)} in Nigeria (within country), and ${d.cross_min.toFixed(2)}-${d.cross_max.toFixed(2)} when trained in one country and tested in the other` : '') +
+    ` (runs/diagnose_results.txt).</div>`;
+}
+function renderIntakeDetail() {
+  const p = IX.people.find(x => x.id === IX.sel), r = p && IX.res[p.id];
+  let html;
+  if (!p) html = '<div class="empty">Pick a person on the left to run the epilepsy screen.</div>';
+  else {
+    html = `<div><h1>${esc(p.id)}</h1><div class="sub">${esc(p.country)}, subject ${p.subject}</div></div>`;
+    if (IX.busy === p.id) html += '<div class="spinrow"><i></i>Running the epilepsy screen on IBM LinuxONE...</div>';
+    else if (r && r.error) html += `<p class="err">The screen could not run: ${esc(r.error)}</p>`;
+    else if (r) {
+      const refer = r.epilepsy_probability >= r.threshold;
+      html += `<div class="prob"><span class="big num">Epilepsy likely: ${pct(r.epilepsy_probability)}</span>
+          <span class="pbar" title="Model score from 0 to 100%; the dark marker is the referral threshold"><b style="width:${(r.epilepsy_probability * 100).toFixed(1)}%"></b><i style="left:${(r.threshold * 100).toFixed(1)}%"></i></span></div>
+        <div class="pnote">${refer ? 'At or above' : 'Below'} the referral threshold of ${Math.round(r.threshold * 100)}% (picked in cross-validation): <b>${esc(cap(r.flag))}</b>.</div>
+        <h3>Top 3 reasons</h3><ol class="reasons">${r.top_reasons.map(x => `<li>${esc(x)}</li>`).join('')}</ol>
+        <dl class="facts num">
+          <dt>Dataset label</dt><dd><b>${labelTxt(r.dataset_label)}</b>, the diagnosis recorded in the dataset, shown for checking</dd>
+          <dt>Recording</dt><dd>${r.recording.seconds} s of EEG, ${r.recording.windows_used} clean 4-second windows used (${Math.round(r.recording.clean_frac * 100)}% clean)</dd>
+          <dt>Computed</dt><dd>just now in ${r.compute_s} s on ${esc(r.host)}, ${esc(r.model)}</dd>
+        </dl>
+        <div class="callout">Screening aid, not a diagnosis. <b>A doctor confirms</b> any epilepsy diagnosis.</div>`;
+    }
+  }
+  $('#ixdetail').innerHTML = html + honestyNote();
+}
+async function runDiagnose(id) {           // runs src/diagnose.predict_person on the server on every click
+  if (IX.busy) return;
+  IX.sel = id; IX.busy = id; renderIntakeList(); renderIntakeDetail();
+  try { IX.res[id] = await api('/api/diagnose/' + encodeURIComponent(id), { method: 'POST' }); }
+  catch (e) { IX.res[id] = { error: e.message }; }
+  finally { IX.busy = null; renderIntakeList(); renderIntakeDetail(); }
+}
+
+/* ---------- start ---------- */
+document.querySelectorAll('#views a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === (IS_INTAKE ? '/intake' : '/')));
+const caps = api('/api/capabilities').then(c => {
+  CAPS = c;
+  if (c.host) $('#hostbadge').textContent = 'Running on ' + c.host;
+}).catch(() => {});
+if (IS_INTAKE) {
+  document.body.classList.add('intake'); $('#intake').hidden = false;
+  document.title = 'Intake screening - EEG Review Queue';
+  caps.finally(loadIntake);
+} else {
+  pollBeds(); pollMetrics();
+  setInterval(pollBeds, 1000);
+  setInterval(pollMetrics, 3000);
+}
+</script>
+</body>
+</html>

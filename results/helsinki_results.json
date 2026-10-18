@@ -1,0 +1,4104 @@
+{
+  "dataset": {
+    "name": "Helsinki neonatal EEG seizure dataset",
+    "url": "https://zenodo.org/records/2547147",
+    "neonates": 79,
+    "hours": 111.9,
+    "consensus_events": 315,
+    "consensus_neonates_with_events": 39,
+    "majority_events": 457,
+    "majority_neonates_with_events": 46,
+    "consensus_event_length_s": {
+      "min": 3,
+      "median": 71.0,
+      "max": 1476,
+      "n_under_10s": 8
+    },
+    "neonates_no_reviewer_marked_seizure": 22
+  },
+  "v1": {
+    "fset": "v1",
+    "folds": 20,
+    "neg_per_file_cap": 500,
+    "chb_recordings_used": 186,
+    "chb_recordings_skipped_no_features": 2,
+    "siena_recordings": 41,
+    "newborn_recordings": 79,
+    "a_children_adults_to_newborns": {
+      "0.5": {
+        "seizures": 315,
+        "detected": 72,
+        "sensitivity": 0.229,
+        "false_alerts": 1156,
+        "false_alerts_per_24h": 247.94,
+        "median_delay_s": 14.0,
+        "hours": 111.9
+      },
+      "0.6": {
+        "seizures": 315,
+        "detected": 47,
+        "sensitivity": 0.149,
+        "false_alerts": 715,
+        "false_alerts_per_24h": 153.36,
+        "median_delay_s": 27.0,
+        "hours": 111.9
+      },
+      "0.7": {
+        "seizures": 315,
+        "detected": 21,
+        "sensitivity": 0.067,
+        "false_alerts": 313,
+        "false_alerts_per_24h": 67.13,
+        "median_delay_s": 44.0,
+        "hours": 111.9
+      },
+      "0.8": {
+        "seizures": 315,
+        "detected": 9,
+        "sensitivity": 0.029,
+        "false_alerts": 69,
+        "false_alerts_per_24h": 14.8,
+        "median_delay_s": 55.0,
+        "hours": 111.9
+      },
+      "0.9": {
+        "seizures": 315,
+        "detected": 1,
+        "sensitivity": 0.003,
+        "false_alerts": 8,
+        "false_alerts_per_24h": 1.72,
+        "median_delay_s": 57.0,
+        "hours": 111.9
+      }
+    },
+    "b_mixed_newborn_held_out": {
+      "0.5": {
+        "seizures": 315,
+        "detected": 258,
+        "sensitivity": 0.819,
+        "false_alerts": 2321,
+        "false_alerts_per_24h": 497.82,
+        "median_delay_s": 0.0,
+        "hours": 111.9
+      },
+      "0.6": {
+        "seizures": 315,
+        "detected": 215,
+        "sensitivity": 0.683,
+        "false_alerts": 1600,
+        "false_alerts_per_24h": 343.18,
+        "median_delay_s": 9.0,
+        "hours": 111.9
+      },
+      "0.7": {
+        "seizures": 315,
+        "detected": 121,
+        "sensitivity": 0.384,
+        "false_alerts": 841,
+        "false_alerts_per_24h": 180.38,
+        "median_delay_s": 14.0,
+        "hours": 111.9
+      },
+      "0.8": {
+        "seizures": 315,
+        "detected": 52,
+        "sensitivity": 0.165,
+        "false_alerts": 135,
+        "false_alerts_per_24h": 28.96,
+        "median_delay_s": 17.5,
+        "hours": 111.9
+      },
+      "0.9": {
+        "seizures": 315,
+        "detected": 7,
+        "sensitivity": 0.022,
+        "false_alerts": 5,
+        "false_alerts_per_24h": 1.07,
+        "median_delay_s": 108.0,
+        "hours": 111.9
+      }
+    },
+    "a_vs_majority_truth": {
+      "0.5": {
+        "seizures": 457,
+        "detected": 94,
+        "sensitivity": 0.206,
+        "false_alerts": 1079,
+        "false_alerts_per_24h": 231.43,
+        "median_delay_s": 14.0,
+        "hours": 111.9
+      },
+      "0.6": {
+        "seizures": 457,
+        "detected": 62,
+        "sensitivity": 0.136,
+        "false_alerts": 676,
+        "false_alerts_per_24h": 144.99,
+        "median_delay_s": 25.5,
+        "hours": 111.9
+      },
+      "0.7": {
+        "seizures": 457,
+        "detected": 25,
+        "sensitivity": 0.055,
+        "false_alerts": 300,
+        "false_alerts_per_24h": 64.35,
+        "median_delay_s": 48.0,
+        "hours": 111.9
+      },
+      "0.8": {
+        "seizures": 457,
+        "detected": 9,
+        "sensitivity": 0.02,
+        "false_alerts": 66,
+        "false_alerts_per_24h": 14.16,
+        "median_delay_s": 79.0,
+        "hours": 111.9
+      },
+      "0.9": {
+        "seizures": 457,
+        "detected": 1,
+        "sensitivity": 0.002,
+        "false_alerts": 8,
+        "false_alerts_per_24h": 1.72,
+        "median_delay_s": 57.0,
+        "hours": 111.9
+      }
+    },
+    "b_vs_majority_truth": {
+      "0.5": {
+        "seizures": 457,
+        "detected": 364,
+        "sensitivity": 0.796,
+        "false_alerts": 2099,
+        "false_alerts_per_24h": 450.2,
+        "median_delay_s": 0.0,
+        "hours": 111.9
+      },
+      "0.6": {
+        "seizures": 457,
+        "detected": 301,
+        "sensitivity": 0.659,
+        "false_alerts": 1434,
+        "false_alerts_per_24h": 307.57,
+        "median_delay_s": 5.0,
+        "hours": 111.9
+      },
+      "0.7": {
+        "seizures": 457,
+        "detected": 177,
+        "sensitivity": 0.387,
+        "false_alerts": 749,
+        "false_alerts_per_24h": 160.65,
+        "median_delay_s": 11.0,
+        "hours": 111.9
+      },
+      "0.8": {
+        "seizures": 457,
+        "detected": 79,
+        "sensitivity": 0.173,
+        "false_alerts": 107,
+        "false_alerts_per_24h": 22.95,
+        "median_delay_s": 17.0,
+        "hours": 111.9
+      },
+      "0.9": {
+        "seizures": 457,
+        "detected": 8,
+        "sensitivity": 0.018,
+        "false_alerts": 5,
+        "false_alerts_per_24h": 1.07,
+        "median_delay_s": 70.5,
+        "hours": 111.9
+      }
+    },
+    "no_reviewer_marked_seizure_neonates": {
+      "n": 22,
+      "a": {
+        "0.5": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 348,
+          "false_alerts_per_24h": 291.89,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.6": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 200,
+          "false_alerts_per_24h": 167.75,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.7": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 96,
+          "false_alerts_per_24h": 80.52,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.8": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 22,
+          "false_alerts_per_24h": 18.45,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.9": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 0.84,
+          "median_delay_s": null,
+          "hours": 28.6
+        }
+      },
+      "b": {
+        "0.5": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 685,
+          "false_alerts_per_24h": 574.55,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.6": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 437,
+          "false_alerts_per_24h": 366.54,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.7": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 231,
+          "false_alerts_per_24h": 193.75,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.8": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 34,
+          "false_alerts_per_24h": 28.52,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.9": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 2.52,
+          "median_delay_s": null,
+          "hours": 28.6
+        }
+      }
+    },
+    "per_newborn_at_declared_threshold": {
+      "eeg3.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg36.edf": {
+        "a": {
+          "seizures": 2,
+          "detected": 1,
+          "sensitivity": 0.5,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 55.0,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 2,
+          "detected": 1,
+          "sensitivity": 0.5,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 51.0,
+          "median_delay_s": 92.0,
+          "hours": 1.4
+        }
+      },
+      "eeg41.edf": {
+        "a": {
+          "seizures": 49,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 2.7
+        },
+        "b": {
+          "seizures": 49,
+          "detected": 1,
+          "sensitivity": 0.02,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 725.0,
+          "hours": 2.7
+        }
+      },
+      "eeg46.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        }
+      },
+      "eeg5.edf": {
+        "a": {
+          "seizures": 6,
+          "detected": 2,
+          "sensitivity": 0.333,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 48.0,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 6,
+          "detected": 3,
+          "sensitivity": 0.5,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 41.0,
+          "hours": 1.1
+        }
+      },
+      "eeg6.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 18.37,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 18,
+          "false_alerts_per_24h": 330.68,
+          "median_delay_s": null,
+          "hours": 1.3
+        }
+      },
+      "eeg15.edf": {
+        "a": {
+          "seizures": 5,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.9
+        },
+        "b": {
+          "seizures": 5,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.9
+        }
+      },
+      "eeg48.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg8.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 18.73,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        }
+      },
+      "eeg38.edf": {
+        "a": {
+          "seizures": 19,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.7
+        },
+        "b": {
+          "seizures": 19,
+          "detected": 2,
+          "sensitivity": 0.105,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 109.5,
+          "hours": 1.7
+        }
+      },
+      "eeg49.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 29.99,
+          "median_delay_s": null,
+          "hours": 2.4
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 10.0,
+          "median_delay_s": null,
+          "hours": 2.4
+        }
+      },
+      "eeg62.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 1,
+          "sensitivity": 1.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 106.0,
+          "hours": 1.6
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 1,
+          "sensitivity": 1.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 63.0,
+          "hours": 1.6
+        }
+      },
+      "eeg10.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.5
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.5
+        }
+      },
+      "eeg53.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg69.edf": {
+        "a": {
+          "seizures": 13,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 13,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg76.edf": {
+        "a": {
+          "seizures": 3,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 3,
+          "detected": 1,
+          "sensitivity": 0.333,
+          "false_alerts": 5,
+          "false_alerts_per_24h": 113.06,
+          "median_delay_s": 0.0,
+          "hours": 1.1
+        }
+      },
+      "eeg12.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 19.34,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg39.edf": {
+        "a": {
+          "seizures": 6,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 6,
+          "detected": 2,
+          "sensitivity": 0.333,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 18.66,
+          "median_delay_s": 221.0,
+          "hours": 1.3
+        }
+      },
+      "eeg54.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 19.89,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg63.edf": {
+        "a": {
+          "seizures": 5,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 5,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg18.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg19.edf": {
+        "a": {
+          "seizures": 9,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 2.5
+        },
+        "b": {
+          "seizures": 9,
+          "detected": 1,
+          "sensitivity": 0.111,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 348.0,
+          "hours": 2.5
+        }
+      },
+      "eeg44.edf": {
+        "a": {
+          "seizures": 7,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 0.9
+        },
+        "b": {
+          "seizures": 7,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 0.9
+        }
+      },
+      "eeg55.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 16.74,
+          "median_delay_s": null,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 33.48,
+          "median_delay_s": null,
+          "hours": 1.4
+        }
+      },
+      "eeg14.edf": {
+        "a": {
+          "seizures": 34,
+          "detected": 1,
+          "sensitivity": 0.029,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 23.19,
+          "median_delay_s": 5.0,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 34,
+          "detected": 3,
+          "sensitivity": 0.088,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 46.38,
+          "median_delay_s": 0.0,
+          "hours": 1.0
+        }
+      },
+      "eeg22.edf": {
+        "a": {
+          "seizures": 5,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 5,
+          "detected": 1,
+          "sensitivity": 0.2,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 22.48,
+          "median_delay_s": 65.0,
+          "hours": 1.1
+        }
+      },
+      "eeg23.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 23,
+          "false_alerts_per_24h": 448.27,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg56.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg24.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg51.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        }
+      },
+      "eeg57.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 0.9
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 0.9
+        }
+      },
+      "eeg78.edf": {
+        "a": {
+          "seizures": 21,
+          "detected": 1,
+          "sensitivity": 0.048,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 45.0,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 21,
+          "detected": 4,
+          "sensitivity": 0.19,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 62.0,
+          "hours": 1.4
+        }
+      },
+      "eeg26.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg58.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 11,
+          "false_alerts_per_24h": 202.86,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 7,
+          "false_alerts_per_24h": 129.09,
+          "median_delay_s": null,
+          "hours": 1.3
+        }
+      },
+      "eeg66.edf": {
+        "a": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 22.84,
+          "median_delay_s": null,
+          "hours": 3.2
+        },
+        "b": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 3.2
+        }
+      },
+      "eeg77.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg16.edf": {
+        "a": {
+          "seizures": 16,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.7
+        },
+        "b": {
+          "seizures": 16,
+          "detected": 1,
+          "sensitivity": 0.062,
+          "false_alerts": 16,
+          "false_alerts_per_24h": 232.69,
+          "median_delay_s": 0.0,
+          "hours": 1.7
+        }
+      },
+      "eeg27.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg59.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 44.05,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg67.edf": {
+        "a": {
+          "seizures": 16,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 16,
+          "detected": 3,
+          "sensitivity": 0.188,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 59.0,
+          "hours": 1.4
+        }
+      },
+      "eeg13.edf": {
+        "a": {
+          "seizures": 5,
+          "detected": 2,
+          "sensitivity": 0.4,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 165.5,
+          "hours": 4.3
+        },
+        "b": {
+          "seizures": 5,
+          "detected": 2,
+          "sensitivity": 0.4,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 16.81,
+          "median_delay_s": 39.0,
+          "hours": 4.3
+        }
+      },
+      "eeg28.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.6
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.6
+        }
+      },
+      "eeg47.edf": {
+        "a": {
+          "seizures": 3,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 3,
+          "detected": 3,
+          "sensitivity": 1.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 12.0,
+          "hours": 1.0
+        }
+      },
+      "eeg60.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 8,
+          "false_alerts_per_24h": 182.91,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg29.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 2.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 9,
+          "false_alerts_per_24h": 96.75,
+          "median_delay_s": null,
+          "hours": 2.2
+        }
+      },
+      "eeg61.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 11,
+          "false_alerts_per_24h": 163.05,
+          "median_delay_s": null,
+          "hours": 1.6
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.6
+        }
+      },
+      "eeg75.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg79.edf": {
+        "a": {
+          "seizures": 5,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 0.9
+        },
+        "b": {
+          "seizures": 5,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 0.9
+        }
+      },
+      "eeg9.edf": {
+        "a": {
+          "seizures": 3,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 3,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg30.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg31.edf": {
+        "a": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 2,
+          "detected": 1,
+          "sensitivity": 0.5,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 18.0,
+          "hours": 1.0
+        }
+      },
+      "eeg64.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.8
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 13.63,
+          "median_delay_s": null,
+          "hours": 1.8
+        }
+      },
+      "eeg4.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 1,
+          "sensitivity": 1.0,
+          "false_alerts": 9,
+          "false_alerts_per_24h": 227.04,
+          "median_delay_s": 0.0,
+          "hours": 1.0
+        }
+      },
+      "eeg32.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 56.19,
+          "median_delay_s": null,
+          "hours": 1.3
+        }
+      },
+      "eeg52.edf": {
+        "a": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg65.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        }
+      },
+      "eeg33.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg40.edf": {
+        "a": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.6
+        },
+        "b": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.6
+        }
+      },
+      "eeg50.edf": {
+        "a": {
+          "seizures": 10,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 17.54,
+          "median_delay_s": null,
+          "hours": 2.7
+        },
+        "b": {
+          "seizures": 10,
+          "detected": 10,
+          "sensitivity": 1.0,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 17.54,
+          "median_delay_s": 9.5,
+          "hours": 2.7
+        }
+      },
+      "eeg68.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg25.edf": {
+        "a": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 21,
+          "false_alerts_per_24h": 270.44,
+          "median_delay_s": null,
+          "hours": 1.9
+        },
+        "b": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 12.88,
+          "median_delay_s": null,
+          "hours": 1.9
+        }
+      },
+      "eeg35.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg70.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 52.83,
+          "median_delay_s": null,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        }
+      },
+      "eeg73.edf": {
+        "a": {
+          "seizures": 8,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 8,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg1.edf": {
+        "a": {
+          "seizures": 24,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 12.36,
+          "median_delay_s": null,
+          "hours": 1.9
+        },
+        "b": {
+          "seizures": 24,
+          "detected": 10,
+          "sensitivity": 0.417,
+          "false_alerts": 10,
+          "false_alerts_per_24h": 123.55,
+          "median_delay_s": 4.5,
+          "hours": 1.9
+        }
+      },
+      "eeg11.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 4,
+          "false_alerts_per_24h": 46.15,
+          "median_delay_s": null,
+          "hours": 2.1
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 34.62,
+          "median_delay_s": null,
+          "hours": 2.1
+        }
+      },
+      "eeg37.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        }
+      },
+      "eeg71.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg20.edf": {
+        "a": {
+          "seizures": 15,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 15,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg21.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.6
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 15.14,
+          "median_delay_s": null,
+          "hours": 1.6
+        }
+      },
+      "eeg42.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        }
+      },
+      "eeg72.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        }
+      },
+      "eeg7.edf": {
+        "a": {
+          "seizures": 6,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 6,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg17.edf": {
+        "a": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.5
+        },
+        "b": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.5
+        }
+      },
+      "eeg43.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 2.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 2.0
+        }
+      },
+      "eeg74.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg2.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 45.95,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg34.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 1,
+          "sensitivity": 1.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 8.0,
+          "hours": 1.8
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 1,
+          "sensitivity": 1.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 260.0,
+          "hours": 1.8
+        }
+      },
+      "eeg45.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 45.21,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 4,
+          "false_alerts_per_24h": 90.42,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      }
+    },
+    "wall_clock_s": 416
+  },
+  "v2": {
+    "fset": "v2",
+    "folds": 20,
+    "neg_per_file_cap": 500,
+    "chb_recordings_used": 186,
+    "chb_recordings_skipped_no_features": 2,
+    "siena_recordings": 41,
+    "newborn_recordings": 79,
+    "a_children_adults_to_newborns": {
+      "0.5": {
+        "seizures": 315,
+        "detected": 69,
+        "sensitivity": 0.219,
+        "false_alerts": 390,
+        "false_alerts_per_24h": 83.65,
+        "median_delay_s": 32.0,
+        "hours": 111.9
+      },
+      "0.6": {
+        "seizures": 315,
+        "detected": 53,
+        "sensitivity": 0.168,
+        "false_alerts": 181,
+        "false_alerts_per_24h": 38.82,
+        "median_delay_s": 36.0,
+        "hours": 111.9
+      },
+      "0.7": {
+        "seizures": 315,
+        "detected": 39,
+        "sensitivity": 0.124,
+        "false_alerts": 80,
+        "false_alerts_per_24h": 17.16,
+        "median_delay_s": 46.0,
+        "hours": 111.9
+      },
+      "0.8": {
+        "seizures": 315,
+        "detected": 12,
+        "sensitivity": 0.038,
+        "false_alerts": 39,
+        "false_alerts_per_24h": 8.36,
+        "median_delay_s": 54.5,
+        "hours": 111.9
+      },
+      "0.9": {
+        "seizures": 315,
+        "detected": 4,
+        "sensitivity": 0.013,
+        "false_alerts": 22,
+        "false_alerts_per_24h": 4.72,
+        "median_delay_s": 56.0,
+        "hours": 111.9
+      }
+    },
+    "b_mixed_newborn_held_out": {
+      "0.5": {
+        "seizures": 315,
+        "detected": 273,
+        "sensitivity": 0.867,
+        "false_alerts": 2281,
+        "false_alerts_per_24h": 489.24,
+        "median_delay_s": 1.0,
+        "hours": 111.9
+      },
+      "0.6": {
+        "seizures": 315,
+        "detected": 240,
+        "sensitivity": 0.762,
+        "false_alerts": 1467,
+        "false_alerts_per_24h": 314.65,
+        "median_delay_s": 9.0,
+        "hours": 111.9
+      },
+      "0.7": {
+        "seizures": 315,
+        "detected": 187,
+        "sensitivity": 0.594,
+        "false_alerts": 666,
+        "false_alerts_per_24h": 142.85,
+        "median_delay_s": 17.0,
+        "hours": 111.9
+      },
+      "0.8": {
+        "seizures": 315,
+        "detected": 106,
+        "sensitivity": 0.337,
+        "false_alerts": 192,
+        "false_alerts_per_24h": 41.18,
+        "median_delay_s": 31.5,
+        "hours": 111.9
+      },
+      "0.9": {
+        "seizures": 315,
+        "detected": 23,
+        "sensitivity": 0.073,
+        "false_alerts": 14,
+        "false_alerts_per_24h": 3.0,
+        "median_delay_s": 44.0,
+        "hours": 111.9
+      }
+    },
+    "a_vs_majority_truth": {
+      "0.5": {
+        "seizures": 457,
+        "detected": 121,
+        "sensitivity": 0.265,
+        "false_alerts": 302,
+        "false_alerts_per_24h": 64.77,
+        "median_delay_s": 15.0,
+        "hours": 111.9
+      },
+      "0.6": {
+        "seizures": 457,
+        "detected": 85,
+        "sensitivity": 0.186,
+        "false_alerts": 132,
+        "false_alerts_per_24h": 28.31,
+        "median_delay_s": 17.0,
+        "hours": 111.9
+      },
+      "0.7": {
+        "seizures": 457,
+        "detected": 62,
+        "sensitivity": 0.136,
+        "false_alerts": 52,
+        "false_alerts_per_24h": 11.15,
+        "median_delay_s": 19.5,
+        "hours": 111.9
+      },
+      "0.8": {
+        "seizures": 457,
+        "detected": 26,
+        "sensitivity": 0.057,
+        "false_alerts": 21,
+        "false_alerts_per_24h": 4.5,
+        "median_delay_s": 4.0,
+        "hours": 111.9
+      },
+      "0.9": {
+        "seizures": 457,
+        "detected": 11,
+        "sensitivity": 0.024,
+        "false_alerts": 10,
+        "false_alerts_per_24h": 2.14,
+        "median_delay_s": 1.0,
+        "hours": 111.9
+      }
+    },
+    "b_vs_majority_truth": {
+      "0.5": {
+        "seizures": 457,
+        "detected": 384,
+        "sensitivity": 0.84,
+        "false_alerts": 2094,
+        "false_alerts_per_24h": 449.13,
+        "median_delay_s": 0.0,
+        "hours": 111.9
+      },
+      "0.6": {
+        "seizures": 457,
+        "detected": 328,
+        "sensitivity": 0.718,
+        "false_alerts": 1275,
+        "false_alerts_per_24h": 273.47,
+        "median_delay_s": 5.0,
+        "hours": 111.9
+      },
+      "0.7": {
+        "seizures": 457,
+        "detected": 254,
+        "sensitivity": 0.556,
+        "false_alerts": 557,
+        "false_alerts_per_24h": 119.47,
+        "median_delay_s": 10.5,
+        "hours": 111.9
+      },
+      "0.8": {
+        "seizures": 457,
+        "detected": 160,
+        "sensitivity": 0.35,
+        "false_alerts": 122,
+        "false_alerts_per_24h": 26.17,
+        "median_delay_s": 14.0,
+        "hours": 111.9
+      },
+      "0.9": {
+        "seizures": 457,
+        "detected": 35,
+        "sensitivity": 0.077,
+        "false_alerts": 3,
+        "false_alerts_per_24h": 0.64,
+        "median_delay_s": 24.0,
+        "hours": 111.9
+      }
+    },
+    "no_reviewer_marked_seizure_neonates": {
+      "n": 22,
+      "a": {
+        "0.5": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 48,
+          "false_alerts_per_24h": 40.26,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.6": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 19,
+          "false_alerts_per_24h": 15.94,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.7": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 11,
+          "false_alerts_per_24h": 9.23,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.8": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 4,
+          "false_alerts_per_24h": 3.36,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.9": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 2.52,
+          "median_delay_s": null,
+          "hours": 28.6
+        }
+      },
+      "b": {
+        "0.5": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 671,
+          "false_alerts_per_24h": 562.81,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.6": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 380,
+          "false_alerts_per_24h": 318.73,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.7": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 168,
+          "false_alerts_per_24h": 140.91,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.8": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 30,
+          "false_alerts_per_24h": 25.16,
+          "median_delay_s": null,
+          "hours": 28.6
+        },
+        "0.9": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 0.84,
+          "median_delay_s": null,
+          "hours": 28.6
+        }
+      }
+    },
+    "per_newborn_at_declared_threshold": {
+      "eeg3.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 39.17,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg36.edf": {
+        "a": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 2,
+          "detected": 1,
+          "sensitivity": 0.5,
+          "false_alerts": 5,
+          "false_alerts_per_24h": 85.01,
+          "median_delay_s": 43.0,
+          "hours": 1.4
+        }
+      },
+      "eeg41.edf": {
+        "a": {
+          "seizures": 49,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 2.7
+        },
+        "b": {
+          "seizures": 49,
+          "detected": 21,
+          "sensitivity": 0.429,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 143.0,
+          "hours": 2.7
+        }
+      },
+      "eeg46.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        }
+      },
+      "eeg5.edf": {
+        "a": {
+          "seizures": 6,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 6,
+          "detected": 5,
+          "sensitivity": 0.833,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 29.0,
+          "hours": 1.1
+        }
+      },
+      "eeg6.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 55.11,
+          "median_delay_s": null,
+          "hours": 1.3
+        }
+      },
+      "eeg15.edf": {
+        "a": {
+          "seizures": 5,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.9
+        },
+        "b": {
+          "seizures": 5,
+          "detected": 1,
+          "sensitivity": 0.2,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 37.58,
+          "median_delay_s": 72.0,
+          "hours": 1.9
+        }
+      },
+      "eeg48.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg8.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        }
+      },
+      "eeg38.edf": {
+        "a": {
+          "seizures": 19,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.7
+        },
+        "b": {
+          "seizures": 19,
+          "detected": 5,
+          "sensitivity": 0.263,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 18.0,
+          "hours": 1.7
+        }
+      },
+      "eeg49.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 29.99,
+          "median_delay_s": null,
+          "hours": 2.4
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 5,
+          "false_alerts_per_24h": 49.98,
+          "median_delay_s": null,
+          "hours": 2.4
+        }
+      },
+      "eeg62.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 1,
+          "sensitivity": 1.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 14.76,
+          "median_delay_s": 33.0,
+          "hours": 1.6
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 1,
+          "sensitivity": 1.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 9.0,
+          "hours": 1.6
+        }
+      },
+      "eeg10.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 15.92,
+          "median_delay_s": null,
+          "hours": 1.5
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 15.92,
+          "median_delay_s": null,
+          "hours": 1.5
+        }
+      },
+      "eeg53.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg69.edf": {
+        "a": {
+          "seizures": 13,
+          "detected": 2,
+          "sensitivity": 0.154,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 116.0,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 13,
+          "detected": 5,
+          "sensitivity": 0.385,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 86.0,
+          "hours": 1.1
+        }
+      },
+      "eeg76.edf": {
+        "a": {
+          "seizures": 3,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 3,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 67.84,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg12.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg39.edf": {
+        "a": {
+          "seizures": 6,
+          "detected": 1,
+          "sensitivity": 0.167,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 233.0,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 6,
+          "detected": 3,
+          "sensitivity": 0.5,
+          "false_alerts": 4,
+          "false_alerts_per_24h": 74.66,
+          "median_delay_s": 67.0,
+          "hours": 1.3
+        }
+      },
+      "eeg54.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 19.89,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 39.78,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg63.edf": {
+        "a": {
+          "seizures": 5,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 5,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg18.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg19.edf": {
+        "a": {
+          "seizures": 9,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 2.5
+        },
+        "b": {
+          "seizures": 9,
+          "detected": 1,
+          "sensitivity": 0.111,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 38.0,
+          "hours": 2.5
+        }
+      },
+      "eeg44.edf": {
+        "a": {
+          "seizures": 7,
+          "detected": 4,
+          "sensitivity": 0.571,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 51.43,
+          "median_delay_s": 4.0,
+          "hours": 0.9
+        },
+        "b": {
+          "seizures": 7,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 0.9
+        }
+      },
+      "eeg55.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 33.48,
+          "median_delay_s": null,
+          "hours": 1.4
+        }
+      },
+      "eeg14.edf": {
+        "a": {
+          "seizures": 34,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 34,
+          "detected": 6,
+          "sensitivity": 0.176,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 36.5,
+          "hours": 1.0
+        }
+      },
+      "eeg22.edf": {
+        "a": {
+          "seizures": 5,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 5,
+          "detected": 1,
+          "sensitivity": 0.2,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 44.95,
+          "median_delay_s": 1.0,
+          "hours": 1.1
+        }
+      },
+      "eeg23.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 29,
+          "false_alerts_per_24h": 565.22,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg56.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg24.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg51.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        }
+      },
+      "eeg57.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 0.9
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 0.9
+        }
+      },
+      "eeg78.edf": {
+        "a": {
+          "seizures": 21,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 21,
+          "detected": 5,
+          "sensitivity": 0.238,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 69.0,
+          "hours": 1.4
+        }
+      },
+      "eeg26.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg58.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 36.88,
+          "median_delay_s": null,
+          "hours": 1.3
+        }
+      },
+      "eeg66.edf": {
+        "a": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 3.2
+        },
+        "b": {
+          "seizures": 2,
+          "detected": 2,
+          "sensitivity": 1.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 213.5,
+          "hours": 3.2
+        }
+      },
+      "eeg77.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 41.21,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 1,
+          "sensitivity": 1.0,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 61.82,
+          "median_delay_s": 231.0,
+          "hours": 1.2
+        }
+      },
+      "eeg16.edf": {
+        "a": {
+          "seizures": 16,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.7
+        },
+        "b": {
+          "seizures": 16,
+          "detected": 10,
+          "sensitivity": 0.625,
+          "false_alerts": 32,
+          "false_alerts_per_24h": 465.38,
+          "median_delay_s": 0.0,
+          "hours": 1.7
+        }
+      },
+      "eeg27.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 49.43,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg59.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 22.02,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg67.edf": {
+        "a": {
+          "seizures": 16,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 16,
+          "detected": 4,
+          "sensitivity": 0.25,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 40.5,
+          "hours": 1.4
+        }
+      },
+      "eeg13.edf": {
+        "a": {
+          "seizures": 5,
+          "detected": 1,
+          "sensitivity": 0.2,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 119.0,
+          "hours": 4.3
+        },
+        "b": {
+          "seizures": 5,
+          "detected": 3,
+          "sensitivity": 0.6,
+          "false_alerts": 4,
+          "false_alerts_per_24h": 22.42,
+          "median_delay_s": 64.0,
+          "hours": 4.3
+        }
+      },
+      "eeg28.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.6
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.6
+        }
+      },
+      "eeg47.edf": {
+        "a": {
+          "seizures": 3,
+          "detected": 1,
+          "sensitivity": 0.333,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 27.0,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 3,
+          "detected": 3,
+          "sensitivity": 1.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 23.0,
+          "hours": 1.0
+        }
+      },
+      "eeg60.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 22.86,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg29.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 2.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 2.2
+        }
+      },
+      "eeg61.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.6
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 14.82,
+          "median_delay_s": null,
+          "hours": 1.6
+        }
+      },
+      "eeg75.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg79.edf": {
+        "a": {
+          "seizures": 5,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 0.9
+        },
+        "b": {
+          "seizures": 5,
+          "detected": 3,
+          "sensitivity": 0.6,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 13.0,
+          "hours": 0.9
+        }
+      },
+      "eeg9.edf": {
+        "a": {
+          "seizures": 3,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 3,
+          "detected": 1,
+          "sensitivity": 0.333,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 17.0,
+          "hours": 1.0
+        }
+      },
+      "eeg30.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg31.edf": {
+        "a": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 2,
+          "detected": 2,
+          "sensitivity": 1.0,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 48.97,
+          "median_delay_s": 40.5,
+          "hours": 1.0
+        }
+      },
+      "eeg64.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 15,
+          "false_alerts_per_24h": 204.51,
+          "median_delay_s": null,
+          "hours": 1.8
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 20,
+          "false_alerts_per_24h": 272.68,
+          "median_delay_s": null,
+          "hours": 1.8
+        }
+      },
+      "eeg4.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 1,
+          "sensitivity": 1.0,
+          "false_alerts": 27,
+          "false_alerts_per_24h": 681.11,
+          "median_delay_s": 0.0,
+          "hours": 1.0
+        }
+      },
+      "eeg32.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 12,
+          "false_alerts_per_24h": 224.76,
+          "median_delay_s": null,
+          "hours": 1.3
+        }
+      },
+      "eeg52.edf": {
+        "a": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg65.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        }
+      },
+      "eeg33.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg40.edf": {
+        "a": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 4,
+          "false_alerts_per_24h": 59.21,
+          "median_delay_s": null,
+          "hours": 1.6
+        },
+        "b": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.6
+        }
+      },
+      "eeg50.edf": {
+        "a": {
+          "seizures": 10,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 2,
+          "false_alerts_per_24h": 17.54,
+          "median_delay_s": null,
+          "hours": 2.7
+        },
+        "b": {
+          "seizures": 10,
+          "detected": 9,
+          "sensitivity": 0.9,
+          "false_alerts": 3,
+          "false_alerts_per_24h": 26.31,
+          "median_delay_s": 8.0,
+          "hours": 2.7
+        }
+      },
+      "eeg68.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg25.edf": {
+        "a": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 12.88,
+          "median_delay_s": null,
+          "hours": 1.9
+        },
+        "b": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.9
+        }
+      },
+      "eeg35.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg70.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        }
+      },
+      "eeg73.edf": {
+        "a": {
+          "seizures": 8,
+          "detected": 2,
+          "sensitivity": 0.25,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 23.16,
+          "median_delay_s": 71.5,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 8,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg1.edf": {
+        "a": {
+          "seizures": 24,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 6,
+          "false_alerts_per_24h": 74.13,
+          "median_delay_s": null,
+          "hours": 1.9
+        },
+        "b": {
+          "seizures": 24,
+          "detected": 10,
+          "sensitivity": 0.417,
+          "false_alerts": 10,
+          "false_alerts_per_24h": 123.55,
+          "median_delay_s": 2.5,
+          "hours": 1.9
+        }
+      },
+      "eeg11.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 2.1
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 2.1
+        }
+      },
+      "eeg37.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.3
+        }
+      },
+      "eeg71.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg20.edf": {
+        "a": {
+          "seizures": 15,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 15,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      },
+      "eeg21.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.6
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.6
+        }
+      },
+      "eeg42.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        }
+      },
+      "eeg72.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.4
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 17.29,
+          "median_delay_s": null,
+          "hours": 1.4
+        }
+      },
+      "eeg7.edf": {
+        "a": {
+          "seizures": 6,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 6,
+          "detected": 2,
+          "sensitivity": 0.333,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": 33.0,
+          "hours": 1.0
+        }
+      },
+      "eeg17.edf": {
+        "a": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.5
+        },
+        "b": {
+          "seizures": 2,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.5
+        }
+      },
+      "eeg43.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 2.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 2.0
+        }
+      },
+      "eeg74.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.2
+        }
+      },
+      "eeg2.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.0
+        }
+      },
+      "eeg34.edf": {
+        "a": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.8
+        },
+        "b": {
+          "seizures": 1,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 9,
+          "false_alerts_per_24h": 119.8,
+          "median_delay_s": null,
+          "hours": 1.8
+        }
+      },
+      "eeg45.edf": {
+        "a": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 0,
+          "false_alerts_per_24h": 0.0,
+          "median_delay_s": null,
+          "hours": 1.1
+        },
+        "b": {
+          "seizures": 0,
+          "detected": 0,
+          "sensitivity": 0.0,
+          "false_alerts": 1,
+          "false_alerts_per_24h": 22.61,
+          "median_delay_s": null,
+          "hours": 1.1
+        }
+      }
+    },
+    "wall_clock_s": 1168
+  },
+  "per_newborn_with_consensus_seizures_v2_th0.8": [
+    {
+      "file": "eeg1.edf",
+      "eeg_hours": 1.9,
+      "consensus_seizures": 24,
+      "caught_a_v2": 0,
+      "caught_b_v2": 10,
+      "false_alerts_b_v2": 10
+    },
+    {
+      "file": "eeg4.edf",
+      "eeg_hours": 1.0,
+      "consensus_seizures": 1,
+      "caught_a_v2": 0,
+      "caught_b_v2": 1,
+      "false_alerts_b_v2": 27
+    },
+    {
+      "file": "eeg5.edf",
+      "eeg_hours": 1.1,
+      "consensus_seizures": 6,
+      "caught_a_v2": 0,
+      "caught_b_v2": 5,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg7.edf",
+      "eeg_hours": 1.0,
+      "consensus_seizures": 6,
+      "caught_a_v2": 0,
+      "caught_b_v2": 2,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg9.edf",
+      "eeg_hours": 1.0,
+      "consensus_seizures": 3,
+      "caught_a_v2": 0,
+      "caught_b_v2": 1,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg11.edf",
+      "eeg_hours": 2.1,
+      "consensus_seizures": 1,
+      "caught_a_v2": 0,
+      "caught_b_v2": 0,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg13.edf",
+      "eeg_hours": 4.3,
+      "consensus_seizures": 5,
+      "caught_a_v2": 1,
+      "caught_b_v2": 3,
+      "false_alerts_b_v2": 4
+    },
+    {
+      "file": "eeg14.edf",
+      "eeg_hours": 1.0,
+      "consensus_seizures": 34,
+      "caught_a_v2": 0,
+      "caught_b_v2": 6,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg15.edf",
+      "eeg_hours": 1.9,
+      "consensus_seizures": 5,
+      "caught_a_v2": 0,
+      "caught_b_v2": 1,
+      "false_alerts_b_v2": 3
+    },
+    {
+      "file": "eeg16.edf",
+      "eeg_hours": 1.7,
+      "consensus_seizures": 16,
+      "caught_a_v2": 0,
+      "caught_b_v2": 10,
+      "false_alerts_b_v2": 32
+    },
+    {
+      "file": "eeg17.edf",
+      "eeg_hours": 1.5,
+      "consensus_seizures": 2,
+      "caught_a_v2": 0,
+      "caught_b_v2": 0,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg19.edf",
+      "eeg_hours": 2.5,
+      "consensus_seizures": 9,
+      "caught_a_v2": 0,
+      "caught_b_v2": 1,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg20.edf",
+      "eeg_hours": 1.1,
+      "consensus_seizures": 15,
+      "caught_a_v2": 0,
+      "caught_b_v2": 0,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg21.edf",
+      "eeg_hours": 1.6,
+      "consensus_seizures": 1,
+      "caught_a_v2": 0,
+      "caught_b_v2": 0,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg22.edf",
+      "eeg_hours": 1.1,
+      "consensus_seizures": 5,
+      "caught_a_v2": 0,
+      "caught_b_v2": 1,
+      "false_alerts_b_v2": 2
+    },
+    {
+      "file": "eeg25.edf",
+      "eeg_hours": 1.9,
+      "consensus_seizures": 2,
+      "caught_a_v2": 0,
+      "caught_b_v2": 0,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg31.edf",
+      "eeg_hours": 1.0,
+      "consensus_seizures": 2,
+      "caught_a_v2": 0,
+      "caught_b_v2": 2,
+      "false_alerts_b_v2": 2
+    },
+    {
+      "file": "eeg34.edf",
+      "eeg_hours": 1.8,
+      "consensus_seizures": 1,
+      "caught_a_v2": 0,
+      "caught_b_v2": 0,
+      "false_alerts_b_v2": 9
+    },
+    {
+      "file": "eeg36.edf",
+      "eeg_hours": 1.4,
+      "consensus_seizures": 2,
+      "caught_a_v2": 0,
+      "caught_b_v2": 1,
+      "false_alerts_b_v2": 5
+    },
+    {
+      "file": "eeg38.edf",
+      "eeg_hours": 1.7,
+      "consensus_seizures": 19,
+      "caught_a_v2": 0,
+      "caught_b_v2": 5,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg39.edf",
+      "eeg_hours": 1.3,
+      "consensus_seizures": 6,
+      "caught_a_v2": 1,
+      "caught_b_v2": 3,
+      "false_alerts_b_v2": 4
+    },
+    {
+      "file": "eeg40.edf",
+      "eeg_hours": 1.6,
+      "consensus_seizures": 2,
+      "caught_a_v2": 0,
+      "caught_b_v2": 0,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg41.edf",
+      "eeg_hours": 2.7,
+      "consensus_seizures": 49,
+      "caught_a_v2": 0,
+      "caught_b_v2": 21,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg44.edf",
+      "eeg_hours": 0.9,
+      "consensus_seizures": 7,
+      "caught_a_v2": 4,
+      "caught_b_v2": 0,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg47.edf",
+      "eeg_hours": 1.0,
+      "consensus_seizures": 3,
+      "caught_a_v2": 1,
+      "caught_b_v2": 3,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg50.edf",
+      "eeg_hours": 2.7,
+      "consensus_seizures": 10,
+      "caught_a_v2": 0,
+      "caught_b_v2": 9,
+      "false_alerts_b_v2": 3
+    },
+    {
+      "file": "eeg51.edf",
+      "eeg_hours": 1.3,
+      "consensus_seizures": 1,
+      "caught_a_v2": 0,
+      "caught_b_v2": 0,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg52.edf",
+      "eeg_hours": 1.1,
+      "consensus_seizures": 2,
+      "caught_a_v2": 0,
+      "caught_b_v2": 0,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg62.edf",
+      "eeg_hours": 1.6,
+      "consensus_seizures": 1,
+      "caught_a_v2": 1,
+      "caught_b_v2": 1,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg63.edf",
+      "eeg_hours": 1.1,
+      "consensus_seizures": 5,
+      "caught_a_v2": 0,
+      "caught_b_v2": 0,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg66.edf",
+      "eeg_hours": 3.2,
+      "consensus_seizures": 2,
+      "caught_a_v2": 0,
+      "caught_b_v2": 2,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg67.edf",
+      "eeg_hours": 1.4,
+      "consensus_seizures": 16,
+      "caught_a_v2": 0,
+      "caught_b_v2": 4,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg69.edf",
+      "eeg_hours": 1.1,
+      "consensus_seizures": 13,
+      "caught_a_v2": 2,
+      "caught_b_v2": 5,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg73.edf",
+      "eeg_hours": 1.0,
+      "consensus_seizures": 8,
+      "caught_a_v2": 2,
+      "caught_b_v2": 0,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg75.edf",
+      "eeg_hours": 1.1,
+      "consensus_seizures": 1,
+      "caught_a_v2": 0,
+      "caught_b_v2": 0,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg76.edf",
+      "eeg_hours": 1.1,
+      "consensus_seizures": 3,
+      "caught_a_v2": 0,
+      "caught_b_v2": 0,
+      "false_alerts_b_v2": 3
+    },
+    {
+      "file": "eeg77.edf",
+      "eeg_hours": 1.2,
+      "consensus_seizures": 1,
+      "caught_a_v2": 0,
+      "caught_b_v2": 1,
+      "false_alerts_b_v2": 3
+    },
+    {
+      "file": "eeg78.edf",
+      "eeg_hours": 1.4,
+      "consensus_seizures": 21,
+      "caught_a_v2": 0,
+      "caught_b_v2": 5,
+      "false_alerts_b_v2": 0
+    },
+    {
+      "file": "eeg79.edf",
+      "eeg_hours": 0.9,
+      "consensus_seizures": 5,
+      "caught_a_v2": 0,
+      "caught_b_v2": 3,
+      "false_alerts_b_v2": 0
+    }
+  ],
+  "summary_c": {
+    "newborns_with_consensus_seizures": 39,
+    "newborns_all_seizures_caught_b_v2": 6,
+    "newborns_some_caught_b_v2": 19,
+    "newborns_none_caught_b_v2": 14,
+    "caught_b_v2": 106,
+    "seizures": 315
+  },
+  "wall_clock_s": {
+    "v1": 416,
+    "v2": 1168
+  },
+  "timings_s": {
+    "download_s": 816,
+    "annotations_s": 1,
+    "features_s": 536
+  }
+}

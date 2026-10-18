@@ -1,0 +1,64 @@
+{
+  "machine": "s390x",
+  "cpus": 3,
+  "runs": [
+    {
+      "patient": "chb01",
+      "recording": "chb01_04.edf",
+      "earlier_recordings": 3,
+      "training_rows": 3994,
+      "seconds": 1.29
+    },
+    {
+      "patient": "chb02",
+      "recording": "chb02_16.edf",
+      "earlier_recordings": 3,
+      "training_rows": 2753,
+      "seconds": 1.26
+    },
+    {
+      "patient": "chb03",
+      "recording": "chb03_02.edf",
+      "earlier_recordings": 1,
+      "training_rows": 1708,
+      "seconds": 2.19
+    },
+    {
+      "patient": "chb04",
+      "recording": "chb04_08.edf",
+      "earlier_recordings": 3,
+      "training_rows": 5762,
+      "seconds": 3.14
+    },
+    {
+      "patient": "chb05",
+      "recording": "chb05_13.edf",
+      "earlier_recordings": 3,
+      "training_rows": 3771,
+      "seconds": 1.32
+    },
+    {
+      "patient": "chb06",
+      "recording": "chb06_04.edf",
+      "earlier_recordings": 3,
+      "training_rows": 2853,
+      "seconds": 1.32
+    },
+    {
+      "patient": "chb07",
+      "recording": "chb07_13.edf",
+      "earlier_recordings": 3,
+      "training_rows": 5784,
+      "seconds": 1.45
+    },
+    {
+      "patient": "chb08",
+      "recording": "chb08_05.edf",
+      "earlier_recordings": 3,
+      "training_rows": 5677,
+      "seconds": 1.7
+    }
+  ],
+  "median_seconds": 1.385,
+  "max_seconds": 3.14
+}

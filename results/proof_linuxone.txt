@@ -1,0 +1,33 @@
+[2026-10-17 13:11:06] proof
+Linux ibmzdatathonuom 6.8.0-147-generic #147-Ubuntu SMP Thu Sep 24 10:59:43 UTC 2026 s390x s390x s390x GNU/Linux
+s390x
+3
+Architecture:                            s390x
+CPU op-mode(s):                          32-bit, 64-bit
+Byte Order:                              Big Endian
+CPU(s):                                  3
+On-line CPU(s) list:                     0-2
+Vendor ID:                               IBM/S390
+Model name:                              -
+Machine type:                            9175
+Thread(s) per core:                      1
+Core(s) per socket:                      1
+Socket(s) per book:                      1
+Book(s) per drawer:                      1
+Drawer(s):                               3
+CPU dynamic MHz:                         5508
+CPU static MHz:                          5508
+BogoMIPS:                                28901.00
+Dispatching mode:                        horizontal
+Flags:                                   esan3 zarch stfle msa ldisp eimm dfp edat etf3eh highgprs te vx vxd vxe gs vxe2 vxp sort dflt vxp2 nnpa sie
+Hypervisor:                              z/VM 7.3.0
+Hypervisor vendor:                       IBM
+PRETTY_NAME="Ubuntu 24.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+               total        used        free      shared  buff/cache   available
+Mem:           7.8Gi       1.7Gi       1.2Gi        18Mi       5.1Gi       6.2Gi
+Swap:             0B          0B          0B
+python 3.12.3 sklearn 1.4.1.post1 numpy 1.26.4
+experiments v1: 1554.050 s wall, 3047.875 s user
+scale test: 63.454 s wall, 11.017 s user

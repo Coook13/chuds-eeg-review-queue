@@ -1,0 +1,124 @@
+Helsinki neonatal EEG (Zenodo 2547147): 79 neonates, 111.9 h of EEG, 256 Hz, 19 electrodes
+CONSENSUS (3 of 3 experts) truth: 315 events in 39 neonates (event length min/median/max 3/71/1476 s, 8 under 10 s)
+MAJORITY (2 of 3) truth: 457 events in 46 neonates
+22 neonates were not marked as having seizures by any of the 3 experts (clinical sheet)
+training: CHB-MIT 186 recordings + Siena 41 recordings + other newborns (b); (b) folds: 20 groups of newborns held out
+
+##### v1 features (as cached), run time 416 s
+
+== (a) CHILDREN + ADULTS -> NEWBORNS, no newborn training data [v1] ==
+  th=0.5: caught 72/315 (23%), 247.94 false alerts/24h (1156 alerts), median delay 14.0s, 111.9 h of EEG
+  th=0.6: caught 47/315 (15%), 153.36 false alerts/24h (715 alerts), median delay 27.0s, 111.9 h of EEG
+  th=0.7: caught 21/315 (7%), 67.13 false alerts/24h (313 alerts), median delay 44.0s, 111.9 h of EEG
+  th=0.8: caught 9/315 (3%), 14.8 false alerts/24h (69 alerts), median delay 55.0s, 111.9 h of EEG  <- declared threshold
+  th=0.9: caught 1/315 (0%), 1.72 false alerts/24h (8 alerts), median delay 57.0s, 111.9 h of EEG
+
+== (b) MIXED: CHB-MIT + Siena + other newborns, test newborn held out [v1] ==
+  th=0.5: caught 258/315 (82%), 497.82 false alerts/24h (2321 alerts), median delay 0.0s, 111.9 h of EEG
+  th=0.6: caught 215/315 (68%), 343.18 false alerts/24h (1600 alerts), median delay 9.0s, 111.9 h of EEG
+  th=0.7: caught 121/315 (38%), 180.38 false alerts/24h (841 alerts), median delay 14.0s, 111.9 h of EEG
+  th=0.8: caught 52/315 (16%), 28.96 false alerts/24h (135 alerts), median delay 17.5s, 111.9 h of EEG  <- declared threshold
+  th=0.9: caught 7/315 (2%), 1.07 false alerts/24h (5 alerts), median delay 108.0s, 111.9 h of EEG
+
+==    extra: (b) scores matched against MAJORITY events [v1] ==
+  th=0.5: caught 364/457 (80%), 450.2 false alerts/24h (2099 alerts), median delay 0.0s, 111.9 h of EEG
+  th=0.6: caught 301/457 (66%), 307.57 false alerts/24h (1434 alerts), median delay 5.0s, 111.9 h of EEG
+  th=0.7: caught 177/457 (39%), 160.65 false alerts/24h (749 alerts), median delay 11.0s, 111.9 h of EEG
+  th=0.8: caught 79/457 (17%), 22.95 false alerts/24h (107 alerts), median delay 17.0s, 111.9 h of EEG  <- declared threshold
+  th=0.9: caught 8/457 (2%), 1.07 false alerts/24h (5 alerts), median delay 70.5s, 111.9 h of EEG
+
+==    extra: (a) on the 22 newborns NO expert marked (every alert is false) [v1] ==
+  th=0.5: caught 0/0 (0%), 291.89 false alerts/24h (348 alerts), median delay n/a, 28.6 h of EEG
+  th=0.6: caught 0/0 (0%), 167.75 false alerts/24h (200 alerts), median delay n/a, 28.6 h of EEG
+  th=0.7: caught 0/0 (0%), 80.52 false alerts/24h (96 alerts), median delay n/a, 28.6 h of EEG
+  th=0.8: caught 0/0 (0%), 18.45 false alerts/24h (22 alerts), median delay n/a, 28.6 h of EEG  <- declared threshold
+  th=0.9: caught 0/0 (0%), 0.84 false alerts/24h (1 alerts), median delay n/a, 28.6 h of EEG
+
+==    extra: (b) on the same 22 newborns [v1] ==
+  th=0.5: caught 0/0 (0%), 574.55 false alerts/24h (685 alerts), median delay n/a, 28.6 h of EEG
+  th=0.6: caught 0/0 (0%), 366.54 false alerts/24h (437 alerts), median delay n/a, 28.6 h of EEG
+  th=0.7: caught 0/0 (0%), 193.75 false alerts/24h (231 alerts), median delay n/a, 28.6 h of EEG
+  th=0.8: caught 0/0 (0%), 28.52 false alerts/24h (34 alerts), median delay n/a, 28.6 h of EEG  <- declared threshold
+  th=0.9: caught 0/0 (0%), 2.52 false alerts/24h (3 alerts), median delay n/a, 28.6 h of EEG
+
+##### v2 features (+ change vs last 10 min), run time 1168 s
+
+== (a) CHILDREN + ADULTS -> NEWBORNS, no newborn training data [v2] ==
+  th=0.5: caught 69/315 (22%), 83.65 false alerts/24h (390 alerts), median delay 32.0s, 111.9 h of EEG
+  th=0.6: caught 53/315 (17%), 38.82 false alerts/24h (181 alerts), median delay 36.0s, 111.9 h of EEG
+  th=0.7: caught 39/315 (12%), 17.16 false alerts/24h (80 alerts), median delay 46.0s, 111.9 h of EEG
+  th=0.8: caught 12/315 (4%), 8.36 false alerts/24h (39 alerts), median delay 54.5s, 111.9 h of EEG  <- declared threshold
+  th=0.9: caught 4/315 (1%), 4.72 false alerts/24h (22 alerts), median delay 56.0s, 111.9 h of EEG
+
+== (b) MIXED: CHB-MIT + Siena + other newborns, test newborn held out [v2] ==
+  th=0.5: caught 273/315 (87%), 489.24 false alerts/24h (2281 alerts), median delay 1.0s, 111.9 h of EEG
+  th=0.6: caught 240/315 (76%), 314.65 false alerts/24h (1467 alerts), median delay 9.0s, 111.9 h of EEG
+  th=0.7: caught 187/315 (59%), 142.85 false alerts/24h (666 alerts), median delay 17.0s, 111.9 h of EEG
+  th=0.8: caught 106/315 (34%), 41.18 false alerts/24h (192 alerts), median delay 31.5s, 111.9 h of EEG  <- declared threshold
+  th=0.9: caught 23/315 (7%), 3.0 false alerts/24h (14 alerts), median delay 44.0s, 111.9 h of EEG
+
+==    extra: (b) scores matched against MAJORITY events [v2] ==
+  th=0.5: caught 384/457 (84%), 449.13 false alerts/24h (2094 alerts), median delay 0.0s, 111.9 h of EEG
+  th=0.6: caught 328/457 (72%), 273.47 false alerts/24h (1275 alerts), median delay 5.0s, 111.9 h of EEG
+  th=0.7: caught 254/457 (56%), 119.47 false alerts/24h (557 alerts), median delay 10.5s, 111.9 h of EEG
+  th=0.8: caught 160/457 (35%), 26.17 false alerts/24h (122 alerts), median delay 14.0s, 111.9 h of EEG  <- declared threshold
+  th=0.9: caught 35/457 (8%), 0.64 false alerts/24h (3 alerts), median delay 24.0s, 111.9 h of EEG
+
+==    extra: (a) on the 22 newborns NO expert marked (every alert is false) [v2] ==
+  th=0.5: caught 0/0 (0%), 40.26 false alerts/24h (48 alerts), median delay n/a, 28.6 h of EEG
+  th=0.6: caught 0/0 (0%), 15.94 false alerts/24h (19 alerts), median delay n/a, 28.6 h of EEG
+  th=0.7: caught 0/0 (0%), 9.23 false alerts/24h (11 alerts), median delay n/a, 28.6 h of EEG
+  th=0.8: caught 0/0 (0%), 3.36 false alerts/24h (4 alerts), median delay n/a, 28.6 h of EEG  <- declared threshold
+  th=0.9: caught 0/0 (0%), 2.52 false alerts/24h (3 alerts), median delay n/a, 28.6 h of EEG
+
+==    extra: (b) on the same 22 newborns [v2] ==
+  th=0.5: caught 0/0 (0%), 562.81 false alerts/24h (671 alerts), median delay n/a, 28.6 h of EEG
+  th=0.6: caught 0/0 (0%), 318.73 false alerts/24h (380 alerts), median delay n/a, 28.6 h of EEG
+  th=0.7: caught 0/0 (0%), 140.91 false alerts/24h (168 alerts), median delay n/a, 28.6 h of EEG
+  th=0.8: caught 0/0 (0%), 25.16 false alerts/24h (30 alerts), median delay n/a, 28.6 h of EEG  <- declared threshold
+  th=0.9: caught 0/0 (0%), 0.84 false alerts/24h (1 alerts), median delay n/a, 28.6 h of EEG
+
+== (c) per-newborn summary, (b) v2 at th 0.8 ==
+  39 newborns have consensus seizures; (b) v2 caught 106/315: all seizures caught in 6 newborns, some in 19, none in 14
+  newborn: EEG hours, consensus seizures, caught (a) v2 / (b) v2, false alerts (b) v2
+    eeg1.edf: 1.9 h, 24 seizures, caught 0 / 10, 10 false alerts
+    eeg4.edf: 1.0 h, 1 seizures, caught 0 / 1, 27 false alerts
+    eeg5.edf: 1.1 h, 6 seizures, caught 0 / 5, 0 false alerts
+    eeg7.edf: 1.0 h, 6 seizures, caught 0 / 2, 0 false alerts
+    eeg9.edf: 1.0 h, 3 seizures, caught 0 / 1, 0 false alerts
+    eeg11.edf: 2.1 h, 1 seizures, caught 0 / 0, 0 false alerts
+    eeg13.edf: 4.3 h, 5 seizures, caught 1 / 3, 4 false alerts
+    eeg14.edf: 1.0 h, 34 seizures, caught 0 / 6, 0 false alerts
+    eeg15.edf: 1.9 h, 5 seizures, caught 0 / 1, 3 false alerts
+    eeg16.edf: 1.7 h, 16 seizures, caught 0 / 10, 32 false alerts
+    eeg17.edf: 1.5 h, 2 seizures, caught 0 / 0, 0 false alerts
+    eeg19.edf: 2.5 h, 9 seizures, caught 0 / 1, 0 false alerts
+    eeg20.edf: 1.1 h, 15 seizures, caught 0 / 0, 0 false alerts
+    eeg21.edf: 1.6 h, 1 seizures, caught 0 / 0, 0 false alerts
+    eeg22.edf: 1.1 h, 5 seizures, caught 0 / 1, 2 false alerts
+    eeg25.edf: 1.9 h, 2 seizures, caught 0 / 0, 0 false alerts
+    eeg31.edf: 1.0 h, 2 seizures, caught 0 / 2, 2 false alerts
+    eeg34.edf: 1.8 h, 1 seizures, caught 0 / 0, 9 false alerts
+    eeg36.edf: 1.4 h, 2 seizures, caught 0 / 1, 5 false alerts
+    eeg38.edf: 1.7 h, 19 seizures, caught 0 / 5, 0 false alerts
+    eeg39.edf: 1.3 h, 6 seizures, caught 1 / 3, 4 false alerts
+    eeg40.edf: 1.6 h, 2 seizures, caught 0 / 0, 0 false alerts
+    eeg41.edf: 2.7 h, 49 seizures, caught 0 / 21, 0 false alerts
+    eeg44.edf: 0.9 h, 7 seizures, caught 4 / 0, 0 false alerts
+    eeg47.edf: 1.0 h, 3 seizures, caught 1 / 3, 0 false alerts
+    eeg50.edf: 2.7 h, 10 seizures, caught 0 / 9, 3 false alerts
+    eeg51.edf: 1.3 h, 1 seizures, caught 0 / 0, 0 false alerts
+    eeg52.edf: 1.1 h, 2 seizures, caught 0 / 0, 0 false alerts
+    eeg62.edf: 1.6 h, 1 seizures, caught 1 / 1, 0 false alerts
+    eeg63.edf: 1.1 h, 5 seizures, caught 0 / 0, 0 false alerts
+    eeg66.edf: 3.2 h, 2 seizures, caught 0 / 2, 0 false alerts
+    eeg67.edf: 1.4 h, 16 seizures, caught 0 / 4, 0 false alerts
+    eeg69.edf: 1.1 h, 13 seizures, caught 2 / 5, 0 false alerts
+    eeg73.edf: 1.0 h, 8 seizures, caught 2 / 0, 0 false alerts
+    eeg75.edf: 1.1 h, 1 seizures, caught 0 / 0, 0 false alerts
+    eeg76.edf: 1.1 h, 3 seizures, caught 0 / 0, 3 false alerts
+    eeg77.edf: 1.2 h, 1 seizures, caught 0 / 1, 3 false alerts
+    eeg78.edf: 1.4 h, 21 seizures, caught 0 / 5, 0 false alerts
+    eeg79.edf: 0.9 h, 5 seizures, caught 0 / 3, 0 false alerts
+
+timings (wall clock, 1 thread per process, shared VM): {'download_s': 816, 'annotations_s': 1, 'features_s': 536}; eval v1 416 s, v2 1168 s

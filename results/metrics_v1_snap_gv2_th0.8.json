@@ -1,0 +1,44 @@
+{
+  "tag": "v1_snap_gv2",
+  "threshold": 0.8,
+  "first_confirm_threshold": null,
+  "on_count": 5,
+  "general": {
+    "caught": "102/191",
+    "event_sensitivity": 0.534,
+    "false_alarms_per_day": 22.79,
+    "median_delay_s": 12.5,
+    "hours": 477.0,
+    "window_sensitivity": 0.4487,
+    "window_specificity": 0.9808,
+    "auc": 0.8574,
+    "seizure_windows": 11545,
+    "other_windows": 1705711
+  },
+  "confirm_same_time": {
+    "general": {
+      "caught": "84/168",
+      "event_sensitivity": 0.5,
+      "false_alarms_per_day": 27.14,
+      "median_delay_s": 13.0,
+      "hours": 303.3,
+      "window_sensitivity": 0.4247,
+      "window_specificity": 0.9774,
+      "auc": 0.8455,
+      "seizure_windows": 10097,
+      "other_windows": 1081849
+    },
+    "personalised": {
+      "caught": "141/168",
+      "event_sensitivity": 0.8393,
+      "false_alarms_per_day": 12.19,
+      "median_delay_s": 11.0,
+      "hours": 303.3,
+      "window_sensitivity": 0.7207,
+      "window_specificity": 0.9904,
+      "auc": 0.9531,
+      "seizure_windows": 10097,
+      "other_windows": 1081849
+    }
+  }
+}

@@ -1,0 +1,630 @@
+{
+  "task": "risk of another seizure starting within 60 min of the prediction time",
+  "tree_model": "snapml BoostingMachineClassifier, optimize_trees(tree_format='zdnn_tensors')",
+  "design": {
+    "check_every_s": 900,
+    "horizon_s": 3600,
+    "seen_delay_s": 60,
+    "gap_tolerance_s": 300,
+    "features": [
+      "n_1h",
+      "n_6h",
+      "n_24h",
+      "min_since_last",
+      "last_dur_s",
+      "mean_isi_min",
+      "hours_monitored"
+    ],
+    "cv": "leave-one-patient-out (chb01+chb21 one fold)",
+    "baseline": "seizures in the last 6 h > 0"
+  },
+  "data_notes": [
+    "chb24: no clock times in the summary; used start time + duration from the EDF headers (12 files). Missing file numbers become unrecorded gaps (censored).",
+    "Siena: 14 patients, file times from the seizure lists' registration times; EDF-header start overrides for ['PN05-3.edf', 'PN14-3.edf']."
+  ],
+  "points": {
+    "candidates": {
+      "post_seizure": 198,
+      "checkpoint": 3885
+    },
+    "dropped": {
+      "post_seizure": {
+        "in_or_unseen_seizure": 0,
+        "not_recorded": 4,
+        "censored_next_60min": 70
+      },
+      "checkpoint": {
+        "in_or_unseen_seizure": 35,
+        "not_recorded": 0,
+        "censored_next_60min": 546
+      }
+    },
+    "kept": {
+      "checkpoint": 3304,
+      "post_seizure": 124
+    },
+    "recorded_hours": 973.6,
+    "n_seizures": 198,
+    "segment_gaps_over_tolerance": {
+      "n": 119,
+      "median_h": 2.01
+    }
+  },
+  "pooled_lopo": {
+    "n_points": 3428,
+    "n_positive": 422,
+    "base_rate": 0.1231,
+    "n_patients": 23,
+    "auc_lr": 0.7542,
+    "auc_tree": 0.5788,
+    "auc_baseline": 0.7164,
+    "brier_lr": 0.0938,
+    "brier_tree": 0.17,
+    "brier_climatology": 0.1097,
+    "brier_skill_lr": 0.1449,
+    "brier_skill_tree": -0.5497
+  },
+  "bootstrap_95ci_patient_level": {
+    "lr": [
+      0.664,
+      0.823
+    ],
+    "tree": [
+      0.458,
+      0.701
+    ],
+    "baseline": [
+      0.649,
+      0.775
+    ],
+    "lr_minus_baseline": [
+      -0.004,
+      0.066
+    ],
+    "tree_minus_baseline": [
+      -0.258,
+      -0.01
+    ]
+  },
+  "by_point_type": {
+    "checkpoint": {
+      "n_points": 3304,
+      "n_positive": 375,
+      "base_rate": 0.1135,
+      "n_patients": 23,
+      "auc_lr": 0.7407,
+      "auc_tree": 0.5642,
+      "auc_baseline": 0.7079,
+      "brier_lr": 0.0896,
+      "brier_tree": 0.1672
+    },
+    "post_seizure": {
+      "n_points": 124,
+      "n_positive": 47,
+      "base_rate": 0.379,
+      "n_patients": 21,
+      "auc_lr": 0.7107,
+      "auc_tree": 0.6353,
+      "auc_baseline": 0.5,
+      "brier_lr": 0.2059,
+      "brier_tree": 0.2454
+    }
+  },
+  "without_chb24": {
+    "n_points": 3407,
+    "n_positive": 403,
+    "base_rate": 0.1183,
+    "n_patients": 22,
+    "auc_lr": 0.744,
+    "auc_tree": 0.5651,
+    "auc_baseline": 0.7099,
+    "brier_lr": 0.0928,
+    "brier_tree": 0.1697
+  },
+  "within_patient": {
+    "n_patients_with_both_classes": 21,
+    "mean_auc": {
+      "lr": 0.5514,
+      "tree": 0.5338,
+      "baseline": 0.6194
+    },
+    "per_patient": {
+      "chb01": {
+        "lr": 0.64,
+        "tree": 0.546,
+        "baseline": 0.638,
+        "n": 258,
+        "pos": 35
+      },
+      "chb02": {
+        "lr": 0.748,
+        "tree": 0.765,
+        "baseline": 0.829,
+        "n": 123,
+        "pos": 8
+      },
+      "chb03": {
+        "lr": 0.73,
+        "tree": 0.817,
+        "baseline": 0.797,
+        "n": 121,
+        "pos": 17
+      },
+      "chb04": {
+        "lr": 0.724,
+        "tree": 0.242,
+        "baseline": 0.562,
+        "n": 607,
+        "pos": 12
+      },
+      "chb05": {
+        "lr": 0.591,
+        "tree": 0.624,
+        "baseline": 0.53,
+        "n": 155,
+        "pos": 21
+      },
+      "chb06": {
+        "lr": 0.506,
+        "tree": 0.64,
+        "baseline": 0.517,
+        "n": 261,
+        "pos": 33
+      },
+      "chb07": {
+        "lr": 0.549,
+        "tree": 0.841,
+        "baseline": 0.682,
+        "n": 265,
+        "pos": 8
+      },
+      "chb08": {
+        "lr": 0.21,
+        "tree": 0.546,
+        "baseline": 0.336,
+        "n": 71,
+        "pos": 15
+      },
+      "chb09": {
+        "lr": 0.648,
+        "tree": 0.372,
+        "baseline": 0.713,
+        "n": 266,
+        "pos": 13
+      },
+      "chb10": {
+        "lr": 0.24,
+        "tree": 0.328,
+        "baseline": 0.455,
+        "n": 181,
+        "pos": 21
+      },
+      "chb12": {
+        "lr": 0.61,
+        "tree": 0.523,
+        "baseline": 0.55,
+        "n": 92,
+        "pos": 52
+      },
+      "chb13": {
+        "lr": 0.645,
+        "tree": 0.86,
+        "baseline": 0.776,
+        "n": 97,
+        "pos": 18
+      },
+      "chb14": {
+        "lr": 0.486,
+        "tree": 0.393,
+        "baseline": 0.516,
+        "n": 65,
+        "pos": 19
+      },
+      "chb15": {
+        "lr": 0.285,
+        "tree": 0.532,
+        "baseline": 0.471,
+        "n": 115,
+        "pos": 32
+      },
+      "chb16": {
+        "lr": 0.758,
+        "tree": 0.66,
+        "baseline": 0.769,
+        "n": 82,
+        "pos": 31
+      },
+      "chb17": {
+        "lr": 0.766,
+        "tree": 0.679,
+        "baseline": 0.622,
+        "n": 58,
+        "pos": 6
+      },
+      "chb18": {
+        "lr": 0.2,
+        "tree": 0.322,
+        "baseline": 0.6,
+        "n": 108,
+        "pos": 5
+      },
+      "chb20": {
+        "lr": 0.796,
+        "tree": 0.497,
+        "baseline": 0.876,
+        "n": 85,
+        "pos": 24
+      },
+      "chb22": {
+        "lr": 0.334,
+        "tree": 0.652,
+        "baseline": 0.564,
+        "n": 102,
+        "pos": 8
+      },
+      "chb23": {
+        "lr": 0.692,
+        "tree": 0.331,
+        "baseline": 0.704,
+        "n": 99,
+        "pos": 25
+      },
+      "chb24": {
+        "lr": 0.421,
+        "tree": 0.039,
+        "baseline": 0.5,
+        "n": 21,
+        "pos": 19
+      }
+    }
+  },
+  "baseline_flag": {
+    "flagged": 1144,
+    "sensitivity": 0.7133,
+    "specificity": 0.7196,
+    "ppv": 0.2631,
+    "npv": 0.947
+  },
+  "post_hoc_ablation_lr_without_hours_monitored": {
+    "pooled_auc": 0.7226,
+    "brier": 0.0951,
+    "within_patient_mean_auc": 0.5911,
+    "note": "added after seeing results; information only, final model unchanged"
+  },
+  "better_model": "lr",
+  "calibration_deciles": {
+    "lr": [
+      {
+        "n": 343,
+        "pred_mean": 0.0299,
+        "observed": 0.0262,
+        "pred_range": [
+          0.0216,
+          0.0339
+        ]
+      },
+      {
+        "n": 343,
+        "pred_mean": 0.0394,
+        "observed": 0.07,
+        "pred_range": [
+          0.0339,
+          0.0459
+        ]
+      },
+      {
+        "n": 343,
+        "pred_mean": 0.0494,
+        "observed": 0.0525,
+        "pred_range": [
+          0.0459,
+          0.0529
+        ]
+      },
+      {
+        "n": 343,
+        "pred_mean": 0.0569,
+        "observed": 0.0496,
+        "pred_range": [
+          0.0529,
+          0.0608
+        ]
+      },
+      {
+        "n": 343,
+        "pred_mean": 0.0659,
+        "observed": 0.0437,
+        "pred_range": [
+          0.0608,
+          0.0717
+        ]
+      },
+      {
+        "n": 343,
+        "pred_mean": 0.0798,
+        "observed": 0.0612,
+        "pred_range": [
+          0.0717,
+          0.0916
+        ]
+      },
+      {
+        "n": 343,
+        "pred_mean": 0.1133,
+        "observed": 0.1341,
+        "pred_range": [
+          0.0916,
+          0.1356
+        ]
+      },
+      {
+        "n": 343,
+        "pred_mean": 0.1588,
+        "observed": 0.1399,
+        "pred_range": [
+          0.1356,
+          0.1828
+        ]
+      },
+      {
+        "n": 342,
+        "pred_mean": 0.2313,
+        "observed": 0.2164,
+        "pred_range": [
+          0.183,
+          0.2931
+        ]
+      },
+      {
+        "n": 342,
+        "pred_mean": 0.4398,
+        "observed": 0.4386,
+        "pred_range": [
+          0.2935,
+          0.7805
+        ]
+      }
+    ],
+    "tree": [
+      {
+        "n": 343,
+        "pred_mean": 0.0351,
+        "observed": 0.1574,
+        "pred_range": [
+          0.0067,
+          0.0465
+        ]
+      },
+      {
+        "n": 343,
+        "pred_mean": 0.0509,
+        "observed": 0.0262,
+        "pred_range": [
+          0.0465,
+          0.0571
+        ]
+      },
+      {
+        "n": 343,
+        "pred_mean": 0.0656,
+        "observed": 0.0117,
+        "pred_range": [
+          0.0573,
+          0.073
+        ]
+      },
+      {
+        "n": 343,
+        "pred_mean": 0.0867,
+        "observed": 0.1429,
+        "pred_range": [
+          0.0731,
+          0.1059
+        ]
+      },
+      {
+        "n": 343,
+        "pred_mean": 0.1221,
+        "observed": 0.1458,
+        "pred_range": [
+          0.1059,
+          0.141
+        ]
+      },
+      {
+        "n": 343,
+        "pred_mean": 0.1604,
+        "observed": 0.1312,
+        "pred_range": [
+          0.141,
+          0.1829
+        ]
+      },
+      {
+        "n": 343,
+        "pred_mean": 0.2261,
+        "observed": 0.1399,
+        "pred_range": [
+          0.1829,
+          0.2905
+        ]
+      },
+      {
+        "n": 343,
+        "pred_mean": 0.3657,
+        "observed": 0.1399,
+        "pred_range": [
+          0.2908,
+          0.447
+        ]
+      },
+      {
+        "n": 342,
+        "pred_mean": 0.5356,
+        "observed": 0.1608,
+        "pred_range": [
+          0.447,
+          0.6388
+        ]
+      },
+      {
+        "n": 342,
+        "pred_mean": 0.8117,
+        "observed": 0.1754,
+        "pred_range": [
+          0.6406,
+          0.9321
+        ]
+      }
+    ]
+  },
+  "better_model_at_baseline_flag_rate": {
+    "threshold": 0.1204,
+    "flagged": 1144,
+    "sensitivity": 0.6896,
+    "specificity": 0.7162,
+    "ppv": 0.2544,
+    "npv": 0.9426
+  },
+  "final_lr_coefficients_std_log1p": {
+    "n_1h": -0.104,
+    "n_6h": 0.5618,
+    "n_24h": 0.2974,
+    "min_since_last": -0.3081,
+    "last_dur_s": -0.1059,
+    "mean_isi_min": 0.1342,
+    "hours_monitored": -0.4141,
+    "intercept": -2.3552
+  },
+  "final_model": {
+    "path": "/home/linux1/eeg-review-queue/runs/recurrence_model.joblib",
+    "kind": "logreg"
+  },
+  "siena_external": {
+    "n_points": 422,
+    "n_positive": 94,
+    "base_rate": 0.2227,
+    "n_patients": 13,
+    "auc_lr": 0.502,
+    "auc_tree": 0.5089,
+    "auc_baseline": 0.4903,
+    "brier_lr": 0.1857,
+    "brier_tree": 0.2023,
+    "dropped": {
+      "post_seizure": {
+        "in_or_unseen_seizure": 0,
+        "not_recorded": 0,
+        "censored_next_60min": 32
+      },
+      "checkpoint": {
+        "in_or_unseen_seizure": 8,
+        "not_recorded": 0,
+        "censored_next_60min": 142
+      }
+    },
+    "kept": {
+      "checkpoint": 407,
+      "post_seizure": 15
+    },
+    "by_point_type": {
+      "checkpoint": {
+        "n_points": 407,
+        "n_positive": 93,
+        "base_rate": 0.2285,
+        "n_patients": 13,
+        "auc_lr": 0.5154,
+        "auc_tree": 0.5123,
+        "auc_baseline": 0.5007,
+        "brier_lr": 0.187,
+        "brier_tree": 0.205
+      },
+      "post_seizure": {
+        "n_points": 15,
+        "n_positive": 1,
+        "base_rate": 0.0667,
+        "n_patients": 8,
+        "auc_lr": 0.9286,
+        "auc_tree": 0.8571,
+        "auc_baseline": 0.5,
+        "brier_lr": 0.1509,
+        "brier_tree": 0.1285
+      }
+    },
+    "calibration_deciles_lr": [
+      {
+        "n": 85,
+        "pred_mean": 0.0624,
+        "observed": 0.2,
+        "pred_range": [
+          0.0495,
+          0.0757
+        ]
+      },
+      {
+        "n": 85,
+        "pred_mean": 0.0872,
+        "observed": 0.2588,
+        "pred_range": [
+          0.076,
+          0.0996
+        ]
+      },
+      {
+        "n": 84,
+        "pred_mean": 0.1174,
+        "observed": 0.2381,
+        "pred_range": [
+          0.0999,
+          0.1414
+        ]
+      },
+      {
+        "n": 84,
+        "pred_mean": 0.1858,
+        "observed": 0.1786,
+        "pred_range": [
+          0.1414,
+          0.2314
+        ]
+      },
+      {
+        "n": 84,
+        "pred_mean": 0.3213,
+        "observed": 0.2381,
+        "pred_range": [
+          0.2316,
+          0.5474
+        ]
+      }
+    ]
+  },
+  "example": {
+    "two_recent": {
+      "risk_60min": 0.4633,
+      "reason": "1 seizure in the last hour, 2 in the last 6 h, 2 in the last 24 h; the last one ended 1 min ago. Estimated 46% chance of another seizure in the next hour, well above the 12% average for a monitored hour in the training data.",
+      "features": {
+        "n_1h": 1.0,
+        "n_6h": 2.0,
+        "n_24h": 2.0,
+        "min_since_last": 1.0,
+        "last_dur_s": 45.0,
+        "mean_isi_min": 70.0,
+        "hours_monitored": 1.5291666666666666
+      }
+    },
+    "none_in_6h": {
+      "risk_60min": 0.076,
+      "reason": "No seizures in the last 24 hours. Estimated 8% chance of another seizure in the next hour, below the 12% average for a monitored hour in the training data.",
+      "features": {
+        "n_1h": 0.0,
+        "n_6h": 0.0,
+        "n_24h": 0.0,
+        "min_since_last": 1440.0,
+        "last_dur_s": 0.0,
+        "mean_isi_min": 1440.0,
+        "hours_monitored": 6.0
+      }
+    }
+  },
+  "runtime_s": 3.6
+}

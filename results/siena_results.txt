@@ -1,0 +1,76 @@
+Siena (adults): 41 recordings, 14 patients, 47 seizures, 141.0 h of EEG
+CHB-MIT training set for (a): 186 recordings, 11545 seizure windows
+
+== a) CHILDREN -> ADULTS: general model trained on CHB-MIT, tested on all Siena recordings ==
+  th=0.5: caught 9/47 (19%), 52.25 false alerts/24h (307 alerts), median delay 33.0s, 141.0 h of EEG
+  th=0.6: caught 6/47 (13%), 34.04 false alerts/24h (200 alerts), median delay 48.0s, 141.0 h of EEG
+  th=0.7: caught 6/47 (13%), 20.76 false alerts/24h (122 alerts), median delay 48.5s, 141.0 h of EEG
+  th=0.8: caught 5/47 (11%), 10.04 false alerts/24h (59 alerts), median delay 93.0s, 141.0 h of EEG  <- declared threshold
+  th=0.9: caught 2/47 (4%), 1.36 false alerts/24h (8 alerts), median delay 41.0s, 141.0 h of EEG
+  per patient at th=0.8:
+    PN00: caught 0/5, 0 false alerts in 3.2 h, median delay n/a
+    PN01: caught 0/2, 0 false alerts in 13.5 h, median delay n/a
+    PN03: caught 1/2, 17 false alerts in 24.2 h, median delay 93.0s
+    PN05: caught 0/3, 1 false alerts in 6.0 h, median delay n/a
+    PN06: caught 0/5, 0 false alerts in 12.1 h, median delay n/a
+    PN07: caught 0/1, 6 false alerts in 8.7 h, median delay n/a
+    PN09: caught 0/3, 0 false alerts in 6.8 h, median delay n/a
+    PN10: caught 1/10, 2 false alerts in 18.7 h, median delay 29.0s
+    PN11: caught 0/1, 0 false alerts in 2.4 h, median delay n/a
+    PN12: caught 0/4, 0 false alerts in 6.1 h, median delay n/a
+    PN13: caught 0/3, 0 false alerts in 8.7 h, median delay n/a
+    PN14: caught 1/4, 1 false alerts in 20.5 h, median delay 49.0s
+    PN16: caught 2/2, 32 false alerts in 4.9 h, median delay 98.0s
+    PN17: caught 0/2, 0 false alerts in 5.1 h, median delay n/a
+
+== b) ADULTS, PERSONAL (earlier seizures only): 27 testable recordings, 31 seizures; 14 recordings untestable (no earlier seizure file) ==
+  th=0.5: caught 16/31 (52%), 3.9 false alerts/24h (13 alerts), median delay 15.5s, 80.0 h of EEG
+  th=0.6: caught 14/31 (45%), 2.7 false alerts/24h (9 alerts), median delay 16.5s, 80.0 h of EEG
+  th=0.7: caught 13/31 (42%), 1.8 false alerts/24h (6 alerts), median delay 20.0s, 80.0 h of EEG
+  th=0.8: caught 13/31 (42%), 0.9 false alerts/24h (3 alerts), median delay 21.0s, 80.0 h of EEG  <- declared threshold
+  th=0.9: caught 12/31 (39%), 0.6 false alerts/24h (2 alerts), median delay 23.0s, 80.0 h of EEG
+  per patient at th=0.8:
+    PN00: caught 4/4, 1 false alerts in 2.5 h, median delay 20.5s
+    PN03: caught 0/1, 0 false alerts in 11.3 h, median delay n/a
+    PN05: caught 0/2, 0 false alerts in 3.5 h, median delay n/a
+    PN06: caught 1/4, 0 false alerts in 9.4 h, median delay 24.0s
+    PN09: caught 0/2, 0 false alerts in 4.6 h, median delay n/a
+    PN10: caught 3/9, 2 false alerts in 16.0 h, median delay 11.0s
+    PN12: caught 2/2, 0 false alerts in 3.4 h, median delay 16.0s
+    PN13: caught 1/2, 0 false alerts in 6.1 h, median delay 15.0s
+    PN14: caught 0/3, 0 false alerts in 18.3 h, median delay n/a
+    PN16: caught 1/1, 0 false alerts in 2.6 h, median delay 45.0s
+    PN17: caught 1/1, 0 false alerts in 2.5 h, median delay 24.0s
+
+==    reference: the children-trained model (a) on exactly those same recordings ==
+  th=0.5: caught 6/31 (19%), 45.88 false alerts/24h (153 alerts), median delay 32.5s, 80.0 h of EEG
+  th=0.6: caught 3/31 (10%), 29.69 false alerts/24h (99 alerts), median delay 47.0s, 80.0 h of EEG
+  th=0.7: caught 3/31 (10%), 16.19 false alerts/24h (54 alerts), median delay 47.0s, 80.0 h of EEG
+  th=0.8: caught 2/31 (6%), 6.6 false alerts/24h (22 alerts), median delay 73.5s, 80.0 h of EEG  <- declared threshold
+  th=0.9: caught 1/31 (3%), 1.8 false alerts/24h (6 alerts), median delay 52.0s, 80.0 h of EEG
+
+== c) EXTRA hybrid = mean(a, b) on the same testable recordings ==
+  th=0.5: caught 11/31 (36%), 0.6 false alerts/24h (2 alerts), median delay 22.0s, 80.0 h of EEG
+  th=0.6: caught 4/31 (13%), 0.0 false alerts/24h (0 alerts), median delay 46.5s, 80.0 h of EEG
+  th=0.7: caught 3/31 (10%), 0.0 false alerts/24h (0 alerts), median delay 46.0s, 80.0 h of EEG
+  th=0.8: caught 1/31 (3%), 0.0 false alerts/24h (0 alerts), median delay 47.0s, 80.0 h of EEG  <- declared threshold
+  th=0.9: caught 0/31 (0%), 0.0 false alerts/24h (0 alerts), median delay n/a, 80.0 h of EEG
+
+wall clock: eval 123s (a 31s, b+c 87s)
+
+timings (wall clock, shared 3-CPU VM, 1 thread, other jobs running): download 261 s, features 779 s, eval 124 s
+
+READ WITH CARE
+- 14 patients / 47 seizures: small. One seizure is 2 points of sensitivity; per-patient numbers are 1 to 10 seizures each.
+- Every one of the 41 recordings contains a seizure (Siena has no seizure-free recordings), so false alerts per 24 h are measured
+  on 141.0 h of EEG that were recorded around seizures, not on random days.
+- 6 of 47 seizures last 20 s or less (shortest 5 s, as listed). The event logic needs 5 smoothed windows in a row, so these are close to undetectable by design.
+- Seizure times come from hand-typed clock times. Fixes applied (data/siena/parse_notes.txt): PN14-3 list start hour is a typo
+  (EDF header 19.17.45), PN05-3 list start is 10 s off the header, PN00-3 seizure end 19.29.29 treated as 18.29.29, file-name typos,
+  PN10 'clinical onset' time used where two onsets are given. Clock times are only second-accurate, so delays have a few seconds of slack.
+- Training on CHB-MIT: 186 of 188 downloaded recordings had cached features (2 skipped). Siena's feature distribution differs a lot from CHB-MIT
+  (median band log-power 1.4 to 2.9 lower, Hjorth mobility about 2x higher), so (a) is a real out-of-distribution test, not just a new patient.
+- (b) can only test 27 of 41 recordings (31 of 47 seizures): the first seizure recording of each patient has no earlier data.
+  (a) and (b) therefore have different denominators; use the 'same recordings' reference block to compare them.
+- Training sets in (b) are tiny (often one earlier recording with one seizure), so (b) numbers are high-variance.
+- Hybrid (c) is an extra, not requested.

@@ -1,0 +1,45 @@
+{
+  "_seconds": 893,
+  "_models_trained": 23,
+  "_n_features": 234,
+  "_patients": 23,
+  "_recordings": 321,
+  "_seizures": 191,
+  "general": {
+    "0.5": {
+      "caught": "157/191",
+      "sensitivity": 0.822,
+      "false_alerts_per_24h": 132.8,
+      "median_delay_s": 10.0,
+      "hours": 477.1
+    },
+    "0.6": {
+      "caught": "137/191",
+      "sensitivity": 0.717,
+      "false_alerts_per_24h": 73.74,
+      "median_delay_s": 11.0,
+      "hours": 477.1
+    },
+    "0.7": {
+      "caught": "120/191",
+      "sensitivity": 0.628,
+      "false_alerts_per_24h": 37.17,
+      "median_delay_s": 11.0,
+      "hours": 477.1
+    },
+    "0.8": {
+      "caught": "103/191",
+      "sensitivity": 0.539,
+      "false_alerts_per_24h": 17.2,
+      "median_delay_s": 13.0,
+      "hours": 477.1
+    },
+    "0.9": {
+      "caught": "90/191",
+      "sensitivity": 0.471,
+      "false_alerts_per_24h": 6.59,
+      "median_delay_s": 15.0,
+      "hours": 477.1
+    }
+  }
+}
